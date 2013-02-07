@@ -1,0 +1,27 @@
+%h1 Listing contratos
+
+%table
+  %tr
+    %th Id
+    %th Desccontrato
+    %th Id tipocontrato
+    %th Dt inicio
+    %th Dt fim
+    %th
+    %th
+    %th
+
+  - @contratos.each do |contrato|
+    %tr
+      %td= contrato.id
+      %td= contrato.desccontrato
+      %td= contrato.id_tipocontrato
+      %td= contrato.dt_inicio
+      %td= contrato.dt_fim
+      %td= link_to 'Show', contrato
+      %td= link_to 'Edit', edit_contrato_path(contrato)
+      %td= link_to 'Destroy', contrato, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Contrato', new_contrato_path

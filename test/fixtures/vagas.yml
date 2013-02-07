@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_lotacao: 1
+  id_cargocategoria: 1
+  qt_vagas: 1
+  id_lei: 1
+
+two:
+  id_lotacao: 1
+  id_cargocategoria: 1
+  qt_vagas: 1
+  id_lei: 1

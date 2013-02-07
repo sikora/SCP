@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  id_orgao: 1
+  parent_id: 1
+
+two:
+  descricao: MyString
+  id_orgao: 1
+  parent_id: 1

@@ -1,5 +1,33 @@
 Scp::Application.routes.draw do
 
+  resources :perfis
+
+
+  resources :contratos
+
+
+  resources :tipocontratos
+
+  resources :categorias
+
+
+  resources :lotacoes
+
+
+  resources :cargocategorias
+
+
+  resources :vagas
+
+
+  resources :leis
+
+
+  resources :orgaos
+
+
+  resources :contratacoes
+
   resources :pessoas
 
   resources :cargos

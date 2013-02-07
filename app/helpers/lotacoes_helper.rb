@@ -1,0 +1,2 @@
+module LotacoesHelper
+end

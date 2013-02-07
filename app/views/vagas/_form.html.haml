@@ -1,0 +1,11 @@
+= simple_form_for(@vaga) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id_lotacao
+    = f.input :id_cargocategoria
+    = f.input :qt_vagas
+    = f.input :id_lei
+
+  .form-actions
+    = f.button :submit

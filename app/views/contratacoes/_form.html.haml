@@ -1,0 +1,11 @@
+= simple_form_for(@contratacao) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id_vaga
+    = f.collection_select(:id_pessoa, Pessoa.order('nmpessoa'),:id, :nmpessoa, {:prompt => true}) 
+    = f.input :valor
+    = f.input :id_cargocategoria
+
+  .form-actions
+    = f.button :submit

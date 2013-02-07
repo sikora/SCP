@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nm_orgao: MyString
+  dt_inicio: 2013-02-07
+  dt_fim: 2013-02-07
+  id_lei: 1
+
+two:
+  nm_orgao: MyString
+  dt_inicio: 2013-02-07
+  dt_fim: 2013-02-07
+  id_lei: 1

@@ -1,0 +1,23 @@
+%h1 Listing lotacoes
+
+%table
+  %tr
+    %th Descricao
+    %th Id orgao
+    %th Parent
+    %th
+    %th
+    %th
+
+  - @lotacoes.each do |lotacao|
+    %tr
+      %td= lotacao.descricao
+      %td= lotacao.id_orgao
+      %td= lotacao.parent_id
+      %td= link_to 'Show', lotacao
+      %td= link_to 'Edit', edit_lotacao_path(lotacao)
+      %td= link_to 'Destroy', lotacao, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Lotacao', new_lotacao_path

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Numero:
+  = @lei.numero
+%p
+  %b Descricao:
+  = @lei.descricao
+%p
+  %b Dt lei:
+  = @lei.dt_lei
+
+= link_to 'Edit', edit_lei_path(@lei)
+\|
+= link_to 'Back', leis_path

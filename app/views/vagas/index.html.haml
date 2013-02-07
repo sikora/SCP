@@ -1,0 +1,25 @@
+%h1 Listing vagas
+
+%table
+  %tr
+    %th Id lotacao
+    %th Id cargocategoria
+    %th Qt vagas
+    %th Id lei
+    %th
+    %th
+    %th
+
+  - @vagas.each do |vaga|
+    %tr
+      %td= vaga.id_lotacao
+      %td= vaga.id_cargocategoria
+      %td= vaga.qt_vagas
+      %td= vaga.id_lei
+      %td= link_to 'Show', vaga
+      %td= link_to 'Edit', edit_vaga_path(vaga)
+      %td= link_to 'Destroy', vaga, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Vaga', new_vaga_path

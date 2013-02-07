@@ -1,0 +1,12 @@
+= simple_form_for(@contrato) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id
+    = f.input :desccontrato
+    = f.input :id_tipocontrato
+    = f.input :dt_inicio
+    = f.input :dt_fim
+
+  .form-actions
+    = f.button :submit
