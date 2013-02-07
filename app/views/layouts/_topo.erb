@@ -1,24 +1,25 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
+    
   <div class="navbar-inner">
     <div class="container-fluid">
       <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-      <a href="#" class="brand">Project name</a>
-      <div class="nav-collapse collapse">
-        <p class="navbar-text pull-right">
-          Logged in as <%= current_usuario.email if usuario_signed_in? %><%= link_to('Logout', destroy_usuario_session_path, :method => :delete) %> 
-        </p>
-        <ul class="nav">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
+      <%= link_to(raw("Sistema Cadastro de Pessoas"), root_path, :class => "brand") %>
+      
+      <div class="btn-group pull-right">
+        <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> <%= current_usuario.email if usuario_signed_in? %></a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
           <li>
-            <a href="#about">About</a>
+            <a href="#"><i class="icon-pencil"></i> Edit</a>
           </li>
+          <li class="divider"></li>
           <li>
-            <a href="#contact">Contact</a>
+            <a href="#"><i class="i"></i> <%= link_to(raw("<i class='icon-off'></i> Logout"), destroy_usuario_session_path, :method => :delete) %></a>
           </li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
+      
     </div>
   </div>
+  
 </div>

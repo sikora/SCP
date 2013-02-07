@@ -13,6 +13,8 @@ gem 'therubyracer'
 gem 'sqlite3'
 gem 'devise'
 gem "twitter-bootstrap-rails"
+gem 'pry-rails'
+gem 'awesome_print'
 
 
 # Gems used only for assets and not required
