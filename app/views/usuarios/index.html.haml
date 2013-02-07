@@ -2,8 +2,9 @@
 
 %table
   %tr
-    %th Nome
-    %th Login
+    %th nome
+    %th login
+    %th e-mail
     %th
     %th
     %th
@@ -12,6 +13,7 @@
     %tr
       %td= usuario.nome
       %td= usuario.username
+      %td= usuario.email
       %td= link_to 'Show', usuario
       %td= link_to 'Edit', edit_usuario_path(usuario)
       %td= link_to 'Destroy', usuario, :confirm => 'Are you sure?', :method => :delete

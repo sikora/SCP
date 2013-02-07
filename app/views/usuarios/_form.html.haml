@@ -1,0 +1,13 @@
+= simple_form_for(@usuario) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nome, label: 'Nome'
+    = f.input :username, label: 'Login'
+    = f.input :email, label: 'E-mail'
+    = f.input :password, label: 'Senha'
+    = f.input :password_confirmation, label: 'Confirmação da senha'
+
+
+  .form-actions
+    = f.button :submit

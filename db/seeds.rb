@@ -8,6 +8,12 @@
 
 puts 'Criandos os usuarios'
 
-user = Usuario.create! :nmusuario => 'Igor Rocha', :email => 'igor@gmail.com', :password => 'testeteste', 
-:password_confirmation => 'testeteste'
-puts 'New user created: ' << user.nmusuario
+begin
+  user = Usuario.create :nome => 'Igor Rocha', :email => 'igor@gmail.com', :password => 'testeteste', :password_confirmation => 'testeteste', :username => 'igor'
+  puts 'New user created: ' << user.username
+
+  user = Usuario.create :nome => 'Rodolfo Sikora', :email => 'sikora@gmail.com', :password => 'p0o9i8u7', :password_confirmation => 'p0o9i8u7', :username => 'sikora'
+  puts 'New user created: ' << user.username
+rescue ActiveRecord::RecordInvalid => invalid
+  puts invalid.record.errors.full_messages
+end
