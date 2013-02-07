@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CategoriumTest < ActiveSupport::TestCase
+class CategoriaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

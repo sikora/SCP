@@ -1,5 +1,8 @@
 Scp::Application.routes.draw do
 
+  resources :categorias
+
+
   resources :lotacoes
 
 
@@ -13,9 +16,6 @@ Scp::Application.routes.draw do
 
 
   resources :orgaos
-
-
-  resources :categoria
 
 
   resources :contratacoes
