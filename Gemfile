@@ -4,8 +4,7 @@ gem 'rails', '3.2.11'
 gem 'thin'
 gem 'haml-rails'
 gem 'simple_form'
-gem 'execjs'
-gem 'therubyracer'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
