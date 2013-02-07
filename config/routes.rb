@@ -1,5 +1,11 @@
 Scp::Application.routes.draw do
 
+  resources :indicadores
+
+
+  resources :partidos
+
+
   devise_for :usuarios, 
 
             :path => "usuarios",

@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206222338) do
+ActiveRecord::Schema.define(:version => 20130207030425) do
+
+  create_table "indicadores", :force => true do |t|
+    t.string   "nminidicador"
+    t.integer  "idpartido"
+    t.string   "cpf"
+    t.string   "telefone"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "partidos", :force => true do |t|
+    t.string   "nmpartido"
+    t.string   "nmcompleto"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "usuarios", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

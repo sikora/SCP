@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Nmpartido:
+  = @partido.nmpartido
+%p
+  %b Nmcompleto:
+  = @partido.nmcompleto
+
+= link_to 'Edit', edit_partido_path(@partido)
+\|
+= link_to 'Back', partidos_path

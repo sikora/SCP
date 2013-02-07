@@ -1,0 +1,26 @@
+= form_for @indicador do |f|
+  -if @indicador.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@indicador.errors.count, "error")} prohibited this indicador from being saved:"
+      %ul
+        - @indicador.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nminidicador
+    = f.text_field :nminidicador
+  .field
+    = f.label :idpartido
+    = f.collection_select(:idpartido, Partido.order('nmpartido'),:id, :nmpartido, {:prompt => true}) 
+
+  .field
+    = f.label :cpf
+    = f.text_field :cpf
+  .field
+    = f.label :telefone
+    = f.text_field :telefone
+  .actions
+    = f.submit 'Save'
+
+
+             

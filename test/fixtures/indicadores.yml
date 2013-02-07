@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nminidicador: MyString
+  idpartido: 1
+  cpf: MyString
+  telefone: MyString
+
+two:
+  nminidicador: MyString
+  idpartido: 1
+  cpf: MyString
+  telefone: MyString
