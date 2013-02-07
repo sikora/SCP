@@ -1,21 +1,24 @@
-%h1 Listing partidos
+.page-header
+  %h1 Partidos
 
-%table
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_partido_path, :class => "btn btn-success"
+
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
-    %th Nmpartido
-    %th Nmcompleto
-    %th
-    %th
-    %th
+    %th #
+    %th Sigla
+    %th Nome
+    %th Ação
 
   - @partidos.each do |partido|
     %tr
-      %td= partido.nmpartido
+      %td= partido.id
       %td= partido.nmcompleto
-      %td= link_to 'Show', partido
-      %td= link_to 'Edit', edit_partido_path(partido)
-      %td= link_to 'Destroy', partido, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Partido', new_partido_path
+      %td= partido.nmcompleto
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), partido, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_partido_path(partido), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), partido, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
