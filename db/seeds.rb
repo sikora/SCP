@@ -8,6 +8,6 @@
 
 puts 'Criandos os usuarios'
 
-user = Usuario.create! :nmusuario => 'Carlos Wherbet', :email => 'carloswherbet@gmail.com', :password => '12345678', 
-:password_confirmation => '12345678'
+user = Usuario.create! :nmusuario => 'Igor Rocha', :email => 'igor@gmail.com', :password => 'testeteste', 
+:password_confirmation => 'testeteste'
 puts 'New user created: ' << user.nmusuario
