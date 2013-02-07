@@ -1,18 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Nm cargo:
-  = @cargo.nm_cargo
+  %b Nome
+  = @usuario.nome
 %p
-  %b Simbolo:
-  = @cargo.simbolo
+  %b Login
+  = @usuario.username
 %p
-  %b Dt inicio:
-  = @cargo.dt_inicio
-%p
-  %b Dt fim:
-  = @cargo.dt_fim
+  %b E-mail
+  = @usuario.email
 
-= link_to 'Edit', edit_cargo_path(@cargo)
+
+= link_to 'Edit', edit_usuario_path(@usuario)
 \|
-= link_to 'Back', cargos_path
+= link_to 'Back', usuarios_path
