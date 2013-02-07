@@ -15,6 +15,9 @@ Scp::Application.routes.draw do
   resources :indicadores
   resources :partidos
 
+
+  root :to => "inicio#index"
+
   devise_for :usuarios, 
 
             :path => "usuarios",
@@ -29,9 +32,10 @@ Scp::Application.routes.draw do
             :controllers => { :registrations => 'registrations'}
 
 
-  root :to => "inicio#index"
-
-  get "sign_in", :to => "devise/sessions#new", :as => 'sign_in'
+  
+  devise_scope :usuario do
+    get "sign_in", :to => "devise/sessions#new", :as => 'sign_in'
+  end
 
   resources :inicio
   resources :usuarios
