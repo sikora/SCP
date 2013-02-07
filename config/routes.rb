@@ -1,40 +1,19 @@
 Scp::Application.routes.draw do
 
   resources :perfis
-
-
   resources :contratos
-
-
   resources :tipocontratos
-
   resources :categorias
-
-
   resources :lotacoes
-
-
   resources :cargocategorias
-
-
   resources :vagas
-
-
   resources :leis
-
-
   resources :orgaos
-
-
   resources :contratacoes
-
   resources :pessoas
-
   resources :cargos
   resources :indicadores
-
   resources :partidos
-
 
   devise_for :usuarios, 
 
@@ -52,6 +31,7 @@ Scp::Application.routes.draw do
 
   root :to => "inicio#index"
 
+  get "sign_in", :to => "devise/sessions#new", :as => 'sign_in'
 
   resources :inicio
   resources :usuarios
