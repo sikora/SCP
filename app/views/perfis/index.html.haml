@@ -1,0 +1,21 @@
+%h1 Listing perfis
+
+%table
+  %tr
+    %th Nmperfil
+    %th Descperfil
+    %th
+    %th
+    %th
+
+  - @perfis.each do |perfil|
+    %tr
+      %td= perfil.nmperfil
+      %td= perfil.descperfil
+      %td= link_to 'Show', perfil
+      %td= link_to 'Edit', edit_perfil_path(perfil)
+      %td= link_to 'Destroy', perfil, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Perfil', new_perfil_path
