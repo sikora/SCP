@@ -1,6 +1,6 @@
 class InicioController < ApplicationController
-	before_filter :authenticate_usuario!
-	def index
+  before_filter :authenticate_usuario!
+  def index
 
-	end
+  end
 end

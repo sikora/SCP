@@ -5,7 +5,7 @@
       <a href="#" class="brand">Project name</a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
-          Logged in as <%= link_to('Logout', destroy_usuario_session_path, :method => :delete) %> 
+          Logged in as <%= current_usuario.email if usuario_signed_in? %><%= link_to('Logout', destroy_usuario_session_path, :method => :delete) %> 
         </p>
         <ul class="nav">
           <li class="active">

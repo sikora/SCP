@@ -40,7 +40,8 @@ Scp::Application.routes.draw do
                              :unlock => 'unblock', 
                              :registration => 'register', 
                              :sign_up => 'cmon_let_me_in' 
-                           }
+                           },
+            :controllers => { :registrations => 'registrations'}
 
 
   root :to => "inicio#index"
