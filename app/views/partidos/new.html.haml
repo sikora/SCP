@@ -1,5 +1,7 @@
-%h1 New partido
+.page-header
+  %h1 Novo Partido
 
 = render 'form'
 
-= link_to 'Back', partidos_path
+.form-actions
+  = link_to 'Voltar', partidos_path, :class => "btn"

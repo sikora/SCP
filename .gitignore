@@ -25,3 +25,5 @@ app/assets/images/tmp/*
 config/database.yml
 database.yml
 .idea
+
+Gemfile.lock

@@ -7,10 +7,10 @@
           %li= msg
 
   .field
-    = f.label :nmpartido
+    = f.label "Sigla"
     = f.text_field :nmpartido
   .field
-    = f.label :nmcompleto
+    = f.label "nome"
     = f.text_field :nmcompleto
   .actions
-    = f.submit 'Save'
+    = f.submit 'Salvar', :class => "btn btn-success"
