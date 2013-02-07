@@ -1,0 +1,23 @@
+%h1 Listing leis
+
+%table
+  %tr
+    %th Numero
+    %th Descricao
+    %th Dt lei
+    %th
+    %th
+    %th
+
+  - @leis.each do |lei|
+    %tr
+      %td= lei.numero
+      %td= lei.descricao
+      %td= lei.dt_lei
+      %td= link_to 'Show', lei
+      %td= link_to 'Edit', edit_lei_path(lei)
+      %td= link_to 'Destroy', lei, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Lei', new_lei_path

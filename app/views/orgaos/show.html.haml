@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Nm orgao:
+  = @orgao.nm_orgao
+%p
+  %b Dt inicio:
+  = @orgao.dt_inicio
+%p
+  %b Dt fim:
+  = @orgao.dt_fim
+%p
+  %b Id lei:
+  = @orgao.id_lei
+
+= link_to 'Edit', edit_orgao_path(@orgao)
+\|
+= link_to 'Back', orgaos_path

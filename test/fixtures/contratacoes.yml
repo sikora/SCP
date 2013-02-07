@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_vaga: 1
+  id_pessoa: 1
+  valor: 1.5
+  id_cargocategoria: 1
+
+two:
+  id_vaga: 1
+  id_pessoa: 1
+  valor: 1.5
+  id_cargocategoria: 1

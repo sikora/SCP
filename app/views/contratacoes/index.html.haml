@@ -1,0 +1,25 @@
+%h1 Listing contratacoes
+
+%table
+  %tr
+    %th Id vaga
+    %th Id pessoa
+    %th Valor
+    %th Id cargocategoria
+    %th
+    %th
+    %th
+
+  - @contratacoes.each do |contratacao|
+    %tr
+      %td= contratacao.id_vaga
+      %td= contratacao.id_pessoa
+      %td= contratacao.valor
+      %td= contratacao.id_cargocategoria
+      %td= link_to 'Show', contratacao
+      %td= link_to 'Edit', edit_contratacao_path(contratacao)
+      %td= link_to 'Destroy', contratacao, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Contratacao', new_contratacao_path

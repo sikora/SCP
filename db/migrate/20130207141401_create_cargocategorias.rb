@@ -1,6 +1,6 @@
-class CreateCargocategoria < ActiveRecord::Migration
+class CreateCargocategorias < ActiveRecord::Migration
   def change
-    create_table :cargocategoria do |t|
+    create_table :cargocategorias do |t|
       t.integer :id_cargo
       t.integer :id_categoria
       t.integer :id_orgao

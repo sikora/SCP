@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  numero: MyString
+  descricao: MyString
+  dt_lei: 2013-02-07
+
+two:
+  numero: MyString
+  descricao: MyString
+  dt_lei: 2013-02-07

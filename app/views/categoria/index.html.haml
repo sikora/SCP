@@ -1,0 +1,21 @@
+%h1 Listing categoria
+
+%table
+  %tr
+    %th Nm categoria
+    %th Descricao
+    %th
+    %th
+    %th
+
+  - @categoria.each do |categorium|
+    %tr
+      %td= categorium.nm_categoria
+      %td= categorium.descricao
+      %td= link_to 'Show', categorium
+      %td= link_to 'Edit', edit_categorium_path(categorium)
+      %td= link_to 'Destroy', categorium, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Categorium', new_categorium_path

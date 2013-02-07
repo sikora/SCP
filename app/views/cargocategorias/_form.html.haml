@@ -1,0 +1,12 @@
+= simple_form_for(@cargocategoria) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id_cargo
+    = f.input :id_categoria
+    = f.input :id_orgao
+    = f.input :id_contrato
+    = f.input :valor
+
+  .form-actions
+    = f.button :submit
