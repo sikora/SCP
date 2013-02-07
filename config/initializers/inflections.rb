@@ -7,6 +7,8 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
   inflect.irregular 'cargo', 'cargos'
   inflect.irregular 'indicador', 'indicadores'
+  inflect.irregular 'contratacao', 'contratacoes'
+
 #   inflect.uncountable %w( fish sheep )
 end
 #

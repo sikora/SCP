@@ -1,5 +1,20 @@
 Scp::Application.routes.draw do
 
+  resources :leis
+
+
+  resources :orgaos
+
+
+  resources :categoria
+
+
+  resources :cargocategoria
+
+
+  resources :contratacoes
+
+
   resources :pessoas
 
 
