@@ -1,9 +1,9 @@
-%h1 Listing perfis
+%h1 Lista de Perfis
 
 %table
   %tr
-    %th Nmperfil
-    %th Descperfil
+    %th Nome
+    %th Descrição
     %th
     %th
     %th
@@ -12,10 +12,10 @@
     %tr
       %td= perfil.nmperfil
       %td= perfil.descperfil
-      %td= link_to 'Show', perfil
-      %td= link_to 'Edit', edit_perfil_path(perfil)
-      %td= link_to 'Destroy', perfil, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Ver', perfil
+      %td= link_to 'Editar', edit_perfil_path(perfil)
+      %td= link_to 'Apagar', perfil, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Perfil', new_perfil_path
+= link_to 'Novo Perfil', new_perfil_path
