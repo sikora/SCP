@@ -31,12 +31,20 @@
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
+              - if usuario_signed_in?
+                %li= link_to('Sair', destroy_usuario_session_path, :method => :delete)
 
     .container
 
       .row
         .span9
           = bootstrap_flash
+          - if notice 
+            %p.notice
+              = notice
+          - if alert 
+            %p.alert
+              = alert
           = yield
         .span3
           .well.sidebar-nav
@@ -54,3 +62,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+
