@@ -1,12 +1,17 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes do Partido
+
+.alert
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  %strong= notice
 
 %p
-  %b Nmpartido:
+  %b Sigla:
   = @partido.nmpartido
 %p
-  %b Nmcompleto:
+  %b Nome:
   = @partido.nmcompleto
-
-= link_to 'Edit', edit_partido_path(@partido)
-\|
-= link_to 'Back', partidos_path
+  
+.form-actions
+  = link_to 'Editar', edit_partido_path(@partido), :class => "btn btn-warning"
+  = link_to 'Voltar', partidos_path, :class => "btn"
