@@ -6,10 +6,8 @@ class Usuario < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :nmusuario
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :nome, :username
   belongs_to :perfil ,:foreign_key => 'idperfil' 
 
   # attr_accessible :title, :body

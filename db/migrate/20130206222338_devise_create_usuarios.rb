@@ -34,8 +34,8 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       # t.string :authentication_token
 
       #Implementacoes PMF
-      t.string  :nmcompleto
-      t.string  :nmusuario
+      t.string  :nome
+      t.string  :username
 
 
 

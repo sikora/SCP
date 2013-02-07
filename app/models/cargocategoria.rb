@@ -3,5 +3,5 @@ class Cargocategoria < ActiveRecord::Base
   belgons_to : :cargo, :foreign_key => 'id_cargo'
   belgons_to : :categoria, :foreign_key => 'id_categoria'
   belgons_to : :orgao, :foreign_key => 'id_orgao'
-  belgons_to : :contratado, :foreign_key => 'id_contrato'
+  belgons_to : :contrato, :foreign_key => 'id_contrato'
 end
