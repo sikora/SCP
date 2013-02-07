@@ -2,7 +2,6 @@ Scp::Application.routes.draw do
 
   resources :pessoas
 
-
   resources :cargos
   resources :indicadores
 
@@ -27,6 +26,7 @@ Scp::Application.routes.draw do
 
 
   resources :inicio
+  resources :usuarios
 
 
   # The priority is based upon order of creation:
