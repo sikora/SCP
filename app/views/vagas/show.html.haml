@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Id lotacao:
+  = @vaga.id_lotacao
+%p
+  %b Id cargocategoria:
+  = @vaga.id_cargocategoria
+%p
+  %b Qt vagas:
+  = @vaga.qt_vagas
+%p
+  %b Id lei:
+  = @vaga.id_lei
+
+= link_to 'Edit', edit_vaga_path(@vaga)
+\|
+= link_to 'Back', vagas_path

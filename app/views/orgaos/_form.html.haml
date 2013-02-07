@@ -1,0 +1,11 @@
+= simple_form_for(@orgao) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nm_orgao
+    = f.input :dt_inicio
+    = f.input :dt_fim
+    = f.input :id_lei
+
+  .form-actions
+    = f.button :submit

@@ -10,6 +10,10 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'tipocontrato', 'tipocontratos'
   inflect.irregular 'contrato', 'contratos'
   inflect.irregular 'perfil', 'perfis'
+  inflect.irregular 'contratacao', 'contratacoes'
+  inflect.irregular 'cargocategoria', 'cargocategorias'
+  inflect.irregular 'lotacao', 'lotacoes'
+  inflect.irregular 'categoria', 'categorias'
 #   inflect.uncountable %w( fish sheep )
 end
 #

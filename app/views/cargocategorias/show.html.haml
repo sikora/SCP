@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Id cargo:
+  = @cargocategoria.id_cargo
+%p
+  %b Id categoria:
+  = @cargocategoria.id_categoria
+%p
+  %b Id orgao:
+  = @cargocategoria.id_orgao
+%p
+  %b Id contrato:
+  = @cargocategoria.id_contrato
+%p
+  %b Valor:
+  = @cargocategoria.valor
+
+= link_to 'Edit', edit_cargocategoria_path(@cargocategoria)
+\|
+= link_to 'Back', cargocategorias_path

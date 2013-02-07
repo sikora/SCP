@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nm_categoria: MyString
+  descricao: MyString
+
+two:
+  nm_categoria: MyString
+  descricao: MyString

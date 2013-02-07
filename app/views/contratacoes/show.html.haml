@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Id vaga:
+  = @contratacao.id_vaga
+%p
+  %b Id pessoa:
+  = @contratacao.id_pessoa
+%p
+  %b Valor:
+  = @contratacao.valor
+%p
+  %b Id cargocategoria:
+  = @contratacao.id_cargocategoria
+
+= link_to 'Edit', edit_contratacao_path(@contratacao)
+\|
+= link_to 'Back', contratacoes_path

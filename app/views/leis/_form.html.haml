@@ -1,0 +1,10 @@
+= simple_form_for(@lei) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :numero
+    = f.input :descricao
+    = f.input :dt_lei
+
+  .form-actions
+    = f.button :submit

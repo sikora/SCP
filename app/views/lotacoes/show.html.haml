@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Descricao:
+  = @lotacao.descricao
+%p
+  %b Id orgao:
+  = @lotacao.id_orgao
+%p
+  %b Parent:
+  = @lotacao.parent_id
+
+= link_to 'Edit', edit_lotacao_path(@lotacao)
+\|
+= link_to 'Back', lotacoes_path

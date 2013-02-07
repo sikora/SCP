@@ -1,4 +1,5 @@
 class CargosController < ApplicationController
+  before_filter :authenticate_usuario!
   # GET /cargos
   # GET /cargos.json
   def index
