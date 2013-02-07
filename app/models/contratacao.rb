@@ -3,5 +3,6 @@ class Contratacao < ActiveRecord::Base
   belongs_to :pessoa, :foreign_key => 'id_pessoa'
   belongs_to :cargocategoria, :foreign_key => 'id_cargocategoria'
   belongs_to :vaga, :foreign_key => 'id_vaga'
-  
+  has_many  :cargocategorias
+
 end

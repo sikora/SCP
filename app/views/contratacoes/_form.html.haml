@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :id_vaga
-    = f.input :id_pessoa
+    = f.collection_select(:id_pessoa, Pessoa.order('nmpessoa'),:id, :nmpessoa, {:prompt => true}) 
     = f.input :valor
     = f.input :id_cargocategoria
 
