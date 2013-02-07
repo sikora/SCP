@@ -1,0 +1,25 @@
+%h1 Listing indicadores
+
+%table
+  %tr
+    %th Nminidicador
+    %th Idpartido
+    %th Cpf
+    %th Telefone
+    %th
+    %th
+    %th
+
+  - @indicadores.each do |indicador|
+    %tr
+      %td= indicador.nminidicador
+      %td= indicador.partido.nmpartido
+      %td= indicador.cpf
+      %td= indicador.telefone
+      %td= link_to 'Show', indicador
+      %td= link_to 'Edit', edit_indicador_path(indicador)
+      %td= link_to 'Destroy', indicador, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Indicador', new_indicador_path

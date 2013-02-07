@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Nminidicador:
+  = @indicador.nminidicador
+%p
+  %b Idpartido:
+  = @indicador.idpartido
+%p
+  %b Cpf:
+  = @indicador.cpf
+%p
+  %b Telefone:
+  = @indicador.telefone
+
+= link_to 'Edit', edit_indicador_path(@indicador)
+\|
+= link_to 'Back', indicadores_path

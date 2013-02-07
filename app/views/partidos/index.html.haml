@@ -1,0 +1,21 @@
+%h1 Listing partidos
+
+%table
+  %tr
+    %th Nmpartido
+    %th Nmcompleto
+    %th
+    %th
+    %th
+
+  - @partidos.each do |partido|
+    %tr
+      %td= partido.nmpartido
+      %td= partido.nmcompleto
+      %td= link_to 'Show', partido
+      %td= link_to 'Edit', edit_partido_path(partido)
+      %td= link_to 'Destroy', partido, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Partido', new_partido_path

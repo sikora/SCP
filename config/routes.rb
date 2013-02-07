@@ -1,6 +1,9 @@
 Scp::Application.routes.draw do
 
   resources :cargos
+  resources :indicadores
+
+  resources :partidos
 
 
   devise_for :usuarios, 
