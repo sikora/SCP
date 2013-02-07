@@ -1,5 +1,8 @@
 Scp::Application.routes.draw do
 
+  resources :cargos
+
+
   devise_for :usuarios, 
 
             :path => "usuarios",

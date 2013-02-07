@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nm_cargo: MyString
+  simbolo: MyString
+  dt_inicio: 2013-02-06
+  dt_fim: 2013-02-06
+
+two:
+  nm_cargo: MyString
+  simbolo: MyString
+  dt_inicio: 2013-02-06
+  dt_fim: 2013-02-06

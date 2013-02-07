@@ -1,0 +1,11 @@
+= simple_form_for(@cargo) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nm_cargo
+    = f.input :simbolo
+    = f.input :dt_inicio, :order => [:day,:month,:year]
+    = f.input :dt_fim, :order => [:day,:month,:year]
+
+  .form-actions
+    = f.button :submit
