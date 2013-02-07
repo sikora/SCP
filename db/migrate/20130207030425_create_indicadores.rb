@@ -1,7 +1,7 @@
 class CreateIndicadores < ActiveRecord::Migration
   def change
     create_table :indicadores do |t|
-      t.string :nminidicador
+      t.string :nmindicador
       t.integer :idpartido
       t.string :cpf
       t.string :telefone

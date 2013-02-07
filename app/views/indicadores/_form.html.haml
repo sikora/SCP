@@ -7,8 +7,8 @@
           %li= msg
 
   .field
-    = f.label :nminidicador
-    = f.text_field :nminidicador
+    = f.label :nmindicador
+    = f.text_field :nmindicador
   .field
     = f.label :idpartido
     = f.collection_select(:idpartido, Partido.order('nmpartido'),:id, :nmpartido, {:prompt => true}) 

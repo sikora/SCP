@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nmpessoa: MyString
+  cpf: MyString
+  telefone: MyString
+  endereco: MyString
+  cep: MyString
+  bairro: MyString
+  naturalidade: MyString
+  nacionalidade: MyString
+  nmpai: MyString
+  nmmae: MyString
+  dtnasc: 2013-02-07
+  sexo: MyString
+  idpolitico: 1
+  obs: MyText
+
+two:
+  nmpessoa: MyString
+  cpf: MyString
+  telefone: MyString
+  endereco: MyString
+  cep: MyString
+  bairro: MyString
+  naturalidade: MyString
+  nacionalidade: MyString
+  nmpai: MyString
+  nmmae: MyString
+  dtnasc: 2013-02-07
+  sexo: MyString
+  idpolitico: 1
+  obs: MyText

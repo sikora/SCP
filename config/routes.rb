@@ -1,5 +1,8 @@
 Scp::Application.routes.draw do
 
+  resources :pessoas
+
+
   resources :cargos
   resources :indicadores
 

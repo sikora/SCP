@@ -1,0 +1,22 @@
+= simple_form_for(@pessoa) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :nmpessoa
+    = f.input :cpf
+    = f.input :telefone
+    = f.input :endereco
+    = f.input :cep
+    = f.input :bairro
+    = f.input :naturalidade
+    = f.input :nacionalidade
+    = f.input :nmpai
+    = f.input :nmmae
+    = f.input :dtnasc, :order => [:day,:month,:year]
+    = f.input :sexo
+    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => true}) 
+
+    = f.input :obs
+
+  .form-actions
+    = f.button :submit
