@@ -1,0 +1,21 @@
+%h1 Listing tipocontratos
+
+%table
+  %tr
+    %th Id
+    %th Tpcontrato
+    %th
+    %th
+    %th
+
+  - @tipocontratos.each do |tipocontrato|
+    %tr
+      %td= tipocontrato.id
+      %td= tipocontrato.tpcontrato
+      %td= link_to 'Show', tipocontrato
+      %td= link_to 'Edit', edit_tipocontrato_path(tipocontrato)
+      %td= link_to 'Destroy', tipocontrato, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Tipocontrato', new_tipocontrato_path

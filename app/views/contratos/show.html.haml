@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Id:
+  = @contrato.id
+%p
+  %b Desccontrato:
+  = @contrato.desccontrato
+%p
+  %b Id tipocontrato:
+  = @contrato.id_tipocontrato
+%p
+  %b Dt inicio:
+  = @contrato.dt_inicio
+%p
+  %b Dt fim:
+  = @contrato.dt_fim
+
+= link_to 'Edit', edit_contrato_path(@contrato)
+\|
+= link_to 'Back', contratos_path

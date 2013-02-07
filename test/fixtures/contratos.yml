@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 
+  desccontrato: 
+  id_tipocontrato: 
+  dt_inicio: 2013-02-07
+  dt_fim: 2013-02-07
+
+two:
+  id: 
+  desccontrato: 
+  id_tipocontrato: 
+  dt_inicio: 2013-02-07
+  dt_fim: 2013-02-07

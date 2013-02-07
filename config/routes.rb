@@ -1,5 +1,13 @@
 Scp::Application.routes.draw do
 
+  resources :perfis
+
+
+  resources :contratos
+
+
+  resources :tipocontratos
+
   resources :categorias
 
 
@@ -19,7 +27,6 @@ Scp::Application.routes.draw do
 
 
   resources :contratacoes
-
 
   resources :pessoas
 
