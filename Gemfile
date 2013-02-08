@@ -4,6 +4,8 @@ gem 'rails', '3.2.11'
 gem 'thin'
 gem 'haml-rails'
 gem 'simple_form'
+gem "audited-activerecord", "~> 3.0"
+
 
 
 # Bundle edge Rails instead:

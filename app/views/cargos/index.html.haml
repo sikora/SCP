@@ -1,25 +1,26 @@
-%h1 Listing cargos
+.page-header
+  %h1 Cargos
 
-%table
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_cargo_path, :class => "btn btn-success"
+
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
-    %th Nm cargo
-    %th Simbolo
-    %th Dt inicio
-    %th Dt fim
-    %th
-    %th
-    %th
+    %th #
+    %th Cargo
+    %th Lei
+    %th Ação
 
   - @cargos.each do |cargo|
     %tr
+      %td= cargo.id
       %td= cargo.nm_cargo
-      %td= cargo.simbolo
-      %td= cargo.dt_inicio
-      %td= cargo.dt_fim
-      %td= link_to 'Show', cargo
-      %td= link_to 'Edit', edit_cargo_path(cargo)
-      %td= link_to 'Destroy', cargo, :confirm => 'Are you sure?', :method => :delete
+      %td= cargo.lei.descricao if cargo.lei
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), cargo, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_cargo_path(cargo), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), cargo, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+        
 
-%br
-
-= link_to 'New Cargo', new_cargo_path

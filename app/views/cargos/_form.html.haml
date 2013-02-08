@@ -2,10 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nm_cargo
-    = f.input :simbolo
-    = f.input :dt_inicio, :order => [:day,:month,:year]
-    = f.input :dt_fim, :order => [:day,:month,:year]
+    = f.input :nm_cargo, label: 'Cargo'
+    = f.input :lei_id, label: 'Lei', collection: []
 
-  .form-actions
-    = f.button :submit
+    = f.submit 'Salvar', class: "btn btn-success"
+

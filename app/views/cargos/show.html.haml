@@ -3,15 +3,10 @@
 %p
   %b Nm cargo:
   = @cargo.nm_cargo
+
 %p
-  %b Simbolo:
-  = @cargo.simbolo
-%p
-  %b Dt inicio:
-  = @cargo.dt_inicio
-%p
-  %b Dt fim:
-  = @cargo.dt_fim
+  %b Lei:
+  = @cargo.lei.descricao
 
 = link_to 'Edit', edit_cargo_path(@cargo)
 \|
