@@ -23,9 +23,18 @@ class LotacoesController < ApplicationController
   end
 
   # GET /lotacoes/new
+  # GET /lotacoes/new/1
   # GET /lotacoes/new.json
   def new
     @lotacao = Lotacao.new
+
+    if params[:parent_id] != '' &&  params[:parent_id]
+      @lotacao_pai = Lotacao.find(params[:parent_id]) 
+      @parent_id = params[:parent_id]
+    else      
+      @parent_id  = 0
+    end
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,9 +42,13 @@ class LotacoesController < ApplicationController
     end
   end
 
+
+
   # GET /lotacoes/1/edit
   def edit
     @lotacao = Lotacao.find(params[:id])
+    @parent_id  = @lotacao.parent_id
+    
   end
 
   # POST /lotacoes
@@ -75,6 +88,8 @@ class LotacoesController < ApplicationController
   def destroy
     @lotacao = Lotacao.find(params[:id])
     @lotacao.destroy
+    @lotacoes_filhas = Lotacao.where(:parent_id => :id)
+    @lotacoes_filhas.destroy
 
     respond_to do |format|
       format.html { redirect_to lotacoes_url }

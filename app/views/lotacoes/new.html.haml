@@ -1,5 +1,8 @@
-%h1 New lotacao
+- if !@lotacao_pai
+  %h1 Nova lotacao
+- else
+  %h1 Nova lotacao em #{@lotacao_pai.orgao.nm_orgao} 
 
 = render 'form'
 
-= link_to 'Back', lotacoes_path
+= link_to 'Voltar', lotacoes_path

@@ -3,8 +3,8 @@
 
   .form-inputs
     = f.input :nm_orgao
-    = f.input :dt_inicio
-    = f.input :dt_fim
+    = f.input :dt_inicio ,:order => [:day,:month,:year]
+    = f.input :dt_fim, :order => [:day,:month,:year]
     = f.input :id_lei
 
   .form-actions

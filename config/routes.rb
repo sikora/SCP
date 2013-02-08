@@ -40,7 +40,7 @@ Scp::Application.routes.draw do
   resources :inicio
   resources :usuarios
 
-
+  match 'lotacoes/new/:parent_id' => 'lotacoes#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
