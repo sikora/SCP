@@ -1,25 +1,43 @@
-%h1 Listing contratacoes
+.page-header
+  %h1 Contratações
 
-%table
-  %tr
-    %th Id vaga
-    %th Id pessoa
-    %th Valor
-    %th Id cargocategoria
-    %th
-    %th
-    %th
-
-  - @contratacoes.each do |contratacao|
-    %tr
-      %td= contratacao.id_vaga
-      %td= contratacao.id_pessoa
-      %td= contratacao.valor
-      %td= contratacao.id_cargocategoria
-      %td= link_to 'Show', contratacao
-      %td= link_to 'Edit', edit_contratacao_path(contratacao)
-      %td= link_to 'Destroy', contratacao, :confirm => 'Are you sure?', :method => :delete
+= link_to raw("<i class='icon-plus icon-white'></i> Nova Contratação"), new_contratacao_path, :class => "btn btn-success"
 
 %br
+%br
 
-= link_to 'New Contratacao', new_contratacao_path
+%table{:class => "table table-striped"}
+  %tr
+    %th #
+    %th Nome
+    %th Cargo
+    %th Valor
+    %th Telefone
+    %th Lotação
+    %th Ação
+
+  - (1..10).each do |i|
+    %tr
+      %td= i
+      %td= "Nome Completo Pessoa"
+      %td= "Nome do Cargo"
+      %td= "Valor Pago"
+      %td= "Telefone Pessoa"
+      %td= "Local Trabalho"
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), "#", :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), "#", :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+.pagination
+  %ul
+    %li{:class => "disabled"}
+      %a= "Anterior"       
+    %li{:class => "active"}
+      %a= "1" 
+    %li
+      %a= "2"
+    %li
+      %a= "3"
+    %li
+      %a= "Posterior"

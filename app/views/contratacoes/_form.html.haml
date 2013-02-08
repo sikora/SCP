@@ -2,10 +2,19 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :id_vaga
-    = f.collection_select(:id_pessoa, Pessoa.order('nmpessoa'),:id, :nmpessoa, {:prompt => true}) 
-    = f.input :valor
+    .field
+      = f.label "Partido"
+      = f.text_field :id_vaga
+      %button{:class => "btn btn-success", :style => "margin-top:-10px"}
+        %i{:class => "icon-plus-sign icon-white"}
+    .field
+      = f.label "Pessoa"
+      = f.collection_select(:id_pessoa, Pessoa.order('nmpessoa'),:id, :nmpessoa, {:prompt => true})
+    .field
+      = f.label "Valor"  
+      = f.text_field  :valor
+      
     = f.input :id_cargocategoria
 
-  .form-actions
-    = f.button :submit
+  .actions
+    = f.button :submit, "Salvar", :class => "btn btn-success"
