@@ -71,6 +71,7 @@ class LotacoesController < ApplicationController
   def edit
     @lotacao = Lotacao.find(params[:id])
     @parent_id  = @lotacao.parent_id
+    @id_orgao = @lotacao.id_orgao
     
   end
 
