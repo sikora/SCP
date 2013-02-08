@@ -7,6 +7,7 @@ class LotacoesController < ApplicationController
     @orgaos = Orgao.all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
     @orgaos_hash = []
     @orgaos.each do |orgao|
+	#é normal a inserção duplicada de orgãos no array, o plugin irá ignorar e renderizar corretamente.
         if !orgao.parent_id? || orgao.parent_id.to_i < 0
           # Incluindo os orgaos na estrutura de arvore se parent_id for negativo ou nao exista
           @orgaos_hash << {:descricao => orgao.nm_orgao , :id => "-#{orgao.orgao_id}", :parent_id => 0}
