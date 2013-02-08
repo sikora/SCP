@@ -39,14 +39,18 @@
           margin-bottom: 15px;
           padding: 7px 9px;
       }
+      .boolean.optional.control-label {
+          float: left;
+          width: 95px;
+      }
 
   %body
     .container
       - if notice 
-        %p.notice
+        %p.notice.simple_form.form-signin
           = notice
-      - if alert 
-        %p.alert
+      - if alert
+        %p.alert.simple_form.form-signin
           = alert
       = yield
         
