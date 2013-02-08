@@ -80,9 +80,10 @@ class LotacoesController < ApplicationController
 
     @lotacao.parent_id = "-#{@lotacao.id_orgao}" if @lotacao.parent_id <= 0
 
+
     respond_to do |format|
       if @lotacao.save
-        format.html { redirect_to @lotacao, notice: 'Lotacao was successfully created.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully created.' }
         format.json { render json: @lotacao, status: :created, location: @lotacao }
       else
         format.html { render action: "new" }
@@ -98,7 +99,7 @@ class LotacoesController < ApplicationController
 
     respond_to do |format|
       if @lotacao.update_attributes(params[:lotacao])
-        format.html { redirect_to @lotacao, notice: 'Lotacao was successfully updated.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
