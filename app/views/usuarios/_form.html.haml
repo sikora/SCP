@@ -5,7 +5,7 @@
     = f.input :nome, label: 'Nome'
     = f.input :username, label: 'Login'
     = f.input :email, label: 'E-mail'
-    = f.input :password, label: 'Senha'
+    = f.input :password, label: 'Senha', input_html: { autocomplete: "off" }
     = f.input :password_confirmation, label: 'Confirmação da senha'
     
   .actions

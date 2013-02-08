@@ -33,6 +33,10 @@ class UsuariosController < ApplicationController
   end
 
   def update
+    if params[:usuario][:password].blank?
+     params[:usuario].delete(:password)
+     params[:usuario].delete(:password_confirmation)
+    end
     @usuario = Usuario.find(params[:id])
 
     respond_to do |format|
