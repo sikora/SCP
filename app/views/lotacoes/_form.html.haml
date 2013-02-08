@@ -5,7 +5,7 @@
     = f.input :descricao
     
 
-    - if !@id_orgao
+    - if !@id_orgao || !@parent_id
       = f.label "Orgao"
       = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
     - else
