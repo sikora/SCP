@@ -15,9 +15,6 @@ class LotacoesController < ApplicationController
           # Armazena os dados de lotacao caso nao sejam nulos
           @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
         end
-          
-        
-
     end
 
        @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
@@ -25,7 +22,7 @@ class LotacoesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @orgaos_hash }
+      format.json { render json: @lotacoes_array }
     end
   end
 
