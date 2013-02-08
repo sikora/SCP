@@ -4,16 +4,17 @@ class LotacoesController < ApplicationController
   # GET /lotacoes.json
   def index
     @notice = params[:notice]
-    @orgaos = Orgao.all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id" )
+    @orgaos = Orgao.all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
     @orgaos_hash = []
     @orgaos.each do |orgao|
         if !orgao.parent_id? || orgao.parent_id.to_i < 0
-          # Incluindo os orgaos na estrutura de arvore
+          # Incluindo os orgaos na estrutura de arvore se parent_id for negativo ou nao exista
           @orgaos_hash << {:descricao => orgao.nm_orgao , :id => "-#{orgao.orgao_id}", :parent_id => 0}
         end
-        
-        @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
-
+        if !orgao.parent_id.nil?
+          # Armazena os dados de lotacao caso nao sejam nulos
+          @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
+        end
     end
 
        @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
