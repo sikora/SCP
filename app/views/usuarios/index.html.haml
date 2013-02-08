@@ -1,23 +1,40 @@
-%h1 Lista de Usuários
+.page-header
+  %h1 Lista de Usuários
+  
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_usuario_path, :class => "btn btn-success"
 
-%table
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
+    %th #
     %th nome
     %th login
     %th e-mail
-    %th
-    %th
-    %th
+    %th Ação
 
   - @usuarios.each do |usuario|
     %tr
+      %td= usuario.id
       %td= usuario.nome
       %td= usuario.username
       %td= usuario.email
-      %td= link_to 'Show', usuario
-      %td= link_to 'Edit', edit_usuario_path(usuario)
-      %td= link_to 'Destroy', usuario, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), usuario, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_usuario_path(usuario), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), usuario, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
 
-%br
-
-= link_to 'Novo Usuário', new_usuario_path
+- if @usuarios.present?
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"       
+      %li{:class => "active"}
+        %a= "1" 
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"
