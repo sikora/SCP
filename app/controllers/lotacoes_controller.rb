@@ -1,3 +1,4 @@
+#encoding: utf-8
 class LotacoesController < ApplicationController
   # GET /lotacoes
   # GET /lotacoes.json
@@ -55,9 +56,6 @@ class LotacoesController < ApplicationController
       @parent_id  = "-#{params[:parent_id]}"
     end
 
-    
-
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @lotacao }
@@ -111,13 +109,17 @@ class LotacoesController < ApplicationController
   # DELETE /lotacoes/1
   # DELETE /lotacoes/1.json
   def destroy
-    @lotacao = Lotacao.find(params[:id])
-    @lotacao.destroy
+    if Lotacao.where(:parent_id => params[:id]).count > 0
+    flash[:notice] = 'Esta lotação não pode ser apagada.' 
+      redirect_to lotacoes_path
+    else
+      @lotacao = Lotacao.find(params[:id])
+      #@lotacao.destroy
 
-
-    respond_to do |format|
-      format.html { redirect_to lotacoes_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to lotacoes_url }
+        format.json { head :no_content }
+      end
     end
   end
 end
