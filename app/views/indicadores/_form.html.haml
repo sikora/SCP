@@ -1,26 +1,11 @@
-= form_for @indicador do |f|
-  -if @indicador.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@indicador.errors.count, "error")} prohibited this indicador from being saved:"
-      %ul
-        - @indicador.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for(@indicador) do |f|
+  = f.error_notification
 
-  .field
-    = f.label :nmindicador
-    = f.text_field :nmindicador
-  .field
-    = f.label :idpartido
-    = f.collection_select(:idpartido, Partido.order('nmpartido'),:id, :nmpartido, {:prompt => true}) 
-
-  .field
-    = f.label :cpf
-    = f.text_field :cpf
-  .field
-    = f.label :telefone
-    = f.text_field :telefone
-  .actions
-    = f.submit 'Save'
+  .form-inputs
+    = f.input :nmindicador, label: 'Nome do Indicador'
+    = f.input :idpartido, label: 'Partido', collection: [], input_html: { url_ac: '/partidos.json', label_ac: 'nmcompleto', val_ac: 'id', class: "autocomplete"}
+    = f.input :cpf, label: 'CPF'
+    = f.input :telefone, label: 'Telefone'
 
 
-             
+    = f.submit 'Salvar', class: "btn btn-success"

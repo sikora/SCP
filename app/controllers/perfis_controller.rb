@@ -2,7 +2,11 @@ class PerfisController < ApplicationController
   # GET /perfis
   # GET /perfis.json
   def index
-    @perfis = Perfil.all
+    if params[:filter] && params[:filter] !=''
+      @perfis = Perfil.where("nmperfil like ?", '%' + params[:filter] + '%') 
+    else 
+      @perfis = Perfil.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

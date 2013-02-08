@@ -1,10 +1,17 @@
-%h1 Listing indicadores
+.page-header
+  %h1 Indicadores
 
-%table
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_indicador_path, :class => "btn btn-success"
+
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
-    %th nmindicador
-    %th Idpartido
-    %th Cpf
+    %th #
+    %th Indicador
+    %th Partido
+    %th CPF
     %th Telefone
     %th
     %th
@@ -12,14 +19,13 @@
 
   - @indicadores.each do |indicador|
     %tr
+      %td= indicador.id
       %td= indicador.nmindicador
-      %td= indicador.partido.nmpartido
+      %td= indicador.partido.nmcompleto if indicador.idpartido?
       %td= indicador.cpf
       %td= indicador.telefone
-      %td= link_to 'Show', indicador
-      %td= link_to 'Edit', edit_indicador_path(indicador)
-      %td= link_to 'Destroy', indicador, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Indicador', new_indicador_path
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), indicador, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_indicador_path(indicador), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), indicador, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+        
