@@ -28,3 +28,16 @@ $(function() {
 		obj_menu_encontrado.parent().addClass('active').find("i").addClass('icon-white');
 	};
 });
+
+/**
+ * efeito alert
+ */
+$(function(){
+	var corpo_alert = $(".alert, .notice");
+
+    if(corpo_alert.length){
+        setTimeout(function(){
+            corpo_alert.fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500)
+        }, 500);
+    }
+})

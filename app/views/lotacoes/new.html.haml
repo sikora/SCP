@@ -1,8 +1,11 @@
 - if !@lotacao_pai
-  %h1 Nova lotacao
+  .page-header
+    %h1 Cadastrar Lotação
 - else
-  %h1 Nova lotacao em #{@lotacao_pai.orgao.nm_orgao} 
+  .page-header
+    %h1 Novo Lotção em #{@lotacao_pai.orgao.nm_orgao}
 
 = render 'form'
 
-= link_to 'Voltar', lotacoes_path
+.form-actions
+  = link_to 'Voltar', lotacoes_path, :class => "btn btn-info"

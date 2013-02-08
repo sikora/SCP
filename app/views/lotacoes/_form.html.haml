@@ -2,17 +2,17 @@
   = f.error_notification
   
   .form-inputs
-    = f.input :descricao
+    = f.input :descricao, :label => "Descrição"
     
-
     - if !@id_orgao || !@parent_id
-      = f.label "Orgao"
-      = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
+      / = f.label "Órgão"
+      / = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
+      = hidden_field :lotacao,:id_orgao, :value => @id_orgao
+
     - else
       = hidden_field :lotacao,:id_orgao, :value => @id_orgao
     
     = hidden_field :lotacao,:parent_id, :value => @parent_id
 
-
-  .form-actions
-    = f.button :submit
+  .actions
+    = f.submit 'Salvar', :class => "btn btn-success"

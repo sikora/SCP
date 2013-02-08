@@ -1,23 +1,27 @@
+#encoding: utf-8
 class LotacoesController < ApplicationController
   # GET /lotacoes
   # GET /lotacoes.json
   def index
-    @lotacoes = Lotacao.all(:joins => :orgao, :select => "orgaos.*,lotacoes.*" )
-    @lotacoes_hash = []
-    @lotacoes.each do |lotacao|
-        if lotacao.parent_id < 0
-          @lotacoes_hash << {:descricao => lotacao.nm_orgao , :id => "-#{lotacao.id_orgao}", :parent_id => 0}
+    @notice = params[:notice]
+    @orgaos = Orgao.all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id" )
+    @orgaos_hash = []
+    @orgaos.each do |orgao|
+        if !orgao.parent_id? || orgao.parent_id.to_i < 0
+          # Incluindo os orgaos na estrutura de arvore
+          @orgaos_hash << {:descricao => orgao.nm_orgao , :id => "-#{orgao.orgao_id}", :parent_id => 0}
         end
-          @lotacoes_hash << {:descricao => lotacao.descricao , :id => lotacao.id, :parent_id => lotacao.parent_id}
+        
+        @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
 
-      end
+    end
 
-      @lotacoes_array = @lotacoes_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
+       @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
 
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lotacoes_hash }
+      format.json { render json: @lotacoes_array }
     end
   end
 
@@ -55,9 +59,6 @@ class LotacoesController < ApplicationController
       @parent_id  = "-#{params[:parent_id]}"
     end
 
-    
-
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @lotacao }
@@ -70,6 +71,7 @@ class LotacoesController < ApplicationController
   def edit
     @lotacao = Lotacao.find(params[:id])
     @parent_id  = @lotacao.parent_id
+    @id_orgao = @lotacao.id_orgao
     
   end
 
@@ -83,7 +85,7 @@ class LotacoesController < ApplicationController
 
     respond_to do |format|
       if @lotacao.save
-        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully created.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao criada com sucesso.' }
         format.json { render json: @lotacao, status: :created, location: @lotacao }
       else
         format.html { render action: "new" }
@@ -99,7 +101,7 @@ class LotacoesController < ApplicationController
 
     respond_to do |format|
       if @lotacao.update_attributes(params[:lotacao])
-        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully updated.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -111,13 +113,17 @@ class LotacoesController < ApplicationController
   # DELETE /lotacoes/1
   # DELETE /lotacoes/1.json
   def destroy
-    @lotacao = Lotacao.find(params[:id])
-    @lotacao.destroy
+    if Lotacao.where(:parent_id => params[:id]).count > 0
+    flash[:notice] = 'Esta lotação não pode ser apagada.' 
+      redirect_to lotacoes_path
+    else
+      @lotacao = Lotacao.find(params[:id])
+      @lotacao.destroy
 
-
-    respond_to do |format|
-      format.html { redirect_to lotacoes_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to lotacoes_url }
+        format.json { head :no_content }
+      end
     end
   end
 end

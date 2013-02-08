@@ -1,4 +1,10 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes Usuário
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
   %b Nome
@@ -10,7 +16,6 @@
   %b E-mail
   = @usuario.email
 
-
-= link_to 'Edit', edit_usuario_path(@usuario)
-\|
-= link_to 'Back', usuarios_path
+.form-actions
+  = link_to 'Editar', edit_usuario_path(@usuario), :class => "btn btn-warning"
+  = link_to 'Voltar', usuarios_path, :class => "btn"

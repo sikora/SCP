@@ -1,34 +1,16 @@
-%h1 Lista de Lotações
-/ %table
-/   %tr
-/     %th Descricao
-/     %th Id orgao
-/     %th Parent
-/     %th
-/     %th
-/     %th
+.page-header
+  %h1 Lotações
 
-/   - @lotacoes.each do |lotacao|
-/     %tr
-/       %td= lotacao.descricao
-/       %td= lotacao.id_orgao
-/       %td= lotacao.parent_id
-/       %td= link_to 'Show', lotacao
-/       %td= link_to 'Edit', edit_lotacao_path(lotacao)
-/       %td= link_to 'Destroy', lotacao, :confirm => 'Are you sure?', :method => :delete
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_lotacao_path, :class => "btn btn-success"
-%br
-%br
+
+
 - if notice
   .alert
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     %strong= notice
     
-%div{:id => "jqxTree"} 
+%div{:id => "jqxTree", :class => "hero-unit"} 
 
 %br
-
-/ = link_to 'New Lotacao', new_lotacao_path
 
 %input{:type => "hidden", :value =>  @lotacoes_array, :class => 'data'}
 

@@ -3,7 +3,6 @@
 
   .form-inputs
     = f.input :nm_cargo, label: 'Cargo'
-    = f.input :lei_id, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
 
     = f.submit 'Salvar', class: "btn btn-success"
 
