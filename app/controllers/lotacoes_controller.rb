@@ -3,7 +3,8 @@ class LotacoesController < ApplicationController
   # GET /lotacoes.json
   def index
     @lotacoes = Lotacao.all
-
+    
+    @lotacoes_array = @lotacoes.to_json(:only => [:id, :descricao, :parent_id])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lotacoes }

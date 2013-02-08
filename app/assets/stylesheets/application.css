@@ -15,3 +15,33 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
+
+.actions_lotacao {
+	padding-left: 5px;
+	display: inline;
+	position: absolute;
+	right: 0;
+
+
+
+}
+
+.actions_lotacao a {
+	margin-left: 5px;
+
+
+}
+
+#jqxTree ul li , #jqxTree ul {
+}
+
+#panelContentpaneljqxTree {
+	width: 98% !important;
+	overflow: hidden !important;
+
+}
+
+#panelWrapperpaneljqxTree >  div ,  #panelWrapperpaneljqxTree ,#paneljqxTreehorizontalScrollBar > div {
+	overflow: hidden !important;
+
+}
