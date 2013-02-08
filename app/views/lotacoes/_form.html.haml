@@ -1,10 +1,11 @@
 = simple_form_for(@lotacao) do |f|
   = f.error_notification
-
+  
   .form-inputs
     = f.input :descricao
-    = f.input :id_orgao
-    = f.input :parent_id
+    = f.label "Orgao"
+    = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
+    =  hidden_field :lotacao,:parent_id, :value => @parent_id
 
   .form-actions
     = f.button :submit
