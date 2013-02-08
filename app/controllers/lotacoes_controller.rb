@@ -2,12 +2,22 @@ class LotacoesController < ApplicationController
   # GET /lotacoes
   # GET /lotacoes.json
   def index
-    @lotacoes = Lotacao.all
+    @lotacoes = Lotacao.all(:joins => :orgao, :select => "orgaos.*,lotacoes.*" )
+    @lotacoes_hash = []
+    @lotacoes.each do |lotacao|
+        if lotacao.parent_id < 0
+          @lotacoes_hash << {:descricao => lotacao.nm_orgao , :id => "-#{lotacao.id_orgao}", :parent_id => 0}
+        end
+          @lotacoes_hash << {:descricao => lotacao.descricao , :id => lotacao.id, :parent_id => lotacao.parent_id}
+
+      end
+
+      @lotacoes_array = @lotacoes_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
+
     
-    @lotacoes_array = @lotacoes.to_json(:only => [:id, :descricao, :parent_id])
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @lotacoes }
+      format.json { render json: @lotacoes_hash }
     end
   end
 
@@ -27,13 +37,25 @@ class LotacoesController < ApplicationController
   # GET /lotacoes/new.json
   def new
     @lotacao = Lotacao.new
+    @lotacoes = Lotacao.all(:joins => :orgao, :select => "orgaos.*,lotacoes.*" )
+    
+    if params[:parent_id] != '' &&  params[:parent_id]  &&  params[:parent_id].to_i > 0
+      #  
 
-    if params[:parent_id] != '' &&  params[:parent_id]
       @lotacao_pai = Lotacao.find(params[:parent_id]) 
       @parent_id = params[:parent_id]
-    else      
-      @parent_id  = 0
+      @id_orgao = @lotacao_pai.id_orgao
+    elsif  params[:parent_id].to_i < 0
+      # 
+      
+      @parent_id =  "#{params[:parent_id]}"
+      @id_orgao = -1 *params[:parent_id].to_i
+    else
+      # 
+      @parent_id  = "-#{params[:parent_id]}"
     end
+
+    
 
 
     respond_to do |format|
@@ -55,6 +77,8 @@ class LotacoesController < ApplicationController
   # POST /lotacoes.json
   def create
     @lotacao = Lotacao.new(params[:lotacao])
+
+    @lotacao.parent_id = "-#{@lotacao.id_orgao}" if @lotacao.parent_id <= 0
 
     respond_to do |format|
       if @lotacao.save

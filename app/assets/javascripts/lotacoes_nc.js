@@ -53,6 +53,7 @@ dataAdapter.dataBind();
 // specifies the mapping between the 'text' and 'label' fields.  
 var records = dataAdapter.getRecordsHierarchy('id', 'parent_id', 'items', [{ name: 'descricao', map: 'label'}]);
 $('#jqxTree').jqxTree({ source: records, width: '100%', theme: theme });
+console.log(records);
 
 
 $('#jqxTree').bind('select', function (event) {

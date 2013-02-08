@@ -3,9 +3,16 @@
   
   .form-inputs
     = f.input :descricao
-    = f.label "Orgao"
-    = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
-    =  hidden_field :lotacao,:parent_id, :value => @parent_id
+    
+
+    - if !@id_orgao
+      = f.label "Orgao"
+      = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
+    - else
+      = hidden_field :lotacao,:id_orgao, :value => @id_orgao
+    
+    = hidden_field :lotacao,:parent_id, :value => @parent_id
+
 
   .form-actions
     = f.button :submit
