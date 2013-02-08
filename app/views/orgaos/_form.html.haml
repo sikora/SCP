@@ -1,9 +1,9 @@
 = simple_form_for(@orgao, :html => {:class => "form-inline"}) do |f|
   = f.error_notification
-
+  
   .form-inputs
     = f.input :nm_orgao, label: 'Órgão'
-    = f.input :lei_id, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
+    = f.input :id_lei, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
 
 
   .actions
