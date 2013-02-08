@@ -2,6 +2,7 @@ class LotacoesController < ApplicationController
   # GET /lotacoes
   # GET /lotacoes.json
   def index
+    @notice = params[:notice]
     @lotacoes = Lotacao.all(:joins => :orgao, :select => "orgaos.*,lotacoes.*" )
     @lotacoes_hash = []
     @lotacoes.each do |lotacao|
@@ -83,7 +84,7 @@ class LotacoesController < ApplicationController
 
     respond_to do |format|
       if @lotacao.save
-        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully created.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao criada com sucesso.' }
         format.json { render json: @lotacao, status: :created, location: @lotacao }
       else
         format.html { render action: "new" }
@@ -99,7 +100,7 @@ class LotacoesController < ApplicationController
 
     respond_to do |format|
       if @lotacao.update_attributes(params[:lotacao])
-        format.html { redirect_to :action=>'index', notice: 'Lotacao was successfully updated.' }
+        format.html { redirect_to :action=>'index', notice: 'Lotacao atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
