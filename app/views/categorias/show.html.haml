@@ -1,12 +1,20 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes da Categoria
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
+  
 
 %p
-  %b Nm categoria:
+  %b Categoria:
   = @categoria.nm_categoria
 %p
-  %b Descricao:
+  %b Descrição:
   = @categoria.descricao
 
-= link_to 'Edit', edit_categoria_path(@categoria)
-\|
-= link_to 'Back', categorias_path
+  
+.form-actions
+  = link_to 'Editar', edit_categoria_path(@categoria), :class => "btn btn-warning"
+  = link_to 'Voltar', categorias_path, :class => "btn"

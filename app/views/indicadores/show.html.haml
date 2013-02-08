@@ -1,18 +1,25 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes do Indicador
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
+  
 
 %p
-  %b nmindicador:
+  %b Indicador:
   = @indicador.nmindicador
 %p
-  %b Idpartido:
+  %b Partido:
   = @indicador.partido.nmpartido
 %p
-  %b Cpf:
+  %b CPF:
   = @indicador.cpf
 %p
   %b Telefone:
   = @indicador.telefone
-
-= link_to 'Edit', edit_indicador_path(@indicador)
-\|
-= link_to 'Back', indicadores_path
+  
+.form-actions
+  = link_to 'Editar', edit_indicador_path(@indicador), :class => "btn btn-warning"
+  = link_to 'Voltar', indicadores_path, :class => "btn"

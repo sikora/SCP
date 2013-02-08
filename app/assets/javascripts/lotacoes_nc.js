@@ -60,12 +60,10 @@ $('#jqxTree').bind('select', function (event) {
     var htmlElement = event.args.element;
     var item = $('#jqxTree').jqxTree('getItem', htmlElement);
     var id = item.id;
-    console.log(item);
-    aaa = item;
     $('.actions_lotacao').remove();
     var elements = button_novo(id);
     if( item.id > 0 )
         elements += button_ver(id) + button_editar(id) +button_remove(id);
-    
+
     $('#'+ id + ' > div').after('<div class="actions_lotacao"> ' + elements + '</div>');
 });
