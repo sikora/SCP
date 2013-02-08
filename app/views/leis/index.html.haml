@@ -1,23 +1,26 @@
-%h1 Listing leis
+.page-header
+  %h1 Leis
 
-%table
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_lei_path, :class => "btn btn-success"
+
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
+    %th #
     %th Numero
     %th Descricao
-    %th Dt lei
-    %th
-    %th
-    %th
+    %th Data Lei
+    %th Ação
 
   - @leis.each do |lei|
     %tr
+      %th= lei.id
       %td= lei.numero
       %td= lei.descricao
       %td= lei.dt_lei
-      %td= link_to 'Show', lei
-      %td= link_to 'Edit', edit_lei_path(lei)
-      %td= link_to 'Destroy', lei, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Lei', new_lei_path
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), lei, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_lei_path(lei), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), lei, :confirm => 'Tem certeza dessa operação?', :method => :delete, :class => "btn btn-mini btn-danger"

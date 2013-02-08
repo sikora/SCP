@@ -1,18 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes do Órgão
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
+  
 
 %p
-  %b Nm orgao:
+  %b Nome Órgão:
   = @orgao.nm_orgao
 %p
-  %b Dt inicio:
+  %b Data Início:
   = @orgao.dt_inicio
 %p
-  %b Dt fim:
+  %b Data Fim
   = @orgao.dt_fim
-%p
-  %b Id lei:
-  = @orgao.id_lei
-
-= link_to 'Edit', edit_orgao_path(@orgao)
-\|
-= link_to 'Back', orgaos_path
+  
+.form-actions
+  = link_to 'Editar', edit_orgao_path(@orgao), :class => "btn btn-warning"
+  = link_to 'Voltar', orgaos_path, :class => "btn"

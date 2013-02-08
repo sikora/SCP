@@ -44,7 +44,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.save
-        format.html { redirect_to @orgao, notice: 'Orgao was successfully created.' }
+        format.html { redirect_to @orgao, notice: 'Orgao criado com sucesso.' }
         format.json { render json: @orgao, status: :created, location: @orgao }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.update_attributes(params[:orgao])
-        format.html { redirect_to @orgao, notice: 'Orgao was successfully updated.' }
+        format.html { redirect_to @orgao, notice: 'Orgao atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,9 +1,10 @@
-= simple_form_for(@lei) do |f|
+= simple_form_for(@lei, :html => {:class => "form-inline"}) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :numero
     = f.input :descricao
+    = f.input :dt_lei, :order => [:day,:month,:year]
 
-  .form-actions
-    = f.button :submit
+  .actions
+    = f.submit "Salvar", :class => "btn btn-success"

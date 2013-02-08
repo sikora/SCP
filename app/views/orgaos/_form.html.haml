@@ -1,11 +1,10 @@
-= simple_form_for(@orgao) do |f|
+= simple_form_for(@orgao, :html => {:class => "form-inline"}) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :nm_orgao
-    = f.input :dt_inicio ,:order => [:day,:month,:year]
-    = f.input :dt_fim, :order => [:day,:month,:year]
-    = f.input :id_lei
+    = f.input :nm_orgao, :label => "Nome do Órgão"
+    = f.input :dt_inicio, :order => [:day,:month,:year], :label => "Data Início"
+    = f.input :dt_fim, :order => [:day,:month,:year], :label => "Data Fim"
 
-  .form-actions
-    = f.button :submit
+  .actions
+    = f.submit 'Salvar', :class => "btn btn-success"
