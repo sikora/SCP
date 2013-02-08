@@ -114,7 +114,7 @@ class LotacoesController < ApplicationController
       redirect_to lotacoes_path
     else
       @lotacao = Lotacao.find(params[:id])
-      #@lotacao.destroy
+      @lotacao.destroy
 
       respond_to do |format|
         format.html { redirect_to lotacoes_url }

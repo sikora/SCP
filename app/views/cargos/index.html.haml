@@ -10,14 +10,12 @@
   %tr
     %th #
     %th Cargo
-    %th Lei
     %th Ação
 
   - @cargos.each do |cargo|
     %tr
       %td= cargo.id
       %td= cargo.nm_cargo
-      %td= cargo.lei.descricao if cargo.lei
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), cargo, :class => "btn btn-mini btn-info"
         = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_cargo_path(cargo), :class => "btn btn-mini btn-warning"
