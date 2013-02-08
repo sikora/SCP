@@ -88,8 +88,7 @@ class LotacoesController < ApplicationController
   def destroy
     @lotacao = Lotacao.find(params[:id])
     @lotacao.destroy
-    @lotacoes_filhas = Lotacao.where(:parent_id => :id)
-    @lotacoes_filhas.destroy
+
 
     respond_to do |format|
       format.html { redirect_to lotacoes_url }
