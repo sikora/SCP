@@ -44,7 +44,7 @@ class LeisController < ApplicationController
 
     respond_to do |format|
       if @lei.save
-        format.html { redirect_to @lei, notice: "Lei criada com sucesso." }
+        format.html { redirect_to :action=>'index', notice: "Lei criada com sucesso." }
         format.json { render json: @lei, status: :created, location: @lei }
       else
         format.html { render action: "new" }

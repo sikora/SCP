@@ -3,5 +3,5 @@ class Lotacao < ActiveRecord::Base
 
   has_many :filhos, class_name: "Lotacao", foreign_key: "parent_id"
   belongs_to :pai, class_name: "Lotacao"
-  belongs_to :orgao,foreign_key: "id_orgao"
+  belongs_to :orgao, foreign_key: "id_orgao"
 end

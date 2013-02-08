@@ -2,9 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nm_orgao, :label => "Nome do Órgão"
-    = f.input :dt_inicio, :order => [:day,:month,:year], :label => "Data Início"
-    = f.input :dt_fim, :order => [:day,:month,:year], :label => "Data Fim"
+    = f.input :nm_orgao, label: 'Órgão'
+    = f.input :lei_id, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
 
-  .actions
+
+  .form-actions
     = f.submit 'Salvar', :class => "btn btn-success"

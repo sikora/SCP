@@ -44,7 +44,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.save
-        format.html { redirect_to @orgao, notice: 'Orgao criado com sucesso.' }
+        format.html { redirect_to :action=>'index', notice: 'Orgao criado com sucesso.' }
         format.json { render json: @orgao, status: :created, location: @orgao }
       else
         format.html { render action: "new" }

@@ -8,14 +8,11 @@
   
 
 %p
-  %b Nome Órgão:
+  %b Órgão:
   = @orgao.nm_orgao
 %p
-  %b Data Início:
-  = @orgao.dt_inicio
-%p
-  %b Data Fim
-  = @orgao.dt_fim
+  %b Lei:
+  = @orgao.lei.descricao if @orgao.lei
   
 .form-actions
   = link_to 'Editar', edit_orgao_path(@orgao), :class => "btn btn-warning"
