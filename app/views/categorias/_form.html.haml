@@ -2,8 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nm_categoria
-    = f.input :descricao
-
-  .form-actions
-    = f.button :submit
+    = f.input :nm_categoria, label: 'Nome da Categoria'
+    = f.input :descricao, label: 'Descrição'
+    
+    = f.submit 'Salvar', class: "btn btn-success"

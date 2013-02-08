@@ -1,21 +1,27 @@
-%h1 Listing categorias
+.page-header
+  %h1 Categorias
 
-%table
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_categoria_path, :class => "btn btn-success"
+
+%br
+%br
+
+%table{:class => "table table-striped"}
   %tr
-    %th Nm categoria
-    %th Descricao
+    %th #
+    %th Categoria
+    %th Descrição
     %th
     %th
     %th
 
   - @categorias.each do |categoria|
     %tr
+      %td= categoria.id
       %td= categoria.nm_categoria
-      %td= categoria.descricao
-      %td= link_to 'Show', categoria
-      %td= link_to 'Edit', edit_categoria_path(categoria)
-      %td= link_to 'Destroy', categoria, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Categoria', new_categoria_path
+      %td= categoria.deascricao
+      %td
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), categoria, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_categoria_path(categoria), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), categoria, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+        

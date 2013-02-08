@@ -1,4 +1,4 @@
-= simple_form_for(@usuario) do |f|
+= simple_form_for(@usuario, :html => {:class => "form-inline"}) do |f|
   = f.error_notification
 
   .form-inputs
@@ -7,7 +7,6 @@
     = f.input :email, label: 'E-mail'
     = f.input :password, label: 'Senha'
     = f.input :password_confirmation, label: 'Confirmação da senha'
-
-
-  .form-actions
-    = f.button :submit
+    
+  .actions
+    = f.submit 'Salvar', :class => "btn btn-success"
