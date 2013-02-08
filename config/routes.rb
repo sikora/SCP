@@ -1,5 +1,8 @@
 Scp::Application.routes.draw do
 
+  resources :tipo_contratos
+
+
   resources :perfis
   resources :contratos
   resources :tipocontratos

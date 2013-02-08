@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Tipo:
+  = @tipo_contrato.tipo
+
+= link_to 'Edit', edit_tipo_contrato_path(@tipo_contrato)
+\|
+= link_to 'Back', tipo_contratos_path
