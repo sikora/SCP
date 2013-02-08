@@ -7,7 +7,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
   inflect.irregular 'cargo', 'cargos'
   inflect.irregular 'indicador', 'indicadores'
-  inflect.irregular 'tipocontrato', 'tipocontratos'
+  inflect.irregular 'tipo_contrato', 'tipo_contratos'
   inflect.irregular 'contrato', 'contratos'
   inflect.irregular 'perfil', 'perfis'
   inflect.irregular 'contratacao', 'contratacoes'
