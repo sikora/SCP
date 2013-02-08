@@ -3,7 +3,7 @@
   
   .form-inputs
     = f.input :nm_orgao, label: 'Órgão'
-    = f.input :id_lei, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
+    = f.input :lei_id, label: 'Lei', collection: [], input_html: { url_ac: '/leis.json', label_ac: 'descricao', val_ac: 'id', class: "autocomplete"}
 
 
   .actions
