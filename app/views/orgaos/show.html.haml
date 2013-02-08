@@ -4,14 +4,8 @@
   %b Nm orgao:
   = @orgao.nm_orgao
 %p
-  %b Dt inicio:
-  = @orgao.dt_inicio
-%p
-  %b Dt fim:
-  = @orgao.dt_fim
-%p
-  %b Id lei:
-  = @orgao.id_lei
+  %b lei
+  = @orgao.lei.descricao
 
 = link_to 'Edit', edit_orgao_path(@orgao)
 \|

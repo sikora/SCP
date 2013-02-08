@@ -2,10 +2,10 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nm_orgao
-    = f.input :dt_inicio ,:order => [:day,:month,:year]
-    = f.input :dt_fim, :order => [:day,:month,:year]
-    = f.input :id_lei
+    = f.input :nm_orgao, label: 'Órgão'
+    = f.input :lei_id, label: 'Lei', collection: [], input_html: { class: 'chozen_leis' }
 
   .form-actions
     = f.button :submit
+
+
