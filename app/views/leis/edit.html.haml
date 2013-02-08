@@ -1,7 +1,8 @@
-%h1 Editing lei
+.page-header
+  %h1 Editar Lei
 
 = render 'form'
 
-= link_to 'Show', @lei
-\|
-= link_to 'Back', leis_path
+.form-actions
+  = link_to 'Visualizar', @lei, :class => "btn btn-warning"
+  = link_to 'Voltar', leis_path, :class => "btn btn-info"

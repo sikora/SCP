@@ -3,4 +3,6 @@ class Orgao < ActiveRecord::Base
   has_many :cargocategorias
   has_many :lotacoes, foreign_key: "id_orgao"
   belongs_to :lei
+  
+  validates :nm_orgao, :presence => true
 end

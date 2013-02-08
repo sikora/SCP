@@ -1,4 +1,10 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes da Lei
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
   %b Numero:
@@ -7,9 +13,9 @@
   %b Descricao:
   = @lei.descricao
 %p
-  %b Dt lei:
+  %b Data lei:
   = @lei.dt_lei
 
-= link_to 'Edit', edit_lei_path(@lei)
-\|
-= link_to 'Back', leis_path
+.form-actions
+  = link_to 'Editar', edit_lei_path(@lei), :class => "btn btn-warning"
+  = link_to 'Voltar', leis_path, :class => "btn btn-info"

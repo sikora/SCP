@@ -44,7 +44,7 @@ class LeisController < ApplicationController
 
     respond_to do |format|
       if @lei.save
-        format.html { redirect_to @lei, notice: 'Lei was successfully created.' }
+        format.html { redirect_to @lei, notice: "Lei criada com sucesso." }
         format.json { render json: @lei, status: :created, location: @lei }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class LeisController < ApplicationController
 
     respond_to do |format|
       if @lei.update_attributes(params[:lei])
-        format.html { redirect_to @lei, notice: 'Lei was successfully updated.' }
+        format.html { redirect_to @lei, notice: 'Lei atualizada com sucesso' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
