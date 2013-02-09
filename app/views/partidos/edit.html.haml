@@ -1,8 +1,4 @@
 .page-header
   %h1 Editar Partido
 
-= render 'form'
-
-.form-actions
-  = link_to 'Visualizar', @partido, :class => "btn btn-warning"
-  = link_to 'Voltar', partidos_path, :class => "btn"
+= render 'form', :collection => @view_edit = true

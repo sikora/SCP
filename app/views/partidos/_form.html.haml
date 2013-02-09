@@ -8,9 +8,11 @@
 
   .field
     = f.label "Sigla"
-    = f.select :nmpartido, "escolha"
+    = f.text_field :nmpartido
   .field
     = f.label "nome"
     = f.text_field :nmcompleto
-  .actions
+  .form-actions
     = f.submit 'Salvar', :class => "btn btn-success"
+    = link_to 'Voltar', partidos_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @partido, :class => "btn btn-warning" if @view_edit

@@ -6,26 +6,37 @@
 %br
 %br
 
-%table{:class => "table table-striped"}
-  %tr
-    %th #
-    %th Indicador
-    %th Partido
-    %th CPF
-    %th Telefone
-    %th
-    %th
-    %th
-
-  - @indicadores.each do |indicador|
+- if @indicadores.present?
+  %table{:class => "table table-striped"}
     %tr
-      %td= indicador.id
-      %td= indicador.nmindicador
-      %td= indicador.partido.nmcompleto if indicador.idpartido?
-      %td= indicador.cpf
-      %td= indicador.telefone
-      %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), indicador, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_indicador_path(indicador), :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), indicador, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+      %th #
+      %th Indicador
+      %th Partido
+      %th CPF
+      %th Telefone
+      %th Ação
+  
+    - @indicadores.each do |indicador|
+      %tr
+        %td= indicador.id
+        %td= indicador.nmindicador
+        %td= indicador.partido.nmcompleto if indicador.idpartido?
+        %td= indicador.cpf
+        %td= indicador.telefone
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), indicador, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_indicador_path(indicador), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), indicador, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
         
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"       
+      %li{:class => "active"}
+        %a= "1" 
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"

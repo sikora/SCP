@@ -1,45 +1,64 @@
-%h1 Listing pessoas
-
-%table
-  %tr
-    %th Nmpessoa
-    %th Cpf
-    %th Telefone
-    %th Endereco
-    %th Cep
-    %th Bairro
-    %th Naturalidade
-    %th Nacionalidade
-    %th Nmpai
-    %th Nmmae
-    %th Dtnasc
-    %th Sexo
-    %th Idpolitico
-    %th Obs
-    %th
-    %th
-    %th
-
-  - @pessoas.each do |pessoa|
-    %tr
-      %td= pessoa.nmpessoa
-      %td= pessoa.cpf
-      %td= pessoa.telefone
-      %td= pessoa.endereco
-      %td= pessoa.cep
-      %td= pessoa.bairro
-      %td= pessoa.naturalidade
-      %td= pessoa.nacionalidade
-      %td= pessoa.nmpai
-      %td= pessoa.nmmae
-      %td= pessoa.dtnasc
-      %td= pessoa.sexo
-      %td= pessoa.idpolitico
-      %td= pessoa.obs
-      %td= link_to 'Show', pessoa
-      %td= link_to 'Edit', edit_pessoa_path(pessoa)
-      %td= link_to 'Destroy', pessoa, :confirm => 'Are you sure?', :method => :delete
+:css
+  table.table, .page-header {
+    min-width: 120em;
+  }
+.page-header
+  %h1 Pessoas
+  
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success"
 
 %br
+%br
 
-= link_to 'New Pessoa', new_pessoa_path
+- if @pessoas.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th Nome
+      %th Cpf
+      %th Telefone
+      %th Endereco
+      %th Cep
+      %th Bairro
+      %th Naturalidade
+      %th Nacionalidade
+      %th Nome Pai
+      %th Nome Mãe
+      %th Data Nascimento
+      %th Sexo
+      %th Indicação Política
+      %th Observação
+      %th Ação
+  
+    - @pessoas.each do |pessoa|
+      %tr
+        %td= pessoa.nmpessoa
+        %td= pessoa.cpf
+        %td= pessoa.telefone
+        %td= pessoa.endereco
+        %td= pessoa.cep
+        %td= pessoa.bairro
+        %td= pessoa.naturalidade
+        %td= pessoa.nacionalidade
+        %td= pessoa.nmpai
+        %td= pessoa.nmmae
+        %td= pessoa.dtnasc
+        %td= pessoa.sexo
+        %td= pessoa.indicador.nmindicador
+        %td= pessoa.obs
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), pessoa, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+        
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"       
+      %li{:class => "active"}
+        %a= "1" 
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"

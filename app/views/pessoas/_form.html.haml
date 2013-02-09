@@ -1,22 +1,24 @@
 = simple_form_for(@pessoa) do |f|
   = f.error_notification
-
+  
   .form-inputs
-    = f.input :nmpessoa
-    = f.input :cpf
-    = f.input :telefone
-    = f.input :endereco
-    = f.input :cep
-    = f.input :bairro
-    = f.input :naturalidade
-    = f.input :nacionalidade
-    = f.input :nmpai
-    = f.input :nmmae
-    = f.input :dtnasc, :order => [:day,:month,:year]
-    = f.input :sexo
-    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => true}) 
-
-    = f.input :obs
+    = f.input :nmpessoa, label: "Nome:"
+    = f.input :cpf, label: "CPF:"
+    = f.input :telefone, label: "Telefone:"
+    = f.input :endereco, label: "Endereço:"
+    = f.input :cep, label: "CEP:"
+    = f.input :bairro, label: "Bairro:"
+    = f.input :naturalidade, label: "Naturalidade:"
+    = f.input :nacionalidade, label: "Nacionalidade:"
+    = f.input :nmpai, label: "Nome Pai:"
+    = f.input :nmmae, label: "Nome Mãe:"
+    = f.input :dtnasc, label: "Data Nascimento:", :order => [:day,:month,:year]
+    = f.input :sexo, label: "Sexo:"
+    = f.label "Indicação:"
+    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"}) 
+    = f.input :obs, label: "Observação:", :input_html => { :rows => 10 }
 
   .form-actions
-    = f.button :submit
+    = f.submit 'Salvar', :class => "btn btn-success"
+    = link_to 'Voltar', pessoas_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @pessoa, :class => "btn btn-warning" if @view_edit

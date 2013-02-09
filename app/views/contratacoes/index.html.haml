@@ -11,9 +11,10 @@
     %th #
     %th Nome
     %th Cargo
-    %th Valor
-    %th Telefone
-    %th Lotação
+    %th Categoria
+    %th Órgão/Lotação
+    %th Indicação
+    %th Observação
     %th Ação
 
   - (1..10).each do |i|
@@ -21,9 +22,10 @@
       %td= i
       %td= "Nome Completo Pessoa"
       %td= "Nome do Cargo"
-      %td= "Valor Pago"
-      %td= "Telefone Pessoa"
-      %td= "Local Trabalho"
+      %td= "Categoria Pessoa"
+      %td= "Órgão Lotação"
+      %td= "Indicação Pessoa"
+      %td= "Obs Obs Obs"
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"
         = link_to raw("<i class='icon-pencil icon-white'></i>"), "#", :class => "btn btn-mini btn-warning"

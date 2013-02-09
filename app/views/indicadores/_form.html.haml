@@ -8,4 +8,7 @@
     = f.input :telefone, label: 'Telefone'
 
 
-    = f.submit 'Salvar', class: "btn btn-success"
+    .form-actions
+      = f.submit 'Salvar', :class => "btn btn-success"
+      = link_to 'Voltar', indicadores_path, :class => "btn btn-info"
+      = link_to 'Visualizar', @indicador, :class => "btn btn-warning" if @view_edit

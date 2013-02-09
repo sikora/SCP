@@ -1,7 +1,13 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes da Pessoa
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
-  %b Nmpessoa:
+  %b Nome da Pessoa:
   = @pessoa.nmpessoa
 %p
   %b Cpf:
@@ -25,24 +31,24 @@
   %b Nacionalidade:
   = @pessoa.nacionalidade
 %p
-  %b Nmpai:
+  %b Nome Pai:
   = @pessoa.nmpai
 %p
-  %b Nmmae:
+  %b Nome Mãe:
   = @pessoa.nmmae
 %p
-  %b Dtnasc:
+  %b Data Nascimento:
   = @pessoa.dtnasc
 %p
   %b Sexo:
   = @pessoa.sexo
 %p
-  %b Idpolitico:
-  = @pessoa.idpolitico
+  %b Indicação Política:
+  = @pessoa.indicador.nmindicador
 %p
-  %b Obs:
+  %b Observação:
   = @pessoa.obs
 
-= link_to 'Edit', edit_pessoa_path(@pessoa)
-\|
-= link_to 'Back', pessoas_path
+.form-actions
+  = link_to 'Editar', edit_pessoa_path(@pessoa), :class => "btn btn-warning"
+  = link_to 'Voltar', pessoas_path, :class => "btn"
