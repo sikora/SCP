@@ -11,6 +11,7 @@
     %th #
     %th Categoria
     %th Descrição
+    %th Valor
     %th
     %th
     %th
@@ -20,6 +21,7 @@
       %td= categoria.id
       %td= categoria.nm_categoria
       %td= categoria.descricao
+      %td= categoria.valor
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), categoria, :class => "btn btn-mini btn-info"
         = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_categoria_path(categoria), :class => "btn btn-mini btn-warning"

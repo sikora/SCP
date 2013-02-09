@@ -17,17 +17,6 @@
 /**
  * set active menu lateral
  */
-$(function() {
-	var menu_selecionado = window.location.pathname.split("/")[1];
-	var obj_menu_lateral = $("#menu-lateral ul");
-	var obj_menu_ativo = $("li.active", obj_menu_lateral);
-	var obj_menu_encontrado = $("a[href*='" + menu_selecionado + "']", obj_menu_lateral);
-
-	if (obj_menu_encontrado.length) {
-		obj_menu_ativo.removeClass().find("i").removeClass("icon-white");
-		obj_menu_encontrado.parent().addClass('active').find("i").addClass('icon-white');
-	};
-});
 
 /**
  * efeito alert

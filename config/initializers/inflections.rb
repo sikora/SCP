@@ -11,7 +11,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'contrato', 'contratos'
   inflect.irregular 'perfil', 'perfis'
   inflect.irregular 'contratacao', 'contratacoes'
-  inflect.irregular 'cargocategoria', 'cargocategorias'
+  inflect.irregular 'cargo_categoria', 'cargo_categorias'
   inflect.irregular 'lotacao', 'lotacoes'
   inflect.irregular 'categoria', 'categorias'
 #   inflect.uncountable %w( fish sheep )

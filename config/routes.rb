@@ -1,5 +1,8 @@
 Scp::Application.routes.draw do
 
+  resources :cargo_categorias
+
+
   resources :tipo_contratos
 
 
@@ -44,6 +47,9 @@ Scp::Application.routes.draw do
   resources :usuarios
 
   match 'lotacoes/new/:parent_id'           => 'lotacoes#new'
+
+  match 'get_categoria_valor' => 'categorias#get_valor'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

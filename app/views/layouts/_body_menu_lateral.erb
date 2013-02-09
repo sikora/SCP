@@ -4,30 +4,21 @@
       <li class="nav-header">
         Menu Principal
       </li>
-      <li class="active">
-        <%= link_to(raw("<i class='icon-home'></i> Página Inicial"), root_path) %>
-      </li>
+
+      <%= nav_link('Página Inicial', root_path, 'icon-home') %>
       
       <hr />
-       <li>
-        <%= link_to(raw("<i class='icon-tags'></i> Mapa de Cargos e Categorias"), cargo_categorias_path) %>
-      </li>
-     
-      <li>
-        <%= link_to(raw("<i class='icon-briefcase'></i> Cargos"), cargos_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-tags'></i> Categorias"), categorias_path) %>
-      </li>
-      
+
+      <%= nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-tags') %>
+
+      <%= nav_link('Cargos', cargos_path, 'icon-briefcase') %>
+
+      <%= nav_link('Categorias', categorias_path, 'icon-tags') %>
+
       <hr />
-      <li>
-        <%= link_to(raw("<i class='icon-map-marker'></i> Orgãos"), orgaos_path) %>
-      </li>
+      <%= nav_link('Órgãos', orgaos_path, 'icon-map-marker') %>
+      <%= nav_link('Lotações', lotacoes_path, 'icon-flag') %>
      
-      <li>
-        <%= link_to(raw("<i class='icon-flag'></i> Lotações"), lotacoes_path) %>
-      </li>
       
       <hr />
 
