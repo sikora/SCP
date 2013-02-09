@@ -20,7 +20,7 @@
       %tr
         %td= indicador.id
         %td= indicador.nmindicador
-        %td= indicador.partido.nmcompleto if indicador.idpartido?
+        %td= indicador.idpartido? ? indicador.partido.nmpartido : " - "
         %td= indicador.cpf
         %td= indicador.telefone
         %td

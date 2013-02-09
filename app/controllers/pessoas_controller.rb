@@ -2,7 +2,11 @@ class PessoasController < ApplicationController
   # GET /pessoas
   # GET /pessoas.json
   def index
-    @pessoas = Pessoa.all
+    if params[:term] && params[:term] !=''
+      @pessoas = Pessoa.where("nmpessoa like ?", '%' + params[:term] + '%')
+    else
+      @pessoas = Pessoa.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,10 +29,13 @@ class PessoasController < ApplicationController
   # GET /pessoas/new.json
   def new
     @pessoa = Pessoa.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @pessoa }
+    if params[:ajax]
+      render :layout => false
+    else
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @pessoa }
+      end
     end
   end
 

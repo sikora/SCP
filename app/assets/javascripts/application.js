@@ -32,12 +32,33 @@ $(function() {
 /**
  * efeito alert
  */
-$(function(){
+$(function() {
 	var corpo_alert = $(".alert, .notice");
 
-    if(corpo_alert.length){
-        setTimeout(function(){
-            corpo_alert.fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500)
-        }, 500);
-    }
+	if (corpo_alert.length) {
+		setTimeout(function() {
+			corpo_alert.fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500)
+		}, 500);
+	}
+})
+$(function() {
+	$(".criar-pessoa-ajax").click(function(e) {
+		e.preventDefault();
+		$.ajax({
+			type : "POST",
+			data : {
+				ajax:true
+			},
+			url : "/pessoas/new",
+			beforeSend : function() {
+			},
+			success : function(response) {
+				$("#modal-pessoa .modal-body").html(response);
+				$("#modal-pessoa").modal('show');
+			},
+			complete : function() {
+			}
+		});
+
+	})
 })

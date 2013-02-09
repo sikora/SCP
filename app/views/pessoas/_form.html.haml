@@ -19,6 +19,6 @@
     = f.input :obs, label: "Observação:", :input_html => { :rows => 10 }
 
   .form-actions
-    = f.submit 'Salvar', :class => "btn btn-success"
+    = f.button :submit, "Salvar", :class => "btn btn-success"
     = link_to 'Voltar', pessoas_path, :class => "btn btn-info"
     = link_to 'Visualizar', @pessoa, :class => "btn btn-warning" if @view_edit
