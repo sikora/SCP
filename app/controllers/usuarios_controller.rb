@@ -2,7 +2,7 @@ class UsuariosController < ApplicationController
   before_filter :authenticate_usuario!
 
   def index
-    @usuarios = Usuario.all
+    @usuarios = Usuario.order(:nome).all
 
   end
 

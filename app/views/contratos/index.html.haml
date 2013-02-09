@@ -14,8 +14,8 @@
   - @contratos.each do |contrato|
     %tr
       %td= contrato.id
-      %td= contrato.desccontrato
-      %td= contrato.id_tipocontrato
+      %td= contrato.descricao
+      %td= contrato.tipo_contrato.tipo
       %td= contrato.dt_inicio
       %td= contrato.dt_fim
       %td= link_to 'Show', contrato

@@ -2,11 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :id
-    = f.input :desccontrato
-    = f.input :id_tipocontrato
+    = f.input :tipo_contrato_id, label: 'Tipo do Contrato', collection: TipoContrato.all.collect {|x| [x.tipo, x.id]}, selected: @default_tipo_contrato_id
+    = f.input :descricao
     = f.input :dt_inicio
-    = f.input :dt_fim
 
   .form-actions
     = f.button :submit
