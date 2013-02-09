@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  categoria_id: 1
+  cargo_id: 1
+  contrato_id: 1
+  valor: 9.99
+
+two:
+  categoria_id: 1
+  cargo_id: 1
+  contrato_id: 1
+  valor: 9.99

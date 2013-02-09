@@ -1,0 +1,25 @@
+%h1 Listing cargo_categorias
+
+%table
+  %tr
+    %th Contrato
+    %th Cargo
+    %th Categoria
+    %th Valor
+    %th
+    %th
+    %th
+
+  - @cargo_categorias.each do |cargo_categoria|
+    %tr
+      %td= cargo_categoria.contrato.descricao
+      %td= cargo_categoria.cargo.nm_cargo
+      %td= cargo_categoria.categoria.nm_categoria
+      %td= cargo_categoria.valor
+      %td= link_to 'Show', cargo_categoria
+      %td= link_to 'Edit', edit_cargo_categoria_path(cargo_categoria)
+      %td= link_to 'Destroy', cargo_categoria, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Cargo categoria', new_cargo_categoria_path

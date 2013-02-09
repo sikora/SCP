@@ -20,4 +20,18 @@ $(function() {
 		});
 	}
   });	
+
+  $(".default_chosen").chosen();
+
+  $(".mapa_categoria_chosen").chosen().change(function(event) {
+    $.ajax({
+      dataType: "json",
+      url: '/get_categoria_valor.json?categoria_id='+$(event.target).val(),
+      data: data,
+      success: function(json) {
+        $('#cargo_categoria_valor').val(json.valor);
+        console.log(" reponse :"+ json);
+      }
+    });
+  });
 });
