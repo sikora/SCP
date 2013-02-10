@@ -1,7 +1,17 @@
 .page-header
   %h1 Contratações
 
-= link_to raw("<i class='icon-plus icon-white'></i> Nova Contratação"), new_contratacao_path, :class => "btn btn-success"
+
+%div.btn-group
+  %a.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :href => '#'}
+    %i.icon-plus.icon-white
+    Nova Contratação
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      - Contrato.select([:id, :descricao]).all.each do |c|
+        = link_to c.descricao, new_contratacao_path(:contrato_id => c.id)
+
 
 %br
 %br

@@ -1,4 +1,5 @@
 ﻿function getTheme() {
+    return '';
     var theme =  $.data(document.body, 'theme');
     if (theme == null) {
         theme = '';

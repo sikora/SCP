@@ -1,6 +1,7 @@
 class Vaga < ActiveRecord::Base
-  attr_accessible :id_cargocategoria, :id_lei, :id_lotacao, :qt_vagas
+  attr_accessible :cargo_categoria_id, :lei_id, :lotacao_id, :qt_vagas
   has_many	:contratacoes
-  has_many :cargocategorias
-  belongs_to :lei, :foreign_key	=> 'id_lei'
+  belongs_to :cargo_categoria
+  belongs_to :lei
+  belongs_to :lotacao
 end
