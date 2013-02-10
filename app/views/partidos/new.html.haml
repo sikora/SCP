@@ -1,4 +1,5 @@
-.page-header
-  %h1 Novo Partido
+- unless params[:modal_ajax]
+  .page-header
+    %h1 Novo Partido
 
 = render 'form'

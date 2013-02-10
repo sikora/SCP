@@ -1,7 +1,7 @@
 .page-header
   %h1 Pessoas
-  
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success"
+
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success aguarde"
 
 %br
 %br
@@ -14,7 +14,7 @@
       %th Telefone
       %th Indicação
       %th Ação
-  
+
     - @pessoas.each do |pessoa|
       %tr
         %td= pessoa.nmpessoa
@@ -25,13 +25,13 @@
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning"
           = link_to raw("<i class='icon-trash icon-white'></i>"), pessoa, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
-        
+
   .pagination
     %ul
       %li{:class => "disabled"}
-        %a= "Anterior"       
+        %a= "Anterior"
       %li{:class => "active"}
-        %a= "1" 
+        %a= "1"
       %li
         %a= "2"
       %li
