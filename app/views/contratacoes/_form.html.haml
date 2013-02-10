@@ -3,13 +3,16 @@
 
   .form-inputs
     .well
+      = f.input :vaga_id, label: 'Vaga', collection: []
       = f.input :pessoa_id, label: 'Pessoa', collection: [], input_html: { url_ac: '/pessoas.json', label_ac: 'nmpessoa', val_ac: 'id', class: "autocomplete_pessoas"}
 
       %button{:class => "btn btn-mini btn-success criar-pessoa-ajax", :style => "width:21em"}
         %i{:class => "icon-plus-sign icon-white"}
         Criar Pessoa
 
-      = f.input :cargo_categoria_id, label: 'Cargo Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+      = f.input :cargo_categoria_id, label: 'Cargo Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+
+      = f.input :valor
 
 
   .form-actions

@@ -1,5 +1,8 @@
 .page-header
   %h1 Nova Contratação
+  %h4 
+    Contrato:
+    = Contrato.find(params[:contrato_id]).descricao
 
 = render 'form'
 
