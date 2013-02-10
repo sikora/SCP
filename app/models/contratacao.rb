@@ -1,8 +1,6 @@
 class Contratacao < ActiveRecord::Base
-  attr_accessible :id_cargocategoria, :id_pessoa, :id_vaga, :valor
-  belongs_to :pessoa, :foreign_key => 'id_pessoa'
-  belongs_to :cargocategoria, :foreign_key => 'id_cargocategoria'
-  belongs_to :vaga, :foreign_key => 'id_vaga'
-  has_many  :cargocategorias
-
+  attr_accessible :cargo_categoria_id, :pessoa_id, :vaga_id, :valor
+  belongs_to :pessoa
+  belongs_to :cargo_categoria
+  belongs_to :vaga
 end

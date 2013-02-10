@@ -1,0 +1,12 @@
+= simple_form_for(@pessoa, :remote => true) do |f|
+  = f.error_notification
+  
+  .form-inputs
+    = f.input :nmpessoa, label: "Nome:"
+    = f.label "Indicação:"
+    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"}) 
+    = f.input :obs, label: "Observação:", :input_html => { :rows => 4,  :style => 'width: 460px' }
+    %input{:type => 'hidden', :name => 'ajax_request', :value => "true"}
+
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success"

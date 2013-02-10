@@ -23,6 +23,36 @@ $(function() {
 
   $(".default_chosen").chosen();
 
+  $(".autocomplete_pessoas").ajaxChosen({
+    method: 'GET',
+		  url: '/pessoas.json',
+		  dataType: 'json',
+		}, function (data) {
+		  var terms = {};
+
+		  $.each(data, function (i, val) {
+		    terms[val['id']] = val['nmpessoa'];
+		});
+
+    return terms;
+  });
+
+  $(".autocomplete_cargo_categorias").ajaxChosen({
+    method: 'GET',
+		  url: '/cargo_categorias.json',
+		  dataType: 'json',
+		}, function (data) {
+		  var terms = {};
+
+		  $.each(data, function (i, val) {
+		    terms[val['id']] = val['valor'];
+		});
+
+    return terms;
+  });
+
+
+
   $(".mapa_categoria_chosen").chosen().change(function(event) {
     $.ajax({
       dataType: "json",

@@ -1,4 +1,6 @@
-.page-header
-  %h1 Nova Pessoa
-
-= render 'form'
+- if params[:modal]
+  = render 'modal_form'
+- else
+  .page-header
+    %h1 Nova Pessoa
+  = render 'form'

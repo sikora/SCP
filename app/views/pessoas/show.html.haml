@@ -43,8 +43,8 @@
   %b Sexo:
   = @pessoa.sexo
 %p
-  %b Indicação Política:
-  = @pessoa.indicador.nmindicador
+  %b Indicado por:
+  = @pessoa.indicador.nmindicador if @pessoa.indicador
 %p
   %b Observação:
   = @pessoa.obs

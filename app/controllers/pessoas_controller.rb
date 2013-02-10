@@ -1,11 +1,13 @@
 class PessoasController < ApplicationController
+  respond_to :html, :js
+
   # GET /pessoas
   # GET /pessoas.json
   def index
-    if params[:term] && params[:term] !=''
-      @pessoas = Pessoa.where("nmpessoa like ?", '%' + params[:term] + '%')
+    if params[:term] && params[:term] != ''
+      @pessoas = Pessoa.where("LOWER(nmpessoa) like ?", "#{params[:term].downcase}%")
     else
-      @pessoas = Pessoa.all
+      @pessoas = Pessoa.order("LOWER(nmpessoa)").all
     end
 
     respond_to do |format|
@@ -49,13 +51,18 @@ class PessoasController < ApplicationController
   def create
     @pessoa = Pessoa.new(params[:pessoa])
 
-    respond_to do |format|
-      if @pessoa.save
-        format.html { redirect_to @pessoa, notice: 'Pessoa criada com sucesso.' }
-        format.json { render json: @pessoa, status: :created, location: @pessoa }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @pessoa.errors, status: :unprocessable_entity }
+    if params[:ajax_request]
+      @pessoa.save
+      respond_with @pessoa
+    else
+      respond_to do |format|
+        if @pessoa.save
+          format.html { redirect_to pessoas_path, notice: 'Pessoa criada com sucesso.' }
+          format.json { render json: @pessoa, status: :created, location: @pessoa }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @pessoa.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

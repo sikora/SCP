@@ -1,7 +1,3 @@
-:css
-  table.table, .page-header {
-    min-width: 120em;
-  }
 .page-header
   %h1 Pessoas
   
@@ -14,19 +10,9 @@
   %table{:class => "table table-striped"}
     %tr
       %th Nome
-      %th Cpf
+      %th CPF
       %th Telefone
-      %th Endereco
-      %th Cep
-      %th Bairro
-      %th Naturalidade
-      %th Nacionalidade
-      %th Nome Pai
-      %th Nome Mãe
-      %th Data Nascimento
-      %th Sexo
-      %th Indicação Política
-      %th Observação
+      %th Indicação
       %th Ação
   
     - @pessoas.each do |pessoa|
@@ -34,17 +20,7 @@
         %td= pessoa.nmpessoa
         %td= pessoa.cpf
         %td= pessoa.telefone
-        %td= pessoa.endereco
-        %td= pessoa.cep
-        %td= pessoa.bairro
-        %td= pessoa.naturalidade
-        %td= pessoa.nacionalidade
-        %td= pessoa.nmpai
-        %td= pessoa.nmmae
-        %td= pessoa.dtnasc
-        %td= pessoa.sexo
-        %td= pessoa.indicador.nmindicador
-        %td= pessoa.obs
+        %td= pessoa.indicador.nmindicador if pessoa.indicador
         %td
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning"
