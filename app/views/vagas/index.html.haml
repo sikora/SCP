@@ -2,8 +2,8 @@
 
 %table
   %tr
-    %th Id lotacao
-    %th Id cargocategoria
+    %th Lotação
+    %th Cargo / Categori
     %th Qt vagas
     %th Id lei
     %th
@@ -12,10 +12,10 @@
 
   - @vagas.each do |vaga|
     %tr
-      %td= vaga.id_lotacao
-      %td= vaga.id_cargocategoria
+      %td= vaga.lotacao.descricao
+      %td= vaga.cargo_categoria.cargo.nm_cargo
       %td= vaga.qt_vagas
-      %td= vaga.id_lei
+      %td= vaga.lei.descricao if vaga.lei
       %td= link_to 'Show', vaga
       %td= link_to 'Edit', edit_vaga_path(vaga)
       %td= link_to 'Destroy', vaga, :confirm => 'Are you sure?', :method => :delete
