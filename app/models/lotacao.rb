@@ -5,6 +5,17 @@ class Lotacao < ActiveRecord::Base
   belongs_to :pai, class_name: "Lotacao"
   belongs_to :orgao, foreign_key: "id_orgao"
 
+  def breadcrumb(desc='')
+    if desc != ''
+      desc = "#{self.descricao} - #{desc}"
+    else
+      desc = self.descricao
+    end
+
+    return Lotacao.find(self.parent_id).breadcrumb(desc) if self.parent_id > 0
+    return "#{self.orgao.nm_orgao} - #{desc}"
+  end
+
   def self.ltree(pid=nil, path='')
     unless pid
       @lotacoes_tree = Array.new
