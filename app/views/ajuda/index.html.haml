@@ -1,0 +1,49 @@
+%h2 Guia de utilização
+
+%h3 Objeto
+%p
+  Este sistema tem como objetivo permitir o controle de contratos e pessoas que preenchem os diversos cargos da PMF
+
+%h3 Conceitos
+
+%dl.dl-horizontal
+  %dt
+    %strong Cargo:
+  %dd Representa a função a ser desempenhada pela pessoa. Ex.: Assessor de TI, Analista de Sistemas, Secretário, etc..
+
+%dl.dl-horizontal
+  %dt
+    %strong Categoria:
+  %dd Cada cargo pode ter uma ou mais categorias. A categoria representa o "nível" do profissional a preencher determinada vaga. Ex.: Pleno, Júnior, DNS.1, DNS.2, DG.1, DAS.1, etc..
+
+%dl.dl-horizontal
+  %dt
+    %strong Tipos de contratos: 
+  %dd Definem, como o próprio nome diz, os tipos de contratos existentes dentro da prefeitura. Ex.: Terceirizados e Conveniados. Existem dois tipos especiais de contratos, um deles o de Comissionados e outro do tipo "Vagas Efetivas"
+
+%dl.dl-horizontal
+  %dt
+    %strong Contratos:
+  %dd São elementos que definem a origem da pessoa que preenche determinada vaga. Ex.: Contrato da Cast do tipo Terceirizados. Existirá um contrato especial para abrigar as relações de trabalho das pessoas comissionadas.
+
+
+%p.text-warning Antes de prosseguir com a descrição das demais entidades do sistema, é importante entender o conceito de Cargo/Cagetoria contratual e Cargo/Categoria Efetivo.
+%p 
+  Não é incomum que as relações contratuais estabeleçam cargos com as mais diversas nomenclaturas. Em um contrato A de terceirizados podemos ter o cargo/categoria de Analista Pleno, em um contrato B podemos ter, de forma equivalente, o Analista 3 e, para efeitos de cargos comissionados, o Técnico DAS.3.
+%p 
+  Repare que, ainda que os cargos "contratuais" tenham nomenclaturas diferenciadas, efetivamente todos eles estariam desempenhando o cargo/categoria efetivo de "Analista de Sistemas Pleno".
+%p 
+  Portanto, para organização e efeito de vagas dentro da prefeitura, teremos o conteico de cargos e categorias efetivos que devem ser mapeados em um contrato "virtual" próprio.
+
+%dl
+  %dt
+    %strong Mapa de Cargos e Categorias
+  %dd 
+    Nesta parte do sistema serão criadas as composições de cargos e categorias para cada tipo de contrato administrato bem como para as vagas formais da prefeitura.
+    %br
+    Tratando-se de comissionados, temos, por exemplo, o mapeamento do contrato "Gestão de Comissionados", onde existe o cargo de "Secretário Executivo" e categoria S.2. Portanto teríamos o mapeamento: "Gestão de Comissionados - Secretário Executivo - S.2".
+    %br
+    Tratando-se de um cargo/categoria de um terceirizado, teríamos "Contrato X - Analista de Suporte - Nível Médio".
+    %br
+    Para efeitos de um vaga, teríamos um mapeamento "Virtual p/ definição de vagas - Analista de Suporte - Pleno".
+

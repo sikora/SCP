@@ -1,0 +1,7 @@
+%div.span9
+  - if notice
+    .alert
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      %strong= notice
+
+  = yield

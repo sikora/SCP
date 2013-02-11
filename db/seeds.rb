@@ -1,3 +1,4 @@
+#encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -17,3 +18,6 @@ begin
 rescue ActiveRecord::RecordInvalid => invalid
   puts invalid.record.errors.full_messages
 end
+
+tp = TipoContrato.create :tipo => 'Vagas Efetivas'
+c = Contrato.create :tipo_contrato_id => tp.id, :descricao => 'Virtual p/ definição de vagas', :contrato_vagas => true

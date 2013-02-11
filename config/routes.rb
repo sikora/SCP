@@ -1,7 +1,8 @@
 Scp::Application.routes.draw do
 
-  resources :cargo_categorias
+  get "ajuda/index", :as => 'ajuda_principal'
 
+  resources :cargo_categorias
 
   resources :tipo_contratos
 
