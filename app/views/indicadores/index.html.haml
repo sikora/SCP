@@ -1,7 +1,7 @@
 .page-header
   %h1 Indicadores
 
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_indicador_path, :class => "btn btn-success"
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_indicador_path, :class => "btn btn-success aguarde"
 
 %br
 %br
@@ -15,7 +15,7 @@
       %th CPF
       %th Telefone
       %th Ação
-  
+
     - @indicadores.each do |indicador|
       %tr
         %td= indicador.id
@@ -27,13 +27,13 @@
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), indicador, :class => "btn btn-mini btn-info"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_indicador_path(indicador), :class => "btn btn-mini btn-warning"
           = link_to raw("<i class='icon-trash icon-white'></i>"), indicador, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
-        
+
   .pagination
     %ul
       %li{:class => "disabled"}
-        %a= "Anterior"       
+        %a= "Anterior"
       %li{:class => "active"}
-        %a= "1" 
+        %a= "1"
       %li
         %a= "2"
       %li

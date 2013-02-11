@@ -31,7 +31,8 @@ class PessoasController < ApplicationController
   # GET /pessoas/new.json
   def new
     @pessoa = Pessoa.new
-    if params[:ajax]
+
+    if params[:modal_ajax]
       render :layout => false
     else
       respond_to do |format|
@@ -51,18 +52,15 @@ class PessoasController < ApplicationController
   def create
     @pessoa = Pessoa.new(params[:pessoa])
 
-    if params[:ajax_request]
-      @pessoa.save
-      respond_with @pessoa
-    else
-      respond_to do |format|
-        if @pessoa.save
-          format.html { redirect_to pessoas_path, notice: 'Pessoa criada com sucesso.' }
-          format.json { render json: @pessoa, status: :created, location: @pessoa }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @pessoa.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @pessoa.save
+        format.html { redirect_to pessoas_path, notice: 'Pessoa criada com sucesso.' }
+        format.json { render json: @pessoa, status: :created, location: @pessoa }
+        format.js
+      else
+        format.html { render action: "new" }
+        format.json { render json: @pessoa.errors, status: :unprocessable_entity }
+        format.js { render json: @pessoa.errors, status: :unprocessable_entity }
       end
     end
   end

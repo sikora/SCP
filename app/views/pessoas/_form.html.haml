@@ -1,22 +1,23 @@
 = simple_form_for(@pessoa) do |f|
   = f.error_notification
-  
+
   .form-inputs
     = f.input :nmpessoa, label: "Nome:"
-    = f.input :cpf, label: "CPF:"
-    = f.input :telefone, label: "Telefone:"
+    = f.input :cpf, label: "CPF:", :input_html => { :class => "maskinput-cpf" }
+    = f.input :telefone, label: "Telefone:", :input_html => { :class => "maskinput-telefone" }
     = f.input :endereco, label: "Endereço:"
-    = f.input :cep, label: "CEP:"
+    = f.input :cep, label: "CEP:", :input_html => { :class => "maskinput-cep" }
     = f.input :bairro, label: "Bairro:"
     = f.input :naturalidade, label: "Naturalidade:"
     = f.input :nacionalidade, label: "Nacionalidade:"
     = f.input :nmpai, label: "Nome Pai:"
     = f.input :nmmae, label: "Nome Mãe:"
     = f.input :dtnasc, label: "Data Nascimento:", :order => [:day,:month,:year]
-    = f.input :sexo, label: "Sexo:"
+    = f.label "Sexo:"
+    = f.select(:sexo, options_for_select([["Escolha o Sexo", ""],['Masculino'], ['Feminino']], @pessoa.sexo))
     = f.label "Indicação:"
-    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"}) 
-    = f.input :obs, label: "Observação:", :input_html => { :rows => 10 }
+    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"})
+    = f.input :obs, label: "Observação:", :input_html => { :rows => 4,  :style => 'width: 460px' }
 
   .form-actions
     = f.button :submit, "Salvar", :class => "btn btn-success"

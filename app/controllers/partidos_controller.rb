@@ -3,8 +3,8 @@ class PartidosController < ApplicationController
   # GET /partidos.json
   def index
     if params[:term] && params[:term] !=''
-      @partidos = Partido.where("nmcompleto like ? or nmpartido like ?", '%' + params[:term] + '%', '%' + params[:term] + '%') 
-    else 
+      @partidos = Partido.where("nmcompleto like ? or nmpartido like ?", '%' + params[:term] + '%', '%' + params[:term] + '%')
+    else
       @partidos = Partido.all
     end
 
@@ -30,9 +30,13 @@ class PartidosController < ApplicationController
   def new
     @partido = Partido.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @partido }
+    if params[:modal_ajax]
+      render :layout => false
+    else
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @partido }
+      end
     end
   end
 
@@ -50,9 +54,11 @@ class PartidosController < ApplicationController
       if @partido.save
         format.html { redirect_to @partido, notice: 'Partido criado com sucesso.' }
         format.json { render json: @partido, status: :created, location: @partido }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @partido.errors, status: :unprocessable_entity }
+        format.js { render json: @partido.errors, status: :unprocessable_entity }
       end
     end
   end

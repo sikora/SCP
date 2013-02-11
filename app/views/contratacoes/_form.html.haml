@@ -5,7 +5,6 @@
     .well
       = f.input :vaga_id, label: 'Vaga', collection: []
       = f.input :pessoa_id, label: 'Pessoa', collection: [], input_html: { url_ac: '/pessoas.json', label_ac: 'nmpessoa', val_ac: 'id', class: "autocomplete_pessoas"}
-
       %button{:class => "btn btn-mini btn-success criar-pessoa-ajax", :style => "width:21em"}
         %i{:class => "icon-plus-sign icon-white"}
         Criar Pessoa
