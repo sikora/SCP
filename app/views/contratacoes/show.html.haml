@@ -1,17 +1,18 @@
 %p#notice= notice
 
 %p
-  %b Id vaga:
-  = @contratacao.id_vaga
+  %b Vaga
+  = "#{@contratacao.vaga.lotacao.breadcrumb} - #{@contratacao.vaga.cargo_categoria.cargo.nm_cargo}"
 %p
-  %b Id pessoa:
-  = @contratacao.id_pessoa
+  %b Pessoa
+  = @contratacao.pessoa.nmpessoa
 %p
   %b Valor:
   = @contratacao.valor
+
 %p
-  %b Id cargocategoria:
-  = @contratacao.id_cargocategoria
+  %b Cargo/Categoria no contrato
+  = "#{@contratacao.cargo_categoria.cargo.nm_cargo} - #{@contratacao.cargo_categoria.categoria.nm_categoria}"
 
 = link_to 'Edit', edit_contratacao_path(@contratacao)
 \|

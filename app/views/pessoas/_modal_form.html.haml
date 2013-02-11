@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :nmpessoa, label: "Nome:"
     = f.label "Indicação:"
-    = f.collection_select(:idpolitico, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"}) 
+    = f.collection_select(:indicador_id, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"}) 
     = f.input :obs, label: "Observação:", :input_html => { :rows => 4,  :style => 'width: 460px' }
     %input{:type => 'hidden', :name => 'ajax_request', :value => "true"}
 

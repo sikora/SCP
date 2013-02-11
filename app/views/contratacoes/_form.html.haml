@@ -3,7 +3,7 @@
 
   .form-inputs
     .well
-      = f.input :vaga_id, label: 'Vaga', collection: []
+      = f.input :vaga_id, label: 'Vaga', collection: @vagas.collect {|x| ["#{x.lotacao.breadcrumb} - #{x.cargo_categoria.cargo.nm_cargo} - #{x.cargo_categoria.categoria.nm_categoria}", x.id]}, input_html: { class: 'default_chosen span5' }
       = f.input :pessoa_id, label: 'Pessoa', collection: [], input_html: { url_ac: '/pessoas.json', label_ac: 'nmpessoa', val_ac: 'id', class: "autocomplete_pessoas"}
       %button{:class => "btn btn-mini btn-success criar-pessoa-ajax", :style => "width:21em"}
         %i{:class => "icon-plus-sign icon-white"}

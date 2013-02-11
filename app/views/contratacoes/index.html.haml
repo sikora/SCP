@@ -18,7 +18,6 @@
 
 %table{:class => "table table-striped"}
   %tr
-    %th #
     %th Nome
     %th Cargo
     %th Categoria
@@ -27,15 +26,14 @@
     %th Observação
     %th Ação
 
-  - (1..10).each do |i|
+  - @contratacoes.each do |i|
     %tr
-      %td= i
-      %td= "Nome Completo Pessoa"
-      %td= "Nome do Cargo"
-      %td= "Categoria Pessoa"
-      %td= "Órgão Lotação"
-      %td= "Indicação Pessoa"
-      %td= "Obs Obs Obs"
+      %td= i.pessoa.nmpessoa
+      %td= i.vaga.cargo_categoria.cargo.nm_cargo
+      %td= i.vaga.cargo_categoria.categoria.nm_categoria
+      %td= i.vaga.lotacao.breadcrumb
+      %td= i.pessoa.indicador.nmindicador if i.pessoa.indicador
+      %td= i.pessoa.obs
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"
         = link_to raw("<i class='icon-pencil icon-white'></i>"), "#", :class => "btn btn-mini btn-warning"
