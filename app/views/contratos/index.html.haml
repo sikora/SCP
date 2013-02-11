@@ -16,6 +16,7 @@
       %th Ação
   
     - @contratos.each do |contrato|
+      - next if contrato.contrato_vagas
       %tr
         %td= contrato.id
         %td= contrato.tipo_contrato.tipo

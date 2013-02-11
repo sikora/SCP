@@ -11,16 +11,16 @@
     %tr
       %th #
       %th Lotação
-      %th Cargo / Categori
-      %th Qt vagas
-      %th Id lei
+      %th Cargo / Categoria
+      %th Vagas
+      %th Lei
       %th Ação
   
     - @vagas.each do |vaga|
       %tr
         %td= vaga.id
-        %td= vaga.lotacao.descricao
-        %td= vaga.cargo_categoria.cargo.nm_cargo
+        %td= vaga.lotacao.breadcrumb
+        %td= "#{vaga.cargo_categoria.cargo.nm_cargo} - #{vaga.cargo_categoria.categoria.nm_categoria}"
         %td= vaga.qt_vagas
         %td= vaga.lei.descricao if vaga.lei
         %td

@@ -9,7 +9,8 @@
     %span.caret
   %ul.dropdown-menu
     %li
-      - Contrato.select([:id, :descricao]).all.each do |c|
+      - Contrato.select([:id, :descricao, :contrato_vagas]).all.each do |c|
+        - next if c.contrato_vagas
         = link_to c.descricao, new_contratacao_path(:contrato_id => c.id)
 
 
