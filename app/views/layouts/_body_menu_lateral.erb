@@ -1,14 +1,13 @@
 <div class="span3">
   <div class="well sidebar-nav" id="menu-lateral">
     <ul class="nav nav-pills nav-stacked">
-      <li class="nav-header">
-        Menu Principal
-      </li>
 
       <%= nav_link('Página Inicial', root_path, 'icon-home') %>
       
       <hr />
-
+      <li class="nav-header">
+        Cargos & Categorias
+      </li>
       <%= nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-tags') %>
 
       <%= nav_link('Cargos', cargos_path, 'icon-briefcase') %>
@@ -31,25 +30,23 @@
 
       <%= nav_link('Tipos de contratos', tipo_contratos_path, 'icon-edit') %>
       <%= nav_link('Contratos', contratos_path, 'icon-edit') %>
+      <%= nav_link('Contratações', contratacoes_path, 'icon-edit') %>
 
       <hr />
-      
-      <li>
-        <%= link_to(raw("<i class='icon-edit'></i> Contratações"), contratacoes_path) %>
+      <li class="nav-header">
+        Pessoas & Vagas
       </li>
-      <li>
-        <%= link_to(raw("<i class='icon-book'></i> Leis"), leis_path) %>
-      </li>
-      
-      <li>
-        <%= link_to(raw("<i class='icon-fire'></i> Partidos"), partidos_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-bullhorn'></i> Indicadores"), indicadores_path) %>
-      </li>
-      
+
       <%= nav_link('Pessoas', pessoas_path, 'icon-user') %>
       <%= nav_link('Vagas', vagas_path, 'icon-inbox') %>
+      <%= nav_link('Partidos', partidos_path, 'icon-fire') %>
+      <%= nav_link('Indicadores', indicadores_path, 'icon-bullhorn') %>
+      
+      <hr />
+      <li class="nav-header">
+        Outros
+      </li>
+      <%= nav_link('Leis', leis_path, 'icon-book') %>
       <%= nav_link('Admin', usuarios_path, 'icon-eye-open') %>
     </ul>
 
