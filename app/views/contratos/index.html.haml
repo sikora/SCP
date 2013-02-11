@@ -1,27 +1,40 @@
-%h1 Listing contratos
+.page-header
+  %h1 Contratos
 
-%table
-  %tr
-    %th Id
-    %th Desccontrato
-    %th Id tipocontrato
-    %th Dt inicio
-    %th Dt fim
-    %th
-    %th
-    %th
-
-  - @contratos.each do |contrato|
-    %tr
-      %td= contrato.id
-      %td= contrato.descricao
-      %td= contrato.tipo_contrato.tipo
-      %td= contrato.dt_inicio
-      %td= contrato.dt_fim
-      %td= link_to 'Show', contrato
-      %td= link_to 'Edit', edit_contrato_path(contrato)
-      %td= link_to 'Destroy', contrato, :confirm => 'Are you sure?', :method => :delete
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_contrato_path, :class => "btn btn-success aguarde"
 
 %br
+%br
 
-= link_to 'New Contrato', new_contrato_path
+- if @contratos.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th #
+      %th Tipo de Contrato
+      %th Descrição
+      %th Data Criação
+      %th Ação
+  
+    - @contratos.each do |contrato|
+      %tr
+        %td= contrato.id
+        %td= contrato.tipo_contrato.tipo
+        %td= contrato.descricao
+        %td= contrato.dt_inicio
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), contrato, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_contrato_path(contrato), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), contrato, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"
+      %li{:class => "active"}
+        %a= "1"
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"

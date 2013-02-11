@@ -1,7 +1,4 @@
-%h1 Editing tipo_contrato
+.page-header
+  %h1  Eitar Tipo de Contrato
 
-= render 'form'
-
-= link_to 'Show', @tipo_contrato
-\|
-= link_to 'Back', tipo_contratos_path
+= render 'form', :collection => @view_edit = true

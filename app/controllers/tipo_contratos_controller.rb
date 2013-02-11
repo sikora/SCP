@@ -25,10 +25,14 @@ class TipoContratosController < ApplicationController
   # GET /tipo_contratos/new.json
   def new
     @tipo_contrato = TipoContrato.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @tipo_contrato }
+    
+    if params[:modal_ajax]
+      render :layout => false
+    else
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @tipo_contrato }
+      end
     end
   end
 
@@ -46,9 +50,11 @@ class TipoContratosController < ApplicationController
       if @tipo_contrato.save
         format.html { redirect_to @tipo_contrato, notice: 'Tipo contrato was successfully created.' }
         format.json { render json: @tipo_contrato, status: :created, location: @tipo_contrato }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @tipo_contrato.errors, status: :unprocessable_entity }
+        format.js { render json: @tipo_contrato.errors, status: :unprocessable_entity }
       end
     end
   end

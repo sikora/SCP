@@ -1,4 +1,10 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes Vaga
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
   %b Lotação
@@ -13,6 +19,6 @@
   %b Lei
   = @vaga.lei.descricao if @vaga.lei
 
-= link_to 'Edit', edit_vaga_path(@vaga)
-\|
-= link_to 'Back', vagas_path
+.form-actions
+  = link_to 'Editar', edit_vaga_path(@vaga), :class => "btn btn-warning"
+  = link_to 'Voltar', vagas_path, :class => "btn"

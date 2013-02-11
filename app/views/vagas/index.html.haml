@@ -1,25 +1,42 @@
-%h1 Listing vagas
-
-%table
-  %tr
-    %th Lotação
-    %th Cargo / Categori
-    %th Qt vagas
-    %th Id lei
-    %th
-    %th
-    %th
-
-  - @vagas.each do |vaga|
-    %tr
-      %td= vaga.lotacao.descricao
-      %td= vaga.cargo_categoria.cargo.nm_cargo
-      %td= vaga.qt_vagas
-      %td= vaga.lei.descricao if vaga.lei
-      %td= link_to 'Show', vaga
-      %td= link_to 'Edit', edit_vaga_path(vaga)
-      %td= link_to 'Destroy', vaga, :confirm => 'Are you sure?', :method => :delete
+.page-header
+  %h1 Vagas
+  
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_vaga_path, :class => "btn btn-success aguarde"
 
 %br
+%br
 
-= link_to 'New Vaga', new_vaga_path
+- if @vagas.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th #
+      %th Lotação
+      %th Cargo / Categori
+      %th Qt vagas
+      %th Id lei
+      %th Ação
+  
+    - @vagas.each do |vaga|
+      %tr
+        %td= vaga.id
+        %td= vaga.lotacao.descricao
+        %td= vaga.cargo_categoria.cargo.nm_cargo
+        %td= vaga.qt_vagas
+        %td= vaga.lei.descricao if vaga.lei
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), vaga, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_vaga_path(vaga), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), vaga, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+  
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"
+      %li{:class => "active"}
+        %a= "1"
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"

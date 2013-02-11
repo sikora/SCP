@@ -8,4 +8,6 @@
     = f.input :lei_id, collection: Lei.all.collect {|x| [x.descricao, x.id]}, input_html: { class: 'default_chosen span5' }
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', vagas_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @vaga, :class => "btn btn-warning" if @view_edit

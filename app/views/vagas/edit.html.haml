@@ -1,7 +1,4 @@
-%h1 Editing vaga
+.page-header
+  %h1 Editar Vaga
 
-= render 'form'
-
-= link_to 'Show', @vaga
-\|
-= link_to 'Back', vagas_path
+= render 'form', :collection => @view_edit = true
