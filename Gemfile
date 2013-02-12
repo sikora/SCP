@@ -15,8 +15,9 @@ gem "audited-activerecord", "~> 3.0"
 gem 'sqlite3'
 gem 'devise'
 gem "twitter-bootstrap-rails"
-#gem 'pry-rails'
+gem 'pry-rails'
 gem 'awesome_print'
+gem 'will_paginate', '~> 3.0'
 
 
 # Gems used only for assets and not required
