@@ -22,7 +22,7 @@
         %td= pessoa.telefone
         %td= pessoa.indicador.nmindicador if pessoa.indicador
         %td
-          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info aguarde"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning"
           = link_to raw("<i class='icon-trash icon-white'></i>"), pessoa, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
 
