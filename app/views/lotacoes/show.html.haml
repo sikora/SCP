@@ -1,19 +1,13 @@
 .page-header
-  %h1 Detalhes do Órgão
-
-%p#notice= notice
+  %h1 Detalhes Lotação
 
 %p
   %b Descricao:
   = @lotacao.descricao
 %p
-  %b Id orgao:
+  %b Órgão:
   = @lotacao.orgao.nm_orgao
-/ %p
-/   %b Parent:
-/   = @lotacao.parent_id
-
 
 .form-actions
-  = link_to 'Editar', edit_lotacao_path(@lotacao), :class => "btn btn-warning"
-  = link_to 'Voltar', lotacoes_path, :class => "btn"
+  = link_to 'Editar', edit_lotacao_path(@lotacao), :class => "btn btn-warning aguarde"
+  = link_to 'Voltar', lotacoes_path, :class => "btn aguarde"

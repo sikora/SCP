@@ -2,13 +2,20 @@
 class OrgaosController < ApplicationController
   # GET /orgaos
   # GET /orgaos.json
-  def index
-    @orgaos = Orgao.order(:nm_orgao).all
+  def index    
+    @search = params[:search]
+    @order = get_order()
+
+    @orgaos = Orgao.pagination_with_search(params[:page], @search, @order)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orgaos }
     end
+  end
+  
+  def search
+    redirect_to orgaos_path(:search => params[:search][:nome])
   end
 
   # GET /orgaos/1
@@ -45,7 +52,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.save
-        format.html { redirect_to :action=>'index', notice: 'Orgao criado com sucesso.' }
+        format.html { redirect_to orgaos_path, notice: 'Orgao criado com sucesso.' }
         format.json { render json: @orgao, status: :created, location: @orgao }
       else
         format.html { render action: "new" }

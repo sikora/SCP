@@ -1,17 +1,9 @@
 .page-header
   %h1 Lotações
 
-
-
-- if notice
-  .alert
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    %strong= notice
-    
-%div{:id => "jqxTree", :class => "hero-unit"} 
-
-%br
-
-%input{:type => "hidden", :value =>  @lotacoes_array, :class => 'data'}
-
-
+- if @orgaos.present?    
+  %div{:id => "jqxTree", :class => "hero-unit"} 
+  
+  %br
+  
+  %input{:type => "hidden", :value =>  @lotacoes_array, :class => 'data'}

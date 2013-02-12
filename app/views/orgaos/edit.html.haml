@@ -1,8 +1,4 @@
 .page-header
   %h1 Editar Órgão
 
-= render 'form'
-
-.form-actions
-  = link_to 'Visualizar', @orgao, :class => "btn btn-warning"
-  = link_to 'Voltar', orgaos_path, :class => "btn"
+= render 'form', :collection => @view_edit = true
