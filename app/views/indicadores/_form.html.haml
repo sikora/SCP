@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :nmindicador, label: 'Nome do Indicador'
     = f.input :idpartido, label: 'Partido', collection: [], input_html: { url_ac: '/partidos.json', label_ac: 'nmcompleto', val_ac: 'id', class: "autocomplete"}
-    %button{:class => "btn btn-mini btn-success criar-partido-ajax", :style => "width:21em; margin-bottom:25px;"}
+    %button{:class => "btn btn-mini btn-success", :id => "partido_ajax", :style => "width:21em; margin-bottom:25px;"}
       %i{:class => "icon-plus-sign icon-white"}
       Criar Partido
 

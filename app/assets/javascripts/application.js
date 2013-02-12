@@ -40,73 +40,42 @@ $(function() {
 });
 
 /**
- * ajax modal pessoa
+ * serviço modal ajax
  */
 $(function() {
-	$(".criar-pessoa-ajax").click(function(e) {
-		e.preventDefault();
+	var data = {
+		tipo_contrato_ajax : {
+			button_id 	: "#tipo_contrato_ajax",
+			url_new 	: "/tipo_contratos/new",
+			modal_id 	: "#modal-tipo-contrato"
+		},
+		partido_ajax : {
+			button_id 	: "#partido_ajax",
+			url_new 	: "/partidos/new",
+			modal_id 	: "#modal-partido"
+		},
+		pessoa_ajax : {
+			button_id 	: "#pessoa_ajax",
+			url_new 	: "/pessoas/new",
+			modal_id 	: "#modal-pessoa"
+		}
+	}
+	var button_ids_click = data.tipo_contrato_ajax.button_id + ", " + data.partido_ajax.button_id + ", " + data.pessoa_ajax.button_id
 
+	$(button_ids_click).click(function(e) {
+		e.preventDefault();
+		
 		$.ajax({
 			type : "POST",
 			data : {
 				modal_ajax : true
 			},
-			url : "/pessoas/new",
+			url : data[e.target.id].url_new,
 			beforeSend : function() {
-				$("#modal-pessoa").modal('show');
+				$(data[e.target.id].modal_id).modal('show');
 			},
 			success : function(response) {
-				$("#modal-pessoa").find(".modal-body").html(response);
-			},
-			complete : function() {
-			}
-		});
-	});
-});
-
-/**
- * ajax modal partido
- */
-$(function() {
-	$(".criar-partido-ajax").click(function(e) {
-		e.preventDefault();
-
-		$.ajax({
-			type : "POST",
-			data : {
-				modal_ajax : true
-			},
-			url : "/partidos/new",
-			beforeSend : function() {
-				$("#modal-partido").modal('show');
-			},
-			success : function(response) {
-				$("#modal-partido").find(".modal-body").html(response);
-			},
-			complete : function() {
-			}
-		});
-	});
-});
-
-/**
- * ajax modal tipo de contrato
- */
-$(function() {
-	$(".criar-tipo-contrato").click(function(e) {
-		e.preventDefault();
-
-		$.ajax({
-			type : "POST",
-			data : {
-				modal_ajax : true
-			},
-			url : "/tipo_contratos/new",
-			beforeSend : function() {
-				$("#modal-tipo-contrato").modal('show');
-			},
-			success : function(response) {
-				$("#modal-tipo-contrato").find(".modal-body").html(response);
+				$(data[e.target.id].modal_id).find(".modal-body").html(response);
 			},
 			complete : function() {
 			}

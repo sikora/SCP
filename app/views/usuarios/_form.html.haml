@@ -8,5 +8,7 @@
     = f.input :password, label: 'Senha', input_html: { autocomplete: "off" }
     = f.input :password_confirmation, label: 'Confirmação da senha'
     
-  .actions
-    = f.submit 'Salvar', :class => "btn btn-success"
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', usuarios_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @usuario, :class => "btn btn-warning" if @view_edit

@@ -64,6 +64,8 @@ module Scp
     #TRADUCAO DEVISE
 
     config.i18n.default_locale = 'pt-BR'
+    
+    WillPaginate.per_page = 10
 
 
   end

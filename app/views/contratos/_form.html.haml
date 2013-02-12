@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :tipo_contrato_id, label: 'Tipo do Contrato', collection: TipoContrato.all.collect {|x| [x.tipo, x.id]}, selected: @default_tipo_contrato_id
-    %button{:class => "btn btn-mini btn-success criar-tipo-contrato", :style => "width:21em; margin-bottom:25px;"}
+    %button{:class => "btn btn-mini btn-success", :id => "tipo_contrato_ajax", :style => "width:21em; margin-bottom:25px;"}
       %i{:class => "icon-plus-sign icon-white"}
       Criar Tipo de Contrato
     = f.input :descricao

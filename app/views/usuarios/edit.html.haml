@@ -1,7 +1,4 @@
-%h1 Editar Usuário
+.page-header
+  %h1 Editar Usuário
 
-= render 'form'
-
-= link_to 'Visualizar', @usuario
-\|
-= link_to 'Voltar', usuarios_path
+= render 'form', :collection => @view_edit = true
