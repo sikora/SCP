@@ -4,10 +4,11 @@
 = link_to raw("<i class='icon-home icon-white'></i>"), pessoas_path, :class => "btn btn-primary aguarde" 
 = link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success aguarde"
 
-%div.pull-right
-  = simple_form_for :search, :url => {:controller => 'pessoas', :action => 'search' }, :html => { :class => 'form-search' } do |f|
-    = f.input_field :nome, :placeholder => "Digite um Nome", :class => "input-medium search-query",:value => @search
-    = f.submit "Buscar", :class => "btn aguarde"
+- if @pessoas.present?
+  %div.pull-right
+    = simple_form_for :search, :url => {:controller => 'pessoas', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+      = f.input_field :nome, :placeholder => "Digite um Nome", :class => "input-medium search-query",:value => @search
+      = f.submit "Buscar", :class => "btn aguarde"
 
 %br
 %br

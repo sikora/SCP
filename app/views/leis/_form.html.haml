@@ -4,7 +4,9 @@
   .form-inputs
     = f.input :numero
     = f.input :descricao
-    = f.input :dt_lei, :order => [:day,:month,:year]
+    = f.input :dt_lei, label: 'Data da Lei', :order => [:day,:month,:year], start_year: Date.today.year - 60, end_year: Date.today.year
 
-  .actions
-    = f.submit "Salvar", :class => "btn btn-success"
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success aguarde"
+    = link_to 'Voltar', leis_path, :class => "btn aguarde"
+    = link_to 'Visualizar', @lei, :class => "btn btn-info aguarde" if @view_edit

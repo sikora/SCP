@@ -1,26 +1,40 @@
 .page-header
   %h1 Leis
 
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_lei_path, :class => "btn btn-success"
+= link_to raw("<i class='icon-home icon-white'></i>"), leis_path, :class => "btn btn-primary aguarde" 
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_lei_path, :class => "btn btn-success aguarde"
 
-%br
-%br
+- if @leis.present?
+  %div.pull-right
+    = simple_form_for :search, :url => {:controller => 'leis', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+      = f.input_field :nome, :placeholder => "Número da Lei", :class => "input-medium search-query",:value => @search
+      = f.submit "Buscar", :class => "btn aguarde"
+      
+  %br
+  %br
 
-%table{:class => "table table-striped"}
-  %tr
-    %th #
-    %th Numero
-    %th Descricao
-    %th Data Lei
-    %th Ação
-
-  - @leis.each do |lei|
+- if @leis.present?
+  %table{:class => "table table-striped"}
     %tr
-      %th= lei.id
-      %td= lei.numero
-      %td= lei.descricao
-      %td= lei.dt_lei
-      %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), lei, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_lei_path(lei), :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), lei, :confirm => 'Tem certeza dessa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+      %th
+        = link_to_pagination_order("#", "/leis", "id", @order)
+      %th
+        = link_to_pagination_order("Número", "/leis", "numero", @order)
+      %th
+        = link_to_pagination_order("Descrição", "/leis", "descricao", @order)
+      %th
+        = link_to_pagination_order("Data da Lei", "/leis", "dt_lei", @order)
+      %th Ação
+  
+    - @leis.each do |lei|
+      %tr
+        %th= lei.id
+        %td= lei.numero
+        %td= lei.descricao
+        %td= lei.dt_lei.strftime "%d/%m/%Y"
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), lei, :class => "btn btn-mini btn-info aguarde"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_lei_path(lei), :class => "btn btn-mini btn-warning aguarde"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), lei, :confirm => 'Tem certeza dessa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+= will_paginate @leis

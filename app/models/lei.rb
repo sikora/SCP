@@ -6,4 +6,10 @@ class Lei < ActiveRecord::Base
   
   validates :numero, :presence => true
   
+  def self.pagination_with_search(page, search, order)
+    paginate  :page => page,
+              :conditions => ['numero like ?', "%#{search}%"],
+              :order => (order ? "#{order[:column]} #{order[:order]}" : "id")
+  end
+  
 end
