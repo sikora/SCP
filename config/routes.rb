@@ -48,6 +48,7 @@ Scp::Application.routes.draw do
   resources :usuarios
   resources :usuarios, :collection => {:search => :post}
   match 'usuarios/order/:column/:order' => "usuarios#index"
+  match 'pessoas/order/:column/:order'  => "pessoas#index"
 
   match 'lotacoes/new/:parent_id'           => 'lotacoes#new'
 

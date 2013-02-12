@@ -1,19 +1,25 @@
 class PessoasController < ApplicationController
   respond_to :html, :js
-
   # GET /pessoas
   # GET /pessoas.json
   def index
     if params[:term] && params[:term] != ''
       @pessoas = Pessoa.where("LOWER(nmpessoa) like ?", "#{params[:term].downcase}%")
     else
-      @pessoas = Pessoa.order("LOWER(nmpessoa)").all
+      @search = params[:search]
+      @order = get_order()
+
+      @pessoas = Pessoa.pagination_with_search(params[:page], @search, @order)
     end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pessoas }
     end
+  end
+
+  def search
+    redirect_to pessoas_path(:search => params[:search][:nome])
   end
 
   # GET /pessoas/1
@@ -56,7 +62,7 @@ class PessoasController < ApplicationController
       if @pessoa.save
         format.html { redirect_to pessoas_path, notice: 'Pessoa criada com sucesso.' }
         format.json { render json: @pessoa, status: :created, location: @pessoa }
-        format.js
+      format.js
       else
         format.html { render action: "new" }
         format.json { render json: @pessoa.errors, status: :unprocessable_entity }

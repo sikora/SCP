@@ -3,7 +3,7 @@ class UsuariosController < ApplicationController
   
   def index
     @search = params[:search]
-    @order = get_order
+    @order = get_order()
     
     @usuarios = Usuario.pagination_with_search(params[:page], @search, @order)
   end
@@ -66,10 +66,5 @@ class UsuariosController < ApplicationController
       format.html { redirect_to usuarios_url }
       format.json { head :no_content }
     end
-  end
-  
-  private
-  def get_order
-    (params[:column] && params[:order] ? {:column => params[:column], :order => params[:order]} : nil)
   end
 end

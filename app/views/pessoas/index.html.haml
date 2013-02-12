@@ -1,7 +1,13 @@
 .page-header
   %h1 Pessoas
 
+= link_to raw("<i class='icon-home icon-white'></i>"), pessoas_path, :class => "btn btn-primary aguarde" 
 = link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success aguarde"
+
+%div.pull-right
+  = simple_form_for :search, :url => {:controller => 'pessoas', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+    = f.input_field :nome, :placeholder => "Digite um Nome", :class => "input-medium search-query",:value => @search
+    = f.submit "Buscar", :class => "btn aguarde"
 
 %br
 %br
@@ -9,32 +15,27 @@
 - if @pessoas.present?
   %table{:class => "table table-striped"}
     %tr
-      %th Nome
-      %th CPF
-      %th Telefone
+      %th
+        = link_to_pagination_order("#", "/pessoas", "id", @order)
+      %th
+        = link_to_pagination_order("Nome", "/pessoas", "nmpessoa", @order)
+      %th
+        = link_to_pagination_order("CPF", "/pessoas", "cpf", @order)
+      %th
+        = link_to_pagination_order("Telefone", "/pessoas", "telefone", @order)
       %th Indicação
       %th Ação
 
     - @pessoas.each do |pessoa|
       %tr
+        %td= pessoa.id
         %td= pessoa.nmpessoa
         %td= pessoa.cpf
         %td= pessoa.telefone
-        %td= pessoa.indicador.nmindicador if pessoa.indicador
+        %td= pessoa.indicador ? pessoa.indicador.nmindicador : " - "
         %td
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info aguarde"
-          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning"
-          = link_to raw("<i class='icon-trash icon-white'></i>"), pessoa, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning aguarde"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), pessoa, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger aguarde"
 
-  .pagination
-    %ul
-      %li{:class => "disabled"}
-        %a= "Anterior"
-      %li{:class => "active"}
-        %a= "1"
-      %li
-        %a= "2"
-      %li
-        %a= "3"
-      %li
-        %a= "Posterior"
+= will_paginate @pessoas
