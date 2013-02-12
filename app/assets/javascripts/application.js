@@ -98,4 +98,9 @@ $(function() {
 
 	//mask cep
 	$(".maskinput-cep").mask("99999-999");
+
+  $('#cargo-categorias-tp').popover({title: 'Ajuda', trigger: 'hover', content: 'Aqui você define a estrutura de cargos e categorias para cada contrato. Ex.: Contrato Cast - Analista de Suporte 5'} )
+  $('#vagas-tp').popover({title: 'Ajuda', trigger: 'hover', content: 'Aqui você controla as vagas disponíveis na prefeitura. A vaga é a junção de um mapa de cargo e categoria com uma lotação.'} )
+  $('#contratacoes-tp').popover({title: 'Ajuda', trigger: 'hover', content: 'A contratação é a alocação de uma pessoa em determinada vaga.'} )
+  $('#indicadores-tp').popover({title: 'Ajuda', trigger: 'hover', content: 'Indicador é aquele que indica uma pessoa. Será utilizado na hora de cadastrar uma pessoa.'} )
 });

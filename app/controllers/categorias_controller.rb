@@ -5,7 +5,7 @@ class CategoriasController < ApplicationController
   end
 
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.order(:nm_categoria).all
 
     respond_to do |format|
       format.html # index.html.erb

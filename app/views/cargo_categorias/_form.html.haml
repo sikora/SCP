@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :contrato_id, label: 'Contrato', collection: Contrato.where(:contrato_vagas => false).collect {|x| [x.descricao, x.id]}, selected: @default_tipo_contrato_id, input_html: { class: 'default_chosen' }
+    = f.input :contrato_id, label: 'Contrato', collection: Contrato.all.collect {|x| [x.descricao, x.id]}, selected: @default_tipo_contrato_id, input_html: { class: 'default_chosen' }
     = f.input :cargo_id, collection: Cargo.order(:nm_cargo).all.collect {|x| [x.nm_cargo, x.id]}, input_html: { class: 'default_chosen' }
     = f.input :categoria_id, collection: Categoria.order(:nm_categoria).all.collect {|x| [x.nm_categoria, x.id]}, input_html: { class: 'mapa_categoria_chosen' }
     = f.input :valor

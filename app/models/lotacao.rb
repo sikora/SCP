@@ -1,4 +1,5 @@
 class Lotacao < ActiveRecord::Base
+  audited
   attr_accessible :descricao, :id_orgao, :parent_id
 
   has_many :filhos, class_name: "Lotacao", foreign_key: "parent_id"

@@ -1,8 +1,9 @@
+#encoding: utf-8
 class OrgaosController < ApplicationController
   # GET /orgaos
   # GET /orgaos.json
   def index
-    @orgaos = Orgao.all
+    @orgaos = Orgao.order(:nm_orgao).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -72,12 +73,18 @@ class OrgaosController < ApplicationController
   # DELETE /orgaos/1
   # DELETE /orgaos/1.json
   def destroy
-    @orgao = Orgao.find(params[:id])
-    @orgao.destroy
+    if Lotacao.where(:id_orgao => params[:id]).count > 0
+      flash[:notice] = 'Este órgão possui lotações associadas e não pode ser apagado.' 
+      redirect_to orgaos_path
+    else
 
-    respond_to do |format|
-      format.html { redirect_to orgaos_url }
-      format.json { head :no_content }
+      @orgao = Orgao.find(params[:id])
+      @orgao.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to orgaos_url }
+        format.json { head :no_content }
+      end
     end
   end
 end

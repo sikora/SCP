@@ -12,7 +12,7 @@
     = f.input :nacionalidade, label: "Nacionalidade:"
     = f.input :nmpai, label: "Nome Pai:"
     = f.input :nmmae, label: "Nome Mãe:"
-    = f.input :dtnasc, label: "Data Nascimento:", :order => [:day,:month,:year]
+    = f.input :dtnasc, label: "Data Nascimento:", :order => [:day,:month,:year], start_year: Date.today.year - 60, end_year: Date.today.year - 12
     = f.label "Sexo:"
     = f.select(:sexo, options_for_select([["Escolha o Sexo", ""],['Masculino'], ['Feminino']], @pessoa.sexo))
     = f.label "Indicação:"
