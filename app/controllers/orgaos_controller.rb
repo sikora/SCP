@@ -1,13 +1,21 @@
+#encoding: utf-8
 class OrgaosController < ApplicationController
   # GET /orgaos
   # GET /orgaos.json
-  def index
-    @orgaos = Orgao.all
+  def index    
+    @search = params[:search]
+    @order = get_order()
+
+    @orgaos = Orgao.pagination_with_search(params[:page], @search, @order)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orgaos }
     end
+  end
+  
+  def search
+    redirect_to orgaos_path(:search => params[:search][:nome])
   end
 
   # GET /orgaos/1
@@ -44,7 +52,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.save
-        format.html { redirect_to :action=>'index', notice: 'Orgao criado com sucesso.' }
+        format.html { redirect_to orgaos_path, notice: 'Orgao criado com sucesso.' }
         format.json { render json: @orgao, status: :created, location: @orgao }
       else
         format.html { render action: "new" }
@@ -72,12 +80,18 @@ class OrgaosController < ApplicationController
   # DELETE /orgaos/1
   # DELETE /orgaos/1.json
   def destroy
-    @orgao = Orgao.find(params[:id])
-    @orgao.destroy
+    if Lotacao.where(:id_orgao => params[:id]).count > 0
+      flash[:notice] = 'Este órgão possui lotações associadas e não pode ser apagado.' 
+      redirect_to orgaos_path
+    else
 
-    respond_to do |format|
-      format.html { redirect_to orgaos_url }
-      format.json { head :no_content }
+      @orgao = Orgao.find(params[:id])
+      @orgao.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to orgaos_url }
+        format.json { head :no_content }
+      end
     end
   end
 end

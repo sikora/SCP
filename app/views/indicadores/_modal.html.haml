@@ -1,0 +1,10 @@
+#modal-partido.modal.hide.fade
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"}
+      %i.icon-remove-circle
+    %h3 Cadastrar Partido
+  .modal-body
+    %div{:style => "height: 85px; text-align: center;"}
+      = image_tag('carregando.gif')
+  .modal-footer
+    %a.btn.btn-inverse{"data-dismiss" => "modal"} Fechar

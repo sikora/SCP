@@ -1,8 +1,4 @@
 .page-header
-  %h1 Editar Lotação
+  %h1= "Editar Lotação - Órgão #{@lotacao.orgao.nm_orgao}"
 
-= render 'form'
-
-.form-actions
-  = link_to 'Visualizar', @lotacao, :class => "btn btn-warning"
-  = link_to 'Voltar', lotacoes_path, :class => "btn"
+= render 'form', :collection => @view_edit = true

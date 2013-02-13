@@ -1,21 +1,24 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes do Contrato
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
   %b Id:
   = @contrato.id
 %p
   %b Desccontrato:
-  = @contrato.desccontrato
+  = @contrato.descricao
 %p
-  %b Id tipocontrato:
-  = @contrato.id_tipocontrato
+  %b Tipo:
+  = @contrato.tipo_contrato.tipo
 %p
   %b Dt inicio:
   = @contrato.dt_inicio
-%p
-  %b Dt fim:
-  = @contrato.dt_fim
 
-= link_to 'Edit', edit_contrato_path(@contrato)
-\|
-= link_to 'Back', contratos_path
+.form-actions
+  = link_to 'Editar', edit_contrato_path(@contrato), :class => "btn btn-warning"
+  = link_to 'Voltar', contratos_path, :class => "btn"

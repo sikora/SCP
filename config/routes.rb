@@ -1,5 +1,11 @@
 Scp::Application.routes.draw do
 
+  get "ajuda/index", :as => 'ajuda_principal'
+
+  resources :cargo_categorias
+
+  resources :tipo_contratos
+
   resources :perfis
   resources :contratos
   resources :tipocontratos
@@ -15,24 +21,21 @@ Scp::Application.routes.draw do
   resources :indicadores
   resources :partidos
 
-
   root :to => "inicio#index"
 
-  devise_for :usuarios, 
+  devise_for :usuarios,
 
             :path => "usuarios",
             :path_names => { :sign_in => 'login',
-                             :sign_out => 'logout', 
-                             :password => 'secret', 
-                             :confirmation => 'verification', 
-                             :unlock => 'unblock', 
-                             :registration => 'register', 
-                             :sign_up => 'cmon_let_me_in' 
+                             :sign_out => 'logout',
+                             :password => 'secret',
+                             :confirmation => 'verification',
+                             :unlock => 'unblock',
+                             :registration => 'register',
+                             :sign_up => 'cmon_let_me_in'
                            },
             :controllers => { :registrations => 'registrations'}
 
-
-  
   devise_scope :usuario do
     get "sign_in", :to => "devise/sessions#new", :as => 'sign_in'
   end
@@ -40,7 +43,15 @@ Scp::Application.routes.draw do
   resources :inicio
   resources :usuarios
 
+  match 'usuarios/order/:column/:order' => "usuarios#index"
+  match 'pessoas/order/:column/:order'  => "pessoas#index"
+  match 'leis/order/:column/:order'     => "leis#index"
+  match 'orgaos/order/:column/:order'   => "orgaos#index"
+
   match 'lotacoes/new/:parent_id'           => 'lotacoes#new'
+
+  match 'get_categoria_valor' => 'categorias#get_valor'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -96,5 +107,5 @@ Scp::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end

@@ -2,11 +2,14 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :id
-    = f.input :desccontrato
-    = f.input :id_tipocontrato
-    = f.input :dt_inicio
-    = f.input :dt_fim
+    = f.input :tipo_contrato_id, label: 'Tipo do Contrato', collection: TipoContrato.all.collect {|x| [x.tipo, x.id]}, selected: @default_tipo_contrato_id
+    %button{:class => "btn btn-mini btn-success", :id => "tipo_contrato_ajax", :style => "width:21em; margin-bottom:25px;"}
+      %i{:class => "icon-plus-sign icon-white"}
+      Criar Tipo de Contrato
+    = f.input :descricao
+    = f.input :dt_inicio, :label => "Data Criação"
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', contratos_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @contrato, :class => "btn btn-warning" if @view_edit

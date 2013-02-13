@@ -2,10 +2,12 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :id_lotacao
-    = f.input :id_cargocategoria
+    = f.input :lotacao_id, collection: Lotacao.ltree.collect {|x| [x[:path], x[:id]]}, input_html: { class: 'default_chosen span5' }
+    = f.input :cargo_categoria_id, label: 'Cargo Categoria', collection: @cargo_categorias.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
     = f.input :qt_vagas
-    = f.input :id_lei
+    = f.input :lei_id, collection: Lei.all.collect {|x| [x.descricao, x.id]}, input_html: { class: 'default_chosen span5' }
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', vagas_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @vaga, :class => "btn btn-warning" if @view_edit

@@ -1,8 +1,11 @@
 class CategoriasController < ApplicationController
-  # GET /categorias
-  # GET /categorias.json
+  def get_valor
+    @categoria = Categoria.find_by_id(params[:categoria_id])
+    render json: @categoria
+  end
+
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.order(:nm_categoria).all
 
     respond_to do |format|
       format.html # index.html.erb

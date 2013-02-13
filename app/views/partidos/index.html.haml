@@ -1,35 +1,35 @@
 .page-header
   %h1 Partidos
 
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_partido_path, :class => "btn btn-success"
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_partido_path, :class => "btn btn-success aguarde"
 
 %br
 %br
 
-%table{:class => "table table-striped"}
-  %tr
-    %th #
-    %th Sigla
-    %th Nome
-    %th Ação
-
-  - @partidos.each do |partido|
-    %tr
-      %td= partido.id
-      %td= partido.nmcompleto
-      %td= partido.nmcompleto
-      %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), partido, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_partido_path(partido), :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), partido, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
-        
 - if @partidos.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th #
+      %th Sigla
+      %th Nome
+      %th Ação
+
+    - @partidos.each do |partido|
+      %tr
+        %td= partido.id
+        %td= partido.nmpartido
+        %td= partido.nmcompleto
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), partido, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_partido_path(partido), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), partido, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
   .pagination
     %ul
       %li{:class => "disabled"}
-        %a= "Anterior"       
+        %a= "Anterior"
       %li{:class => "active"}
-        %a= "1" 
+        %a= "1"
       %li
         %a= "2"
       %li

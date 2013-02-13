@@ -1,56 +1,54 @@
 <div class="span3">
   <div class="well sidebar-nav" id="menu-lateral">
     <ul class="nav nav-pills nav-stacked">
+
+      <%= nav_link('Página Inicial', root_path, 'icon-home') %>
+      <%= nav_link('Ajuda', ajuda_principal_path, 'icon-question-sign') %>
+      
+      <hr />
       <li class="nav-header">
-        Menu Principal
+        Cargos & Categorias
       </li>
-      <li class="active">
-        <%= link_to(raw("<i class='icon-home'></i> Página Inicial"), root_path) %>
+      <%= nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-tags', 'cargo-categorias-tp') %>
+
+      <%= nav_link('Cargos', cargos_path, 'icon-briefcase') %>
+
+      <%= nav_link('Categorias', categorias_path, 'icon-tags') %>
+
+      <hr />
+      <li class="nav-header">
+        Organização Administrativa
       </li>
+      <%= nav_link('Órgãos', orgaos_path, 'icon-map-marker') %>
+      <%= nav_link('Lotações', lotacoes_path, 'icon-flag') %>
+     
       
       <hr />
-      
-      <li>
-        <%= link_to(raw("<i class='icon-briefcase'></i> Cargos"), cargos_path) %>
+
+      <li class="nav-header">
+        Contratos
       </li>
-      <li>
-        <%= link_to(raw("<i class='icon-tags'></i> Categorias"), categorias_path) %>
+
+      <%= nav_link('Tipos de contratos', tipo_contratos_path, 'icon-edit') %>
+      <%= nav_link('Contratos', contratos_path, 'icon-edit') %>
+      <%= nav_link('Contratações', contratacoes_path, 'icon-edit', 'contratacoes-tp') %>
+
+      <hr />
+      <li class="nav-header">
+        Pessoas & Vagas
       </li>
+
+      <%= nav_link('Pessoas', pessoas_path, 'icon-user') %>
+      <%= nav_link('Vagas', vagas_path, 'icon-inbox', 'vagas-tp') %>
+      <%= nav_link('Partidos', partidos_path, 'icon-fire') %>
+      <%= nav_link('Indicadores', indicadores_path, 'icon-bullhorn', 'indicadores-tp') %>
       
       <hr />
-      
-      <li>
-        <%= link_to(raw("<i class='icon-flag'></i> Lotações"), lotacoes_path) %>
+      <li class="nav-header">
+        Outros
       </li>
-      <li>
-        <%= link_to(raw("<i class='icon-map-marker'></i> Orgãos"), orgaos_path) %>
-      </li>
-      
-      <hr />
-      
-      <li>
-        <%= link_to(raw("<i class='icon-edit'></i> Contratações"), contratacoes_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-book'></i> Leis"), leis_path) %>
-      </li>
-      
-      <li>
-        <%= link_to(raw("<i class='icon-fire'></i> Partidos"), partidos_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-bullhorn'></i> Indicadores"), indicadores_path) %>
-      </li>
-      
-      <li>
-        <%= link_to(raw("<i class='icon-user'></i> Pessoas"), pessoas_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-inbox'></i> Vagas"), vagas_path) %>
-      </li>
-      <li>
-        <%= link_to(raw("<i class='icon-eye-open'></i> Admin"), usuarios_path) %>
-      </li>
+      <%= nav_link('Leis', leis_path, 'icon-book') %>
+      <%= nav_link('Admin', usuarios_path, 'icon-eye-open') %>
     </ul>
 
   </div><!--/.well -->

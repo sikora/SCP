@@ -4,15 +4,11 @@
   .form-inputs
     = f.input :descricao, :label => "Descrição"
     
-    - if !@id_orgao || !@parent_id
-      / = f.label "Órgão"
-      / = f.collection_select(:id_orgao, Orgao.order('nm_orgao'),:id, :nm_orgao, {:prompt => false})
-      = hidden_field :lotacao,:id_orgao, :value => @id_orgao
-
-    - else
-      = hidden_field :lotacao,:id_orgao, :value => @id_orgao
+    = hidden_field :lotacao,:id_orgao, :value => @id_orgao
     
     = hidden_field :lotacao,:parent_id, :value => @parent_id
 
-  .actions
-    = f.submit 'Salvar', :class => "btn btn-success"
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success aguarde"
+    = link_to 'Voltar', lotacoes_path, :class => "btn aguarde"
+    = link_to 'Visualizar', @lotacao, :class => "btn btn-info aguarde" if @view_edit

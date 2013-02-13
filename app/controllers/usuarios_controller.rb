@@ -1,9 +1,15 @@
 class UsuariosController < ApplicationController
   before_filter :authenticate_usuario!
-
+  
   def index
-    @usuarios = Usuario.all
-
+    @search = params[:search]
+    @order = get_order()
+    
+    @usuarios = Usuario.pagination_with_search(params[:page], @search, @order)
+  end
+  
+  def search
+    redirect_to usuarios_path(:search => params[:search][:nome])
   end
 
   def show
@@ -33,6 +39,10 @@ class UsuariosController < ApplicationController
   end
 
   def update
+    if params[:usuario][:password].blank?
+      params[:usuario].delete(:password)
+      params[:usuario].delete(:password_confirmation)
+    end
     @usuario = Usuario.find(params[:id])
 
     respond_to do |format|

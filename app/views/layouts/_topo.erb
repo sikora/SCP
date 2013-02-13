@@ -10,11 +10,12 @@
         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li>
-            <a href="#"><i class="icon-pencil"></i> Edit</a>
+            <a href="#">
+              <%= link_to(raw("<i class='icon-pencil'></i> Editar"), edit_usuario_path(current_usuario) ) %></a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#"><i class="i"></i> <%= link_to(raw("<i class='icon-off'></i> Logout"), destroy_usuario_session_path, :method => :delete) %></a>
+            <a href="#"><i class="i"></i> <%= link_to(raw("<i class='icon-off'></i> Sair"), destroy_usuario_session_path, :method => :delete) %></a>
           </li>
         </ul>
       </div>

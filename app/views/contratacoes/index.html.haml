@@ -1,29 +1,40 @@
 .page-header
   %h1 Contratações
 
-= link_to raw("<i class='icon-plus icon-white'></i> Nova Contratação"), new_contratacao_path, :class => "btn btn-success"
+
+%div.btn-group
+  %a.btn.btn-success.dropdown-toggle{"data-toggle" => "dropdown", :href => '#'}
+    %i.icon-plus.icon-white
+    Nova Contratação
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      - Contrato.select([:id, :descricao, :contrato_vagas]).all.each do |c|
+        - next if c.contrato_vagas
+        = link_to c.descricao, new_contratacao_path(:contrato_id => c.id)
+
 
 %br
 %br
 
 %table{:class => "table table-striped"}
   %tr
-    %th #
     %th Nome
     %th Cargo
-    %th Valor
-    %th Telefone
-    %th Lotação
+    %th Categoria
+    %th Órgão/Lotação
+    %th Indicação
+    %th Observação
     %th Ação
 
-  - (1..10).each do |i|
+  - @contratacoes.each do |i|
     %tr
-      %td= i
-      %td= "Nome Completo Pessoa"
-      %td= "Nome do Cargo"
-      %td= "Valor Pago"
-      %td= "Telefone Pessoa"
-      %td= "Local Trabalho"
+      %td= i.pessoa.nmpessoa
+      %td= i.vaga.cargo_categoria.cargo.nm_cargo
+      %td= i.vaga.cargo_categoria.categoria.nm_categoria
+      %td= i.vaga.lotacao.breadcrumb
+      %td= i.pessoa.indicador.nmindicador if i.pessoa.indicador
+      %td= i.pessoa.obs
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"
         = link_to raw("<i class='icon-pencil icon-white'></i>"), "#", :class => "btn btn-mini btn-warning"

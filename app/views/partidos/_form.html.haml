@@ -1,4 +1,4 @@
-= form_for @partido do |f|
+= form_for @partido, :remote => (params[:modal_ajax] ? true : false) do |f|
   -if @partido.errors.any?
     #error_explanation
       %h2= "#{pluralize(@partido.errors.count, "error")} prohibited this partido from being saved:"
@@ -8,9 +8,11 @@
 
   .field
     = f.label "Sigla"
-    = f.select :nmpartido, "escolha"
+    = f.text_field :nmpartido
   .field
     = f.label "nome"
     = f.text_field :nmcompleto
-  .actions
+  .form-actions
     = f.submit 'Salvar', :class => "btn btn-success"
+    = link_to 'Voltar', partidos_path, :class => "btn btn-info" unless params[:modal_ajax]
+    = link_to 'Visualizar', @partido, :class => "btn btn-warning" if @view_edit

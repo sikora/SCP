@@ -1,0 +1,10 @@
+= simple_form_for(@tipo_contrato, :remote => (params[:modal_ajax] ? true : false)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :tipo, :label => "Nome tipo de contrato:"
+
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', tipo_contratos_path, :class => "btn btn-info" unless params[:modal_ajax]
+    = link_to 'Visualizar', @tipo_contrato, :class => "btn btn-warning" if @view_edit

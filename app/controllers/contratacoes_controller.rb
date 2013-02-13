@@ -26,6 +26,14 @@ class ContratacoesController < ApplicationController
   def new
     @contratacao = Contratacao.new
 
+    @vagas = Array.new
+
+    Vaga.all.each do |v|
+      puts "here"
+      @vagas << v if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
+    end
+    puts @vagas
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contratacao }

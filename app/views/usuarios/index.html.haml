@@ -1,40 +1,41 @@
 .page-header
   %h1 Lista de Usuários
-  
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_usuario_path, :class => "btn btn-success"
 
-%br
-%br
-
-%table{:class => "table table-striped"}
-  %tr
-    %th #
-    %th nome
-    %th login
-    %th e-mail
-    %th Ação
-
-  - @usuarios.each do |usuario|
-    %tr
-      %td= usuario.id
-      %td= usuario.nome
-      %td= usuario.username
-      %td= usuario.email
-      %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), usuario, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_usuario_path(usuario), :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), usuario, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+= link_to raw("<i class='icon-home icon-white'></i>"), usuarios_path, :class => "btn btn-primary aguarde" 
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_usuario_path, :class => "btn btn-success aguarde"
 
 - if @usuarios.present?
-  .pagination
-    %ul
-      %li{:class => "disabled"}
-        %a= "Anterior"       
-      %li{:class => "active"}
-        %a= "1" 
-      %li
-        %a= "2"
-      %li
-        %a= "3"
-      %li
-        %a= "Posterior"
+  %div.pull-right
+    = simple_form_for :search, :url => {:controller => 'usuarios', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+      = f.input_field :nome, :placeholder => "Digite um Nome", :class => "input-medium search-query",:value => @search
+      = f.submit "Buscar", :class => "btn aguarde"
+
+%br
+%br
+
+- if @usuarios.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th
+        = link_to_pagination_order("#", "/usuarios", "id", @order)
+      %th
+        = link_to_pagination_order("Nome", "/usuarios", "nome", @order)
+      %th
+        = link_to_pagination_order("Login", "/usuarios", "username", @order)
+      %th
+        = link_to_pagination_order("Email", "/usuarios", "email", @order)
+      %th Ação
+  
+    - @usuarios.each do |usuario|
+      %tr
+        %td= usuario.id
+        %td= usuario.nome
+        %td= usuario.username
+        %td= usuario.email
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), usuario, :class => "btn btn-mini btn-info aguarde"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_usuario_path(usuario), :class => "btn btn-mini btn-warning aguarde"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), usuario, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+
+  = will_paginate @usuarios

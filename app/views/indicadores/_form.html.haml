@@ -4,8 +4,15 @@
   .form-inputs
     = f.input :nmindicador, label: 'Nome do Indicador'
     = f.input :idpartido, label: 'Partido', collection: [], input_html: { url_ac: '/partidos.json', label_ac: 'nmcompleto', val_ac: 'id', class: "autocomplete"}
-    = f.input :cpf, label: 'CPF'
-    = f.input :telefone, label: 'Telefone'
+    %button{:class => "btn btn-mini btn-success", :id => "partido_ajax", :style => "width:21em; margin-bottom:25px;"}
+      %i{:class => "icon-plus-sign icon-white"}
+      Criar Partido
+
+    = f.input :cpf, label: 'CPF', :input_html => {:class => "maskinput-cpf"}
+    = f.input :telefone, label: 'Telefone', :input_html => {:class => "maskinput-telefone"}
 
 
-    = f.submit 'Salvar', class: "btn btn-success"
+  .form-actions
+    = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', indicadores_path, :class => "btn btn-info"
+    = link_to 'Visualizar', @indicador, :class => "btn btn-warning" if @view_edit

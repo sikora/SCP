@@ -1,38 +1,36 @@
 .page-header
   %h1 Órgãos
-  
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_orgao_path, :class => "btn btn-success"
 
-%br
-%br
-
-%table{:class => "table table-striped"}
-  %tr
-    %th #
-    %th Nome Órgão
-    %th Lei
-    %th Ação
-
-  - @orgaos.each do |orgao|
-    %tr
-      %td= orgao.id
-      %td= orgao.nm_orgao
-      %td= orgao.lei.descricao if orgao.lei
-      %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), orgao, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_orgao_path(orgao), :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), orgao, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+= link_to raw("<i class='icon-home icon-white'></i>"), orgaos_path, :class => "btn btn-primary aguarde" 
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_orgao_path, :class => "btn btn-success aguarde"
 
 - if @orgaos.present?
-  .pagination
-    %ul
-      %li{:class => "disabled"}
-        %a= "Anterior"       
-      %li{:class => "active"}
-        %a= "1" 
-      %li
-        %a= "2"
-      %li
-        %a= "3"
-      %li
-        %a= "Posterior"
+  %div.pull-right
+    = simple_form_for :search, :url => {:controller => 'orgaos', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+      = f.input_field :nome, :placeholder => "Nome do Órgão", :class => "input-medium search-query",:value => @search
+      = f.submit "Buscar", :class => "btn aguarde"
+      
+  %br
+  %br
+
+- if @orgaos.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th
+        = link_to_pagination_order("#", "/orgaos", "id", @order)
+      %th
+        = link_to_pagination_order("Nome do Órgão", "/orgaos", "nm_orgao", @order)
+      %th Lei
+      %th Ação
+  
+    - @orgaos.each do |orgao|
+      %tr
+        %td= orgao.id
+        %td= orgao.nm_orgao
+        %td= orgao.lei ? orgao.lei.descricao : " - "
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), orgao, :class => "btn btn-mini btn-info aguarde"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_orgao_path(orgao), :class => "btn btn-mini btn-warning aguarde"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), orgao, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+  = will_paginate @orgaos

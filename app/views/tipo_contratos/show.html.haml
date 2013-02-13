@@ -1,0 +1,16 @@
+.page-header
+  %h1 Detalhes Tipo de Contrato
+
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
+
+%p
+  %b Tipo:
+  = @tipo_contrato.tipo
+
+
+.form-actions
+  = link_to 'Editar', edit_tipo_contrato_path(@tipo_contrato), :class => "btn btn-warning"
+  = link_to 'Voltar', tipo_contratos_path, :class => "btn"

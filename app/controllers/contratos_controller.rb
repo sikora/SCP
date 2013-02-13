@@ -25,6 +25,8 @@ class ContratosController < ApplicationController
   # GET /contratos/new.json
   def new
     @contrato = Contrato.new
+    @default_tipo_contrato = TipoContrato.find_by_tipo('Comissionados').id if 
+    @default_tipo_contrato_id = @default_tipo_contrato.id if @default_tipo_contrato
 
     respond_to do |format|
       format.html # new.html.erb

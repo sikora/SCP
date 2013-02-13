@@ -1,11 +1,6 @@
 .page-header
   %h1 Detalhes da Lei
 
-- if notice
-  .alert
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    %strong= notice
-
 %p
   %b Numero:
   = @lei.numero
@@ -14,8 +9,8 @@
   = @lei.descricao
 %p
   %b Data lei:
-  = @lei.dt_lei
+  = @lei.dt_lei.strftime "%d/%m/%Y"
 
 .form-actions
-  = link_to 'Editar', edit_lei_path(@lei), :class => "btn btn-warning"
-  = link_to 'Voltar', leis_path, :class => "btn btn-info"
+  = link_to 'Editar', edit_lei_path(@lei), :class => "btn btn-warning aguarde"
+  = link_to 'Voltar', leis_path, :class => "btn btn-info aguarde"

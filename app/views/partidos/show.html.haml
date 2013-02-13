@@ -1,9 +1,10 @@
 .page-header
   %h1 Detalhes do Partido
 
-.alert
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  %strong= notice
+- if notice
+  .alert
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    %strong= notice
 
 %p
   %b Sigla:

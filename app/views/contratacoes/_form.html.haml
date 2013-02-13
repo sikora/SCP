@@ -2,19 +2,18 @@
   = f.error_notification
 
   .form-inputs
-    .field
-      = f.label "Partido"
-      = f.text_field :id_vaga
-      %button{:class => "btn btn-success", :style => "margin-top:-10px"}
+    .well
+      = f.input :vaga_id, label: 'Vaga', collection: @vagas.collect {|x| ["#{x.lotacao.breadcrumb} - #{x.cargo_categoria.cargo.nm_cargo} - #{x.cargo_categoria.categoria.nm_categoria}", x.id]}, input_html: { class: 'default_chosen span5' }
+      = f.input :pessoa_id, label: 'Pessoa', collection: [], input_html: { url_ac: '/pessoas.json', label_ac: 'nmpessoa', val_ac: 'id', class: "autocomplete_pessoas"}
+      %button{:class => "btn btn-mini btn-success", :id => "pessoa_ajax", :style => "width:21em"}
         %i{:class => "icon-plus-sign icon-white"}
-    .field
-      = f.label "Pessoa"
-      = f.collection_select(:id_pessoa, Pessoa.order('nmpessoa'),:id, :nmpessoa, {:prompt => true})
-    .field
-      = f.label "Valor"  
-      = f.text_field  :valor
-      
-    = f.input :id_cargocategoria
+        Criar Pessoa
 
-  .actions
+      = f.input :cargo_categoria_id, label: 'Cargo Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+
+      = f.input :valor
+
+
+  .form-actions
     = f.button :submit, "Salvar", :class => "btn btn-success"
+    = link_to 'Voltar', contratacoes_path, :class => "btn"

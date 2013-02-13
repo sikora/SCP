@@ -1,7 +1,4 @@
-%h1 Editing pessoa
+.page-header
+  %h1 Editar Pessoa
 
-= render 'form'
-
-= link_to 'Show', @pessoa
-\|
-= link_to 'Back', pessoas_path
+= render 'form', :collection => @view_edit = true

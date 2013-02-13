@@ -1,0 +1,36 @@
+.page-header
+  %h1 Tipos de Contrato
+
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_tipo_contrato_path, :class => "btn btn-success aguarde"
+
+%br
+%br
+
+- if @tipo_contratos.present?
+  %table{:class => "table table-striped"}
+    %tr
+      %th #
+      %th Tipo
+      %th Ação
+  
+    - @tipo_contratos.each do |tipo_contrato|
+      %tr
+        %td= tipo_contrato.id
+        %td= tipo_contrato.tipo
+        %td
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), tipo_contrato, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_tipo_contrato_path(tipo_contrato), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), tipo_contrato, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+
+  .pagination
+    %ul
+      %li{:class => "disabled"}
+        %a= "Anterior"
+      %li{:class => "active"}
+        %a= "1"
+      %li
+        %a= "2"
+      %li
+        %a= "3"
+      %li
+        %a= "Posterior"

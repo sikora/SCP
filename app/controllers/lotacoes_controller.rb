@@ -4,22 +4,22 @@ class LotacoesController < ApplicationController
   # GET /lotacoes.json
   def index
     @notice = params[:notice]
-    @orgaos = Orgao.all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
+    @orgaos = Orgao.order(:nm_orgao).all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
     @orgaos_hash = []
     @orgaos.each do |orgao|
-        if !orgao.parent_id? || orgao.parent_id.to_i < 0
-          # Incluindo os orgaos na estrutura de arvore se parent_id for negativo ou nao exista
-          @orgaos_hash << {:descricao => orgao.nm_orgao , :id => "-#{orgao.orgao_id}", :parent_id => 0}
-        end
-        if !orgao.parent_id.nil?
-          # Armazena os dados de lotacao caso nao sejam nulos
-          @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
-        end
+    #é normal a inserção duplicada de orgãos no array, o plugin irá ignorar e renderizar corretamente.
+      if !orgao.parent_id? || orgao.parent_id.to_i < 0
+        # Incluindo os orgaos na estrutura de arvore se parent_id for negativo ou nao exista
+        @orgaos_hash << {:descricao => orgao.nm_orgao , :id => "-#{orgao.orgao_id}", :parent_id => 0}
+      end
+      if !orgao.parent_id.nil?
+        # Armazena os dados de lotacao caso nao sejam nulos
+        @orgaos_hash << {:descricao => orgao.descricao , :id => orgao.lotacao_id, :parent_id => orgao.parent_id}
+      end
     end
 
-       @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
+    @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
 
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lotacoes_array }
@@ -43,22 +43,24 @@ class LotacoesController < ApplicationController
   def new
     @lotacao = Lotacao.new
     @lotacoes = Lotacao.all(:joins => :orgao, :select => "orgaos.*,lotacoes.*" )
-    
-    if params[:parent_id] != '' &&  params[:parent_id]  &&  params[:parent_id].to_i > 0
-      #  
 
-      @lotacao_pai = Lotacao.find(params[:parent_id]) 
+    if params[:parent_id] != '' &&  params[:parent_id]  &&  params[:parent_id].to_i > 0
+      #
+
+      @lotacao_pai = Lotacao.find(params[:parent_id])
       @parent_id = params[:parent_id]
       @id_orgao = @lotacao_pai.id_orgao
     elsif  params[:parent_id].to_i < 0
-      # 
-      
+      #
+
       @parent_id =  "#{params[:parent_id]}"
       @id_orgao = -1 *params[:parent_id].to_i
     else
-      # 
+    #
       @parent_id  = "-#{params[:parent_id]}"
     end
+    
+    @orgao = Orgao.find @id_orgao
 
     respond_to do |format|
       format.html # new.html.erb
@@ -66,14 +68,12 @@ class LotacoesController < ApplicationController
     end
   end
 
-
-
   # GET /lotacoes/1/edit
   def edit
     @lotacao = Lotacao.find(params[:id])
     @parent_id  = @lotacao.parent_id
     @id_orgao = @lotacao.id_orgao
-    
+
   end
 
   # POST /lotacoes
@@ -82,7 +82,6 @@ class LotacoesController < ApplicationController
     @lotacao = Lotacao.new(params[:lotacao])
 
     @lotacao.parent_id = "-#{@lotacao.id_orgao}" if @lotacao.parent_id <= 0
-
 
     respond_to do |format|
       if @lotacao.save
@@ -115,7 +114,7 @@ class LotacoesController < ApplicationController
   # DELETE /lotacoes/1.json
   def destroy
     if Lotacao.where(:parent_id => params[:id]).count > 0
-    flash[:notice] = 'Esta lotação não pode ser apagada.' 
+      flash[:notice] = 'Esta lotação não pode ser apagada.'
       redirect_to lotacoes_path
     else
       @lotacao = Lotacao.find(params[:id])

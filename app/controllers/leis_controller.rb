@@ -2,12 +2,19 @@ class LeisController < ApplicationController
   # GET /leis
   # GET /leis.json
   def index
-    @leis = Lei.all
+    @search = params[:search]
+    @order = get_order()
+
+    @leis = Lei.pagination_with_search(params[:page], @search, @order)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leis }
     end
+  end
+
+  def search
+    redirect_to leis_path(:search => params[:search][:nome])
   end
 
   # GET /leis/1
@@ -44,7 +51,7 @@ class LeisController < ApplicationController
 
     respond_to do |format|
       if @lei.save
-        format.html { redirect_to :action=>'index', notice: "Lei criada com sucesso." }
+        format.html { redirect_to leis_path, notice: "Lei criada com sucesso." }
         format.json { render json: @lei, status: :created, location: @lei }
       else
         format.html { render action: "new" }

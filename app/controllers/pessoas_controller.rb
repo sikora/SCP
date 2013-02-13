@@ -1,13 +1,25 @@
 class PessoasController < ApplicationController
+  respond_to :html, :js
   # GET /pessoas
   # GET /pessoas.json
   def index
-    @pessoas = Pessoa.all
+    if params[:term] && params[:term] != ''
+      @pessoas = Pessoa.where("LOWER(nmpessoa) like ?", "#{params[:term].downcase}%")
+    else
+      @search = params[:search]
+      @order = get_order()
+
+      @pessoas = Pessoa.pagination_with_search(params[:page], @search, @order)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pessoas }
     end
+  end
+
+  def search
+    redirect_to pessoas_path(:search => params[:search][:nome])
   end
 
   # GET /pessoas/1
@@ -26,9 +38,13 @@ class PessoasController < ApplicationController
   def new
     @pessoa = Pessoa.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @pessoa }
+    if params[:modal_ajax]
+      render :layout => false
+    else
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @pessoa }
+      end
     end
   end
 
@@ -44,11 +60,13 @@ class PessoasController < ApplicationController
 
     respond_to do |format|
       if @pessoa.save
-        format.html { redirect_to @pessoa, notice: 'Pessoa was successfully created.' }
+        format.html { redirect_to pessoas_path, notice: 'Pessoa criada com sucesso.' }
         format.json { render json: @pessoa, status: :created, location: @pessoa }
+      format.js
       else
         format.html { render action: "new" }
         format.json { render json: @pessoa.errors, status: :unprocessable_entity }
+        format.js { render json: @pessoa.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +78,7 @@ class PessoasController < ApplicationController
 
     respond_to do |format|
       if @pessoa.update_attributes(params[:pessoa])
-        format.html { redirect_to @pessoa, notice: 'Pessoa was successfully updated.' }
+        format.html { redirect_to @pessoa, notice: 'Pessoa atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
