@@ -4,8 +4,11 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: pmf_desv
+  host: 172.31.4.2
+  username: scp
+  password: scp!pmf%cti
   pool: 5
   timeout: 5000
 
