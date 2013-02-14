@@ -29,11 +29,11 @@
 
   - @contratacoes.each do |i|
     %tr
-      %td= i.pessoa.nmpessoa
+      %td= i.pessoa.nm_pessoa
       %td= i.vaga.cargo_categoria.cargo.nm_cargo
       %td= i.vaga.cargo_categoria.categoria.nm_categoria
       %td= i.vaga.lotacao.breadcrumb
-      %td= i.pessoa.indicador.nmindicador if i.pessoa.indicador
+      %td= i.pessoa.indicador.nm_indicador if i.pessoa.indicador
       %td= i.pessoa.obs
       %td
         = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"

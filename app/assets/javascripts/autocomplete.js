@@ -31,7 +31,7 @@ $(function() {
 		  var terms = {};
 
 		  $.each(data, function (i, val) {
-		    terms[val['id']] = val['nmpessoa'];
+		    terms[val['id']] = val['nm_pessoa'];
 		});
 
     return terms;

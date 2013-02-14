@@ -10,8 +10,8 @@
 
   - @perfis.each do |perfil|
     %tr
-      %td= perfil.nmperfil
-      %td= perfil.descperfil
+      %td= perfil.nm_perfil
+      %td= perfil.descricao
       %td= link_to 'Ver', perfil
       %td= link_to 'Editar', edit_perfil_path(perfil)
       %td= link_to 'Apagar', perfil, :confirm => 'Are you sure?', :method => :delete
