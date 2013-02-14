@@ -4,7 +4,7 @@ class LotacoesController < ApplicationController
   # GET /lotacoes.json
   def index
     @notice = params[:notice]
-    @orgaos = Orgao.order(:nm_orgao).all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.id_orgao", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
+    @orgaos = Orgao.order(:nm_orgao).all(:joins => "left JOIN lotacoes on orgaos.id = lotacoes.orgao_id", :select => "orgaos.*,lotacoes.*,orgaos.id as orgao_id, lotacoes.id as lotacao_id, lotacoes.parent_id as parent_id" )
     @orgaos_hash = []
     @orgaos.each do |orgao|
     #é normal a inserção duplicada de orgãos no array, o plugin irá ignorar e renderizar corretamente.
@@ -18,12 +18,13 @@ class LotacoesController < ApplicationController
       end
     end
 
-    @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:id_orgao])
+    @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:orgao_id])
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lotacoes_array }
     end
+    
   end
 
   # GET /lotacoes/1
@@ -49,18 +50,18 @@ class LotacoesController < ApplicationController
 
       @lotacao_pai = Lotacao.find(params[:parent_id])
       @parent_id = params[:parent_id]
-      @id_orgao = @lotacao_pai.id_orgao
+      @orgao_id = @lotacao_pai.orgao_id
     elsif  params[:parent_id].to_i < 0
       #
 
       @parent_id =  "#{params[:parent_id]}"
-      @id_orgao = -1 *params[:parent_id].to_i
+      @orgao_id = -1 *params[:parent_id].to_i
     else
     #
       @parent_id  = "-#{params[:parent_id]}"
     end
     
-    @orgao = Orgao.find @id_orgao
+    @orgao = Orgao.find @orgao_id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -72,7 +73,7 @@ class LotacoesController < ApplicationController
   def edit
     @lotacao = Lotacao.find(params[:id])
     @parent_id  = @lotacao.parent_id
-    @id_orgao = @lotacao.id_orgao
+    @orgao_id = @lotacao.orgao_id
 
   end
 
@@ -81,7 +82,7 @@ class LotacoesController < ApplicationController
   def create
     @lotacao = Lotacao.new(params[:lotacao])
 
-    @lotacao.parent_id = "-#{@lotacao.id_orgao}" if @lotacao.parent_id <= 0
+    @lotacao.parent_id = "-#{@lotacao.orgao_id}" if @lotacao.parent_id <= 0
 
     respond_to do |format|
       if @lotacao.save
