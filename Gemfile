@@ -6,6 +6,7 @@ gem 'thin'
 gem 'haml-rails'
 gem 'simple_form'
 gem "audited-activerecord", "~> 3.0"
+gem 'foreigner'
 
 
 
