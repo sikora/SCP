@@ -3,7 +3,7 @@
 
 %p
   %b Nome da Pessoa:
-  = @pessoa.nmpessoa
+  = @pessoa.nm_pessoa
 %p
   %b Cpf:
   = @pessoa.cpf
@@ -27,19 +27,19 @@
   = @pessoa.nacionalidade
 %p
   %b Nome Pai:
-  = @pessoa.nmpai
+  = @pessoa.nm_pai
 %p
   %b Nome Mãe:
-  = @pessoa.nmmae
+  = @pessoa.nm_mae
 %p
   %b Data Nascimento:
-  = @pessoa.dtnasc.strftime "%d/%m/%Y"
+  = @pessoa.dt_nasc.strftime "%d/%m/%Y"
 %p
   %b Sexo:
   = @pessoa.sexo
 %p
   %b Indicado por:
-  = @pessoa.indicador.nmindicador if @pessoa.indicador
+  = @pessoa.indicador.nm_indicador if @pessoa.indicador
 %p
   %b Observação:
   = @pessoa.obs

@@ -17,8 +17,8 @@
     - @partidos.each do |partido|
       %tr
         %td= partido.id
-        %td= partido.nmpartido
-        %td= partido.nmcompleto
+        %td= partido.nm_partido
+        %td= partido.nm_completo
         %td
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), partido, :class => "btn btn-mini btn-info"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_partido_path(partido), :class => "btn btn-mini btn-warning"

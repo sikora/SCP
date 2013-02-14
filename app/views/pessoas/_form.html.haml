@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :nmpessoa, label: "Nome:"
+    = f.input :nm_pessoa, label: "Nome:"
     = f.input :cpf, label: "CPF:", :input_html => { :class => "maskinput-cpf" }
     = f.input :telefone, label: "Telefone:", :input_html => { :class => "maskinput-telefone" }
     = f.input :endereco, label: "Endereço:"
@@ -10,13 +10,13 @@
     = f.input :bairro, label: "Bairro:"
     = f.input :naturalidade, label: "Naturalidade:"
     = f.input :nacionalidade, label: "Nacionalidade:"
-    = f.input :nmpai, label: "Nome Pai:"
-    = f.input :nmmae, label: "Nome Mãe:"
-    = f.input :dtnasc, label: "Data Nascimento:", :order => [:day,:month,:year], start_year: Date.today.year - 60, end_year: Date.today.year - 12
+    = f.input :nm_pai, label: "Nome Pai:"
+    = f.input :nm_mae, label: "Nome Mãe:"
+    = f.input :dt_nasc, label: "Data Nascimento:", :order => [:day,:month,:year], start_year: Date.today.year - 60, end_year: Date.today.year - 12
     = f.label "Sexo:"
     = f.select(:sexo, options_for_select([["Escolha o Sexo", ""],['Masculino'], ['Feminino']], @pessoa.sexo))
     = f.label "Indicação:"
-    = f.collection_select(:indicador_id, Indicador.order('nmindicador'),:id, :nmindicador, {:prompt => "Selecione um valor"})
+    = f.collection_select(:indicador_id, Indicador.order('nm_indicador'),:id, :nmindicador, {:prompt => "Selecione um valor"})
     = f.input :obs, label: "Observação:", :input_html => { :rows => 4,  :style => 'width: 460px' }
 
   .form-actions

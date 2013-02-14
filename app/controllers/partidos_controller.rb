@@ -3,7 +3,7 @@ class PartidosController < ApplicationController
   # GET /partidos.json
   def index
     if params[:term] && params[:term] !=''
-      @partidos = Partido.where("nmcompleto like ? or nmpartido like ?", '%' + params[:term] + '%', '%' + params[:term] + '%')
+      @partidos = Partido.where("nm_completo like ? or nm_partido like ?", '%' + params[:term] + '%', '%' + params[:term] + '%')
     else
       @partidos = Partido.all
     end

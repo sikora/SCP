@@ -19,7 +19,7 @@
       %th
         = link_to_pagination_order("#", "/pessoas", "id", @order)
       %th
-        = link_to_pagination_order("Nome", "/pessoas", "nmpessoa", @order)
+        = link_to_pagination_order("Nome", "/pessoas", "nm_pessoa", @order)
       %th
         = link_to_pagination_order("CPF", "/pessoas", "cpf", @order)
       %th
@@ -30,10 +30,10 @@
     - @pessoas.each do |pessoa|
       %tr
         %td= pessoa.id
-        %td= pessoa.nmpessoa
+        %td= pessoa.nm_pessoa
         %td= pessoa.cpf
         %td= pessoa.telefone
-        %td= pessoa.indicador ? pessoa.indicador.nmindicador : " - "
+        %td= pessoa.indicador ? pessoa.indicador.nm_indicador : " - "
         %td
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), pessoa, :class => "btn btn-mini btn-info aguarde"
           = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_pessoa_path(pessoa), :class => "btn btn-mini btn-warning aguarde"

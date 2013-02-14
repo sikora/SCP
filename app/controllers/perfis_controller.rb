@@ -3,7 +3,7 @@ class PerfisController < ApplicationController
   # GET /perfis.json
   def index
     if params[:filter] && params[:filter] !=''
-      @perfis = Perfil.where("nmperfil like ?", '%' + params[:filter] + '%') 
+      @perfis = Perfil.where("nm_perfil like ?", '%' + params[:filter] + '%') 
     else 
       @perfis = Perfil.all
     end
