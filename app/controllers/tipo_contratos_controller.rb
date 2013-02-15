@@ -1,3 +1,4 @@
+#encoding: utf-8
 class TipoContratosController < ApplicationController
   # GET /tipo_contratos
   # GET /tipo_contratos.json

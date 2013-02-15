@@ -1,6 +1,5 @@
-class UsuariosController < ApplicationController
-  before_filter :authenticate_usuario!
-  
+#encoding: utf-8
+class UsuariosController < ApplicationController  
   def index
     @search = params[:search]
     @order = get_order()

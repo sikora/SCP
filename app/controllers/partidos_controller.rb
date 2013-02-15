@@ -1,3 +1,4 @@
+#encoding: utf-8
 class PartidosController < ApplicationController
   # GET /partidos
   # GET /partidos.json

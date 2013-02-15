@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CategoriasController < ApplicationController
   def get_valor
     @categoria = Categoria.find_by_id(params[:categoria_id])

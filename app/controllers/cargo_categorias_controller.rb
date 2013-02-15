@@ -1,5 +1,5 @@
+#encoding: utf-8
 class CargoCategoriasController < ApplicationController
-  before_filter :authenticate_usuario!
   # GET /cargo_categorias
   # GET /cargo_categorias.json
   def index
