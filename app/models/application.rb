@@ -4,7 +4,7 @@ class Application < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-  def timeout
-      3.seconds
-  end  
+#  def timeout
+#      3.seconds
+#  end  
 end
