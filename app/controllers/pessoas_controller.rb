@@ -1,3 +1,4 @@
+#encoding: utf-8
 class PessoasController < ApplicationController
   respond_to :html, :js
   # GET /pessoas

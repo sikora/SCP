@@ -1,6 +1,5 @@
 #encoding: utf-8
 class VagasController < ApplicationController
-  before_filter :authenticate_usuario!
   # GET /vagas
   # GET /vagas.json
   def index

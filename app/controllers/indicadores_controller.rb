@@ -1,3 +1,4 @@
+#encoding: utf-8
 class IndicadoresController < ApplicationController
   # GET /indicadores
   # GET /indicadores.json
