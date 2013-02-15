@@ -1,17 +1,18 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
-    
+
   <div class="navbar-inner">
     <div class="container-fluid">
-      <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-      <%= link_to(raw("Sistema Cadastro de Pessoas"), root_path, :class => "brand") %>
-      
+      <div id="logo-topo" class="pull-left">
+        <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+        <h1><%= link_to(raw("Sistema de Cadastro de Pessoas <span>Prefeitura Municipal de Fortaleza</span>"), root_path) %></h1>
+      </div>
+
       <div class="btn-group pull-right">
         <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> <%= current_usuario.email if usuario_signed_in? %></a>
         <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li>
-            <a href="#">
-              <%= link_to(raw("<i class='icon-pencil'></i> Editar"), edit_usuario_path(current_usuario) ) %></a>
+            <a href="#"> <%= link_to(raw("<i class='icon-pencil'></i> Editar"), edit_usuario_path(current_usuario) ) %></a>
           </li>
           <li class="divider"></li>
           <li>
@@ -19,8 +20,8 @@
           </li>
         </ul>
       </div>
-      
+
     </div>
   </div>
-  
+
 </div>

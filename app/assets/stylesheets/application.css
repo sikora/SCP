@@ -12,36 +12,81 @@
  *= require_tree .
  */
 body {
-    padding-top: 60px;
+    padding-top: 75px;
     padding-bottom: 40px;
 }
 
 .actions_lotacao {
-	padding-left: 5px;
-	display: inline;
-	position: absolute;
-	right: 0;
-
-
-
+    padding-left: 5px;
+    display: inline;
+    position: absolute;
+    right: 0;
 }
 
 .actions_lotacao a {
-	margin-left: 5px;
-
-
+    margin-left: 5px;
 }
 
-#jqxTree ul li , #jqxTree ul {
+#jqxTree ul li, #jqxTree ul {
 }
 
 #panelContentpaneljqxTree {
-	width: 98% !important;
-	overflow: hidden !important;
-
+    width: 98% !important;
+    overflow: hidden !important;
 }
 
-#panelWrapperpaneljqxTree >  div ,  #panelWrapperpaneljqxTree ,#paneljqxTreehorizontalScrollBar > div {
-	overflow: hidden !important;
+#panelWrapperpaneljqxTree > div, #panelWrapperpaneljqxTree, #paneljqxTreehorizontalScrollBar > div {
+    overflow: hidden !important;
+}
 
+.navbar-inner {
+    background: url("bg-topo-blue.png") no-repeat scroll left center #C8D4E2 !important;
+    border-bottom: 1px solid #C8D4E2 !important;
+    min-height: 60px !important;
+}
+
+.container-fluid {
+    padding-top: 10px;
+}
+
+.navbar-inner {
+    filter: none;
+}
+
+#logo-topo {
+    background: url("logo-fortaleza.png") no-repeat scroll 0 50% transparent;
+    background-size: 51px;
+    height: 43px;
+}
+
+#logo-topo h1 {
+    font-size: 27px;
+    margin-bottom: 0;
+    padding-left: 60px;
+}
+
+#logo-topo h1 a {
+    color: white;
+    font-weight: bold;
+    line-height: 30px;
+    text-decoration: none;
+    display: block;
+    margin-top: -10px;
+    color: #0088CC;
+}
+
+#logo-topo h1 span {
+    bottom: 0;
+    clear: both;
+    color: white;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 12px;
+    position: relative;
+    color: #0088CC;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
 }

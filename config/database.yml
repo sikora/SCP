@@ -7,8 +7,8 @@ development:
   adapter: postgresql
   database: scp
   host: 127.0.0.1
-  username: scp
-  password: scp!pmf%cti
+  username: postgres
+  password: teste
   pool: 5
   timeout: 5000
 
