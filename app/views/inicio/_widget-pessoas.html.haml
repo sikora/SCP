@@ -12,9 +12,9 @@
           %th Nome
           %th Ação
       %tbody
-        - (1..10).each do |i|
+        - @pessoas.each do |i|
           %tr
-            %td #{i*26}
-            %td Raimundo João pereira
+            %td #{i.id}
+            %td #{i.nm_pessoa}
             %td
-              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), '/pessoas', :class => "btn btn-mini btn-info aguarde"
+              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), i, :class => "btn btn-mini btn-info aguarde"
