@@ -1,7 +1,7 @@
 class Orgao < ActiveRecord::Base
   audited
   attr_accessible :dt_fim, :dt_inicio, :lei_id, :nm_orgao
-  has_many :cargocategorias
+  has_many :cargo_categorias
   has_many :lotacoes
   belongs_to :lei
 
