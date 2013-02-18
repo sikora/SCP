@@ -1,0 +1,8 @@
+%div.widget
+  %div.widget-header
+    %i.icon-search
+    Busca Rápida
+  %div.widget-content
+    = simple_form_for :search, :url => {:controller => 'pessoas', :action => 'search' } do |f|
+      = f.input_field :nome, :placeholder => 'Nome da Pessoa', :class => 'input-block-level', :value => @search
+      = f.submit 'Buscar Pessoa', :class => 'btn btn-large btn-block btn-primary aguarde'

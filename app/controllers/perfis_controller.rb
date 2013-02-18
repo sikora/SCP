@@ -1,3 +1,4 @@
+#encoding: utf-8
 class PerfisController < ApplicationController
   # GET /perfis
   # GET /perfis.json

@@ -90,3 +90,50 @@ body {
 .sidebar-nav {
     padding: 9px 0;
 }
+
+.widget {
+    clear: both;
+    margin-bottom: 2em;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+
+.widget-header {
+    background: -moz-linear-gradient(center top, #FAFAFA 0%, #E9E9E9 100%) repeat scroll 0 0 transparent;
+    border: 1px solid #D5D5D5;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.widget-content:after {
+    clear: both;
+}
+
+.widget-content:before, .widget-content:after {
+    content: "";
+    display: table;
+}
+
+.widget-content:before, .widget-content:after {
+    content: "";
+    display: table;
+}
+
+.widget-header + .widget-content {
+    border-top: medium none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.widget-content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px 5px 5px 5px;
+    padding: 20px 15px 15px;
+}

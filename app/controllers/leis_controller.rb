@@ -1,3 +1,4 @@
+#encoding: utf-8
 class LeisController < ApplicationController
   # GET /leis
   # GET /leis.json

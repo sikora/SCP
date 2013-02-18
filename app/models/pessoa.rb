@@ -2,11 +2,15 @@ class Pessoa < ActiveRecord::Base
   audited
   attr_accessible :bairro, :cep, :cpf, :dt_nasc, :endereco, :indicador_id, :nacionalidade, :naturalidade, :nm_mae, :nm_pai, :nm_pessoa, :obs, :sexo, :telefone
   has_many :contratacoes
-  belongs_to :indicador 
-  
+  belongs_to :indicador
+
+  before_save do
+    self.nm_pessoa = self.nm_pessoa.downcase
+  end
+
   def self.pagination_with_search(page, search, order)
     paginate  :page => page,
-              :conditions => ['nm_pessoa like ?', "%#{search}%"],
+              :conditions => ['nm_pessoa like ?', "%#{search}%".downcase],
               :order => (order ? "#{order[:column]} #{order[:order]}" : "id")
   end
 end

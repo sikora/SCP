@@ -1,0 +1,20 @@
+%div.widget
+  %div.widget-header
+    %i.icon-list-alt
+    Vagas em Aberto
+    %div.pull-right
+      %a ver todos
+  %div.widget-content
+    %table.table.table-condensed.table-striped
+      %thead
+        %tr
+          %th Nº Vaga
+          %th Tipo
+          %th Ação
+      %tbody
+        - (1..5).each do |i|
+          %tr
+            %td #{i*6}
+            %td Programador #{i*3}
+            %td
+              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), '/pessoas', :class => "btn btn-mini btn-info aguarde"

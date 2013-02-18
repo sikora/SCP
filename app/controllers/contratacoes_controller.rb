@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ContratacoesController < ApplicationController
   # GET /contratacoes
   # GET /contratacoes.json
