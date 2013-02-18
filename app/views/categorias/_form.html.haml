@@ -6,4 +6,7 @@
     = f.input :descricao, label: 'Descrição'
     = f.input :valor, label: 'Valor'
     
-    = f.submit 'Salvar', class: "btn btn-success"
+  .form-actions
+    = f.submit 'Salvar', :class => "btn btn-success aguarde"
+    = link_to 'Voltar', categorias_path, :class => "btn btn-info aguarde" 
+    = link_to 'Visualizar', @categoria, :class => "btn btn-warning aguarde" if @view_edit

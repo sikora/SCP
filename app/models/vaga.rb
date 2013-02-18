@@ -5,4 +5,7 @@ class Vaga < ActiveRecord::Base
   belongs_to :cargo_categoria
   belongs_to :lei
   belongs_to :lotacao
+
+
+
 end

@@ -1,18 +1,22 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes do Mapa de Cargos e Categoria.
 
 %p
   %b Categoria:
-  = @cargo_categoria.categoria_id
+  = @cargo_categoria.categoria.nm_categoria
 %p
   %b Cargo:
-  = @cargo_categoria.cargo_id
+  = @cargo_categoria.cargo.nm_cargo
 %p
   %b Contrato:
-  = @cargo_categoria.contrato_id
+  = @cargo_categoria.contrato.descricao
 %p
   %b Valor:
+  R$
   = @cargo_categoria.valor
 
-= link_to 'Edit', edit_cargo_categoria_path(@cargo_categoria)
-\|
-= link_to 'Back', cargo_categorias_path
+
+  
+.form-actions
+  = link_to 'Editar', edit_cargo_categoria_path(@cargo_categoria), :class => "btn btn-warning aguarde"
+  = link_to 'Voltar', cargo_categorias_path, :class => "btn aguarde"

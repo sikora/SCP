@@ -43,7 +43,16 @@ class ContratacoesController < ApplicationController
 
   # GET /contratacoes/1/edit
   def edit
+
+    @vagas = Array.new
+    Vaga.all.each do |v|
+      puts "here"
+      @vagas << v if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
+    end
+
     @contratacao = Contratacao.find(params[:id])
+
+
   end
 
   # POST /contratacoes

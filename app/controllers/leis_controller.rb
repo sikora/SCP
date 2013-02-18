@@ -68,7 +68,7 @@ class LeisController < ApplicationController
 
     respond_to do |format|
       if @lei.update_attributes(params[:lei])
-        format.html { redirect_to @lei, notice: 'Lei atualizada com sucesso' }
+        format.html { redirect_to leis_path, notice: 'Lei atualizada com sucesso' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -4,5 +4,9 @@
   .form-inputs
     = f.input :nm_cargo, label: 'Cargo'
 
-    = f.submit 'Salvar', class: "btn btn-success"
+  .form-actions
+    = f.submit 'Salvar', :class => "btn btn-success aguarde"
+    = link_to 'Voltar', cargos_path, :class => "btn btn-info aguarde" 
+    = link_to 'Visualizar', @cargo, :class => "btn btn-warning aguarde" if @view_edit
+
 

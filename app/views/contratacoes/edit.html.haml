@@ -1,7 +1,6 @@
-%h1 Editing contratacao
+.page-header
+  %h1 Editar Contratação
 
-= render 'form'
 
-= link_to 'Show', @contratacao
-\|
-= link_to 'Back', contratacoes_path
+= render 'form', :collection => @view_edit = true
+

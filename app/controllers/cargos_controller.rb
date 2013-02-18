@@ -45,7 +45,7 @@ class CargosController < ApplicationController
 
     respond_to do |format|
       if @cargo.save
-        format.html { redirect_to @cargo, notice: 'Cargo was successfully created.' }
+        format.html { redirect_to cargos_path, notice: 'Cargo criado com sucesso.' }
         format.json { render json: @cargo, status: :created, location: @cargo }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class CargosController < ApplicationController
 
     respond_to do |format|
       if @cargo.update_attributes(params[:cargo])
-        format.html { redirect_to @cargo, notice: 'Cargo was successfully updated.' }
+        format.html { redirect_to cargos_path, notice: 'Cargo atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -23,7 +23,7 @@
         %td= cargo_categoria.categoria.nm_categoria
         %td= cargo_categoria.valor
         %td
-          = link_to 'Show', cargo_categoria
-          = link_to 'Edit', edit_cargo_categoria_path(cargo_categoria)
-          = link_to 'Destroy', cargo_categoria, :confirm => 'Are you sure?', :method => :delete
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), cargo_categoria, :class => "btn btn-mini btn-info"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_cargo_categoria_path(cargo_categoria), :class => "btn btn-mini btn-warning"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), cargo_categoria, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
 

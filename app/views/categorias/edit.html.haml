@@ -1,7 +1,6 @@
-%h1 Editar categoria
+.page-header
+  %h1 Editar Categoria
 
-= render 'form'
 
-= link_to 'Show', @categoria
-\|
-= link_to 'Back', categorias_path
+= render 'form', :collection => @view_edit = true
+

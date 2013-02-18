@@ -1,7 +1,6 @@
-%h1 Editing cargo
+.page-header
+  %h1 Editar Cargo
 
-= render 'form'
 
-= link_to 'Show', @cargo
-\|
-= link_to 'Back', cargos_path
+= render 'form', :collection => @view_edit = true
+

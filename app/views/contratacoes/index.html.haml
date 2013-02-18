@@ -36,9 +36,9 @@
       %td= i.pessoa.indicador.nm_indicador if i.pessoa.indicador
       %td= i.pessoa.obs
       %td
-        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), new_contratacao_path, :class => "btn btn-mini btn-info"
-        = link_to raw("<i class='icon-pencil icon-white'></i>"), "#", :class => "btn btn-mini btn-warning"
-        = link_to raw("<i class='icon-trash icon-white'></i>"), "#", :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+        = link_to raw("<i class='icon-zoom-in icon-white'></i>"), i, :class => "btn btn-mini btn-info"
+        = link_to raw("<i class='icon-pencil icon-white'></i>"),edit_contratacao_path(i), :class => "btn btn-mini btn-warning"
+        = link_to raw("<i class='icon-trash icon-white'></i>"), i, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
 
 .pagination
   %ul

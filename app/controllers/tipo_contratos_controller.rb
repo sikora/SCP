@@ -49,7 +49,7 @@ class TipoContratosController < ApplicationController
 
     respond_to do |format|
       if @tipo_contrato.save
-        format.html { redirect_to @tipo_contrato, notice: 'Tipo contrato was successfully created.' }
+        format.html { redirect_to tipo_contratos_path, notice: 'Tipo de contrato criado com sucesso.' }
         format.json { render json: @tipo_contrato, status: :created, location: @tipo_contrato }
         format.js
       else
@@ -67,7 +67,7 @@ class TipoContratosController < ApplicationController
 
     respond_to do |format|
       if @tipo_contrato.update_attributes(params[:tipo_contrato])
-        format.html { redirect_to @tipo_contrato, notice: 'Tipo contrato was successfully updated.' }
+        format.html { redirect_to tipo_contratos_path, notice: 'Tipo de contrato atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

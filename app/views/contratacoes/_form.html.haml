@@ -15,5 +15,6 @@
 
 
   .form-actions
-    = f.button :submit, "Salvar", :class => "btn btn-success"
-    = link_to 'Voltar', contratacoes_path, :class => "btn"
+    = f.button :submit, "Salvar", :class => "btn btn-success agaurde"
+    = link_to 'Voltar', contratacoes_path, :class => "btn aguarde"
+    = link_to 'Visualizar', @contratacao, :class => "btn btn-warning aguarde" if @view_edit

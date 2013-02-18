@@ -53,7 +53,7 @@ class VagasController < ApplicationController
 
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully created.' }
+        format.html { redirect_to vagas_path, notice: 'Vaga criada com sucesso.' }
         format.json { render json: @vaga, status: :created, location: @vaga }
       else
         format.html { render action: "new" }
@@ -69,7 +69,7 @@ class VagasController < ApplicationController
 
     respond_to do |format|
       if @vaga.update_attributes(params[:vaga])
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully updated.' }
+        format.html { redirect_to vagas_path, notice: 'Vaga atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

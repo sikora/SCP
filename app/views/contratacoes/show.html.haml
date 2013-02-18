@@ -1,4 +1,7 @@
-%p#notice= notice
+.page-header
+  %h1 Detalhes da Contratação
+
+
 
 %p
   %b Vaga
@@ -14,6 +17,6 @@
   %b Cargo/Categoria no contrato
   = "#{@contratacao.cargo_categoria.cargo.nm_cargo} - #{@contratacao.cargo_categoria.categoria.nm_categoria}"
 
-= link_to 'Edit', edit_contratacao_path(@contratacao)
-\|
-= link_to 'Back', contratacoes_path
+.form-actions
+  = link_to 'Editar', edit_contratacao_path(@contratacao), :class => "btn btn-warning aguarde "
+  = link_to 'Voltar', contratacoes_path, :class => "btn aguarde"

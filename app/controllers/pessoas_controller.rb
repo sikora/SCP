@@ -79,7 +79,7 @@ class PessoasController < ApplicationController
 
     respond_to do |format|
       if @pessoa.update_attributes(params[:pessoa])
-        format.html { redirect_to @pessoa, notice: 'Pessoa atualizada com sucesso.' }
+        format.html { redirect_to pessoas_path, notice: 'Pessoa atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -45,7 +45,7 @@ class IndicadoresController < ApplicationController
 
     respond_to do |format|
       if @indicador.save
-        format.html { redirect_to @indicador, notice: 'Indicador criado com sucesso.' }
+        format.html { redirect_to indicadores_path, notice: 'Indicador criado com sucesso.' }
         format.json { render json: @indicador, status: :created, location: @indicador }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class IndicadoresController < ApplicationController
 
     respond_to do |format|
       if @indicador.update_attributes(params[:indicador])
-        format.html { redirect_to @indicador, notice: 'Indicador atualizado com sucesso.' }
+        format.html { redirect_to indicadores_path, notice: 'Indicador atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,16 +1,12 @@
 .page-header
   %h1 Detalhes do Contrato
 
-- if notice
-  .alert
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    %strong= notice
 
 %p
   %b Id:
   = @contrato.id
 %p
-  %b Desccontrato:
+  %b Descrição do Contrato:
   = @contrato.descricao
 %p
   %b Tipo:

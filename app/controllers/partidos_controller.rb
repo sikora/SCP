@@ -1,5 +1,6 @@
 #encoding: utf-8
 class PartidosController < ApplicationController
+  before_filter :authenticate_usuario!
   # GET /partidos
   # GET /partidos.json
   def index
@@ -53,7 +54,7 @@ class PartidosController < ApplicationController
 
     respond_to do |format|
       if @partido.save
-        format.html { redirect_to @partido, notice: 'Partido criado com sucesso.' }
+        format.html { redirect_to partidos_path, notice: 'Partido criado com sucesso.' }
         format.json { render json: @partido, status: :created, location: @partido }
         format.js
       else
@@ -71,7 +72,7 @@ class PartidosController < ApplicationController
 
     respond_to do |format|
       if @partido.update_attributes(params[:partido])
-        format.html { redirect_to @partido, notice: 'Partido atualizado com sucesso.' }
+        format.html { redirect_to partidos_path, notice: 'Partido atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

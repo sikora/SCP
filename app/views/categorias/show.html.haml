@@ -1,10 +1,7 @@
 .page-header
   %h1 Detalhes da Categoria
 
-- if notice
-  .alert
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    %strong= notice
+
   
 
 %p
@@ -19,5 +16,5 @@
 
   
 .form-actions
-  = link_to 'Editar', edit_categoria_path(@categoria), :class => "btn btn-warning"
-  = link_to 'Voltar', categorias_path, :class => "btn"
+  = link_to 'Editar', edit_categoria_path(@categoria), :class => "btn btn-warning aguarde "
+  = link_to 'Voltar', categorias_path, :class => "btn aguarde"

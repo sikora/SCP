@@ -68,7 +68,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.update_attributes(params[:orgao])
-        format.html { redirect_to @orgao, notice: 'Orgao atualizado com sucesso.' }
+        format.html { redirect_to orgaos_path, notice: 'Orgao atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
