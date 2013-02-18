@@ -27,3 +27,5 @@ database.yml
 .idea
 
 Gemfile.lock
+config/database.yml
+/nbproject/private/
