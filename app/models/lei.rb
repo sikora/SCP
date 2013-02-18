@@ -3,8 +3,8 @@ class Lei < ActiveRecord::Base
   attr_accessible :descricao, :dt_lei, :numero
   has_many :vagas
   has_many :orgaos
+  validates_presence_of :numero, :descricao
   
-  validates :numero, :presence => true
   
   def self.pagination_with_search(page, search, order)
     paginate  :page => page,
