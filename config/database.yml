@@ -5,10 +5,10 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: scp
+  database: pmf_desv
   host: 127.0.0.1
-  username: postgres
-  password: teste
+  username: scp
+  password: scp!pmf%cti
   pool: 5
   timeout: 5000
 
