@@ -3,18 +3,20 @@
     %i.icon-list-alt
     Vagas em Aberto
     %div.pull-right
-      %a ver todos
+      = link_to "ver todos", '/vagas'
   %div.widget-content
     %table.table.table-condensed.table-striped
       %thead
         %tr
-          %th Nº Vaga
-          %th Tipo
+          %th Vagas
+          %th Cargo / Categoria
           %th Ação
       %tbody
-        - (1..5).each do |i|
+        - @vagas.each do |i|
           %tr
-            %td #{i*6}
-            %td Programador #{i*3}
+            %td #{i.vagas_faltantes}
+            %td= "#{i.cargo_categoria.cargo.nm_cargo} - #{i.cargo_categoria.categoria.nm_categoria}"
             %td
               = link_to raw("<i class='icon-zoom-in icon-white'></i>"), '/pessoas', :class => "btn btn-mini btn-info aguarde"
+
+    = "Total: #{@vagas_count}"
