@@ -29,3 +29,4 @@ database.yml
 Gemfile.lock
 config/database.yml
 /nbproject/private/
+config/database.yml
