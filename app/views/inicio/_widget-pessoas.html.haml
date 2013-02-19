@@ -1,0 +1,21 @@
+%div.widget
+  %div.widget-header
+    %i.icon-user
+    Pessoas sem Vaga
+    %div.pull-right
+      %a ver todos
+  %div.widget-content
+    %table.table.table-condensed.table-striped
+      %thead
+        %tr
+          %th #
+          %th Nome
+          %th Ação
+      %tbody
+        - @pessoas.each do |i|
+          %tr
+            %td #{i.id}
+            %td #{i.nm_pessoa}
+            %td
+              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), i, :class => "btn btn-mini btn-info aguarde"
+    = "Total: #{@pessoas_count}"

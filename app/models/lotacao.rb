@@ -1,10 +1,10 @@
 class Lotacao < ActiveRecord::Base
-  audited
-  attr_accessible :descricao, :orgao_id, :parent_id
-  validates_presence_of :descricao
   has_many :filhos, class_name: "Lotacao", foreign_key: "parent_id"
   belongs_to :pai, class_name: "Lotacao"
   belongs_to :orgao
+  audited
+  attr_accessible :descricao, :orgao_id, :parent_id
+  validates_presence_of :descricao
 
   def breadcrumb(desc='')
     if desc != ''

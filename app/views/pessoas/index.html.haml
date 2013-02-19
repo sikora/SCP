@@ -1,7 +1,7 @@
 .page-header
   %h1 Pessoas
 
-= link_to raw("<i class='icon-home icon-white'></i>"), pessoas_path, :class => "btn btn-primary aguarde" 
+= link_to raw("<i class='icon-home icon-white'></i>"), pessoas_path, :class => "btn btn-primary aguarde"
 = link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success aguarde"
 
 - if @pessoas.present?
@@ -30,7 +30,7 @@
     - @pessoas.each do |pessoa|
       %tr
         %td= pessoa.id
-        %td= pessoa.nm_pessoa
+        %td= pessoa.nm_pessoa.titlecase
         %td= pessoa.cpf
         %td= pessoa.telefone
         %td= pessoa.indicador ? pessoa.indicador.nm_indicador : " - "

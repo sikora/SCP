@@ -1,0 +1,16 @@
+%div.widget
+  %div.widget-header
+    %i.icon-warning-sign
+    Últimas Contratações
+    %div.pull-right
+      %a ver todos
+  %div.widget-content
+    - @contratacoes.each do |contratacao|
+      %blockquote
+        %p
+          %a  
+            = link_to  contratacao.pessoa.nm_pessoa , contratacao
+        %small Data Contratação: #{contratacao.created_at.strftime('%d/%m/%Y')}
+        %small Local: #{contratacao.vaga.lotacao.breadcrumb}
+        
+   
