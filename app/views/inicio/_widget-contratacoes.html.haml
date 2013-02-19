@@ -5,18 +5,12 @@
     %div.pull-right
       %a ver todos
   %div.widget-content
-    %blockquote
-      %p
-        %a Igor Rocha Oliveira Bezerra - Programador V
-      %small Data Contratação: 18/03/2013
-      %small Local: CTI - Centro
-    %blockquote
-      %p
-        %a João Pereira da Silva - Analista de Suporte
-      %small Data Contratação: 18/03/2012
-      %small Local: Regional IV - Meireles
-    %blockquote
-      %p
-        %a Igor Rocha Oliveira Bezerra - Programador V - CTI
-      %small Data Contratação: 01/01/2013
-      %small Local: SAM - Aldeota
+    - @contratacoes.each do |contratacao|
+      %blockquote
+        %p
+          %a  
+            = link_to  contratacao.pessoa.nm_pessoa , contratacao
+        %small Data Contratação: #{contratacao.created_at.strftime('%d/%m/%Y')}
+        %small Local: #{contratacao.vaga.lotacao.breadcrumb}
+        
+   
