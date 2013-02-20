@@ -11,7 +11,8 @@ gem 'foreigner'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'therubyracer'
+gem 'rb-readline'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'pry-rails'
