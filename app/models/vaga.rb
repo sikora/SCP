@@ -5,7 +5,7 @@ class Vaga < ActiveRecord::Base
   belongs_to :cargo_categoria
   belongs_to :lei
   belongs_to :lotacao
-  validates_presence_of :cargo_categoria_id, :lotacao_id, :qt_vagas
+  # validates_presence_of :cargo_categoria_id, :lotacao_id, :qt_vagas
 
 
 

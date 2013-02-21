@@ -7,8 +7,8 @@ class Orgao < ActiveRecord::Base
   belongs_to :lei
 
 
-  validates :nm_orgao, :presence => true
-  
+  # validates :nm_orgao, :presence => true
+
   def self.pagination_with_search(page, search, order)
     paginate  :page => page,
               :conditions => ['nm_orgao like ?', "%#{search}%"],

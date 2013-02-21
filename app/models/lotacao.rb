@@ -4,7 +4,7 @@ class Lotacao < ActiveRecord::Base
   belongs_to :orgao
   audited
   attr_accessible :descricao, :orgao_id, :parent_id
-  validates_presence_of :descricao
+  # validates_presence_of :descricao
 
   def breadcrumb(desc='')
     if desc != ''
