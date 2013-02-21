@@ -1,7 +1,8 @@
 %div.span3
   %div.well.sidebar-nav#menu-lateral
     %ul.nav.nav-pills.nav-stacked
-
+      %li.nav-header
+        Principal
       = nav_link('Página Inicial', root_path, 'icon-home')
       = nav_link('Ajuda', ajuda_principal_path, 'icon-question-sign')
 
@@ -10,7 +11,7 @@
       %li.nav-header
         Cargos & Categorias
 
-      = nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-tags', 'cargo-categorias-tp')
+      = nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-globe', 'cargo-categorias-tp')
       = nav_link('Cargos', cargos_path, 'icon-briefcase')
       = nav_link('Categorias', categorias_path, 'icon-tags')
 
@@ -27,8 +28,8 @@
       %li.nav-header
         Contratos
 
-      = nav_link('Tipos de contratos', tipo_contratos_path, 'icon-edit')
-      = nav_link('Contratos', contratos_path, 'icon-edit')
+      = nav_link('Tipos de contratos', tipo_contratos_path, 'icon-bookmark')
+      = nav_link('Contratos', contratos_path, 'icon-file')
       = nav_link('Contratações', contratacoes_path, 'icon-edit', 'contratacoes-tp')
 
 
