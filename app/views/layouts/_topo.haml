@@ -1,0 +1,28 @@
+%div.navbar.navbar-inverse.navbar-fixed-top
+
+  %div.navbar-inner
+    %div.container-fluid
+      %div.pull-left#logo-topo
+        %a.btn.btn-navbar{'data-target'=>'.nav-collapse','data-toggle'=>'collapse'}
+          %span.icon-bar
+        %h1
+          = link_to(raw("Sistema de Cadastro de Pessoas <span>Prefeitura Municipal de Fortaleza</span>"), root_path)
+
+      %div.btn-group.pull-right>
+        %a.btn.btn-primary{'href'=>'#'}
+          %i.icon-user.icon-white
+          = current_usuario.email if usuario_signed_in?
+        %a.btn.btn-primary.dropdown-toggle{'data-toggle'=>'dropdown','href'=>'#'}
+          %span.caret
+
+        %ul.dropdown-menu
+          %li
+            %a{'href'=>'#'}
+              = link_to(raw("<i class='icon-pencil'></i> Editar"), edit_usuario_path(current_usuario) )
+
+          %li.divider
+          %li
+            %a{'href'=>'#'}
+              %i.i
+              = link_to(raw("<i class='icon-off'></i> Sair"), destroy_usuario_session_path, :method => :delete)
+
