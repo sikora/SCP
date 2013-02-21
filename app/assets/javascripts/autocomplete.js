@@ -3,6 +3,10 @@ $(function() {
   	$v = $(v);
   	if($v.attr('url_ac')) {
 		$v.ajaxChosen({
+		  keepTypingMsg: "Continue tentando...",
+      	  lookingForMsg: "Procurando por",
+      	  placeholder_text: "Selecione uma opção",
+      	  placeholder_text_single: "Selecione uma opção",
 		  method: 'GET',
 		  url: $v.attr('url_ac'),
 		  dataType: 'json',
@@ -22,36 +26,6 @@ $(function() {
   });	
 
   $(".default_chosen").chosen();
-
-  $(".autocomplete_pessoas").ajaxChosen({
-    method: 'GET',
-		  url: '/pessoas.json',
-		  dataType: 'json',
-		}, function (data) {
-		  var terms = {};
-
-		  $.each(data, function (i, val) {
-		    terms[val['id']] = val['nm_pessoa'];
-		});
-
-    return terms;
-  });
-
-  $(".autocomplete_cargo_categorias").ajaxChosen({
-    method: 'GET',
-		  url: '/cargo_categorias.json',
-		  dataType: 'json',
-		}, function (data) {
-		  var terms = {};
-
-		  $.each(data, function (i, val) {
-		    terms[val['id']] = val['valor'];
-		});
-
-    return terms;
-  });
-
-
 
   $(".mapa_categoria_chosen").chosen().change(function(event) {
     $.ajax({

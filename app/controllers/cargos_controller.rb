@@ -3,7 +3,17 @@ class CargosController < ApplicationController
   # GET /cargos
   # GET /cargos.json
   def index
-    @cargos = Cargo.order(:nm_cargo).all
+
+    if params[:term] && params[:term] != ''
+      @cargos = Cargo.where("LOWER(nm_cargo) like ?", "#{params[:term].downcase}%")
+    else
+      @search = params[:search]
+      @order = get_order()
+
+      @cargos = Cargo.pagination_with_search(params[:page], @search, @order)
+    end
+
+    #@cargos = Cargo.order(:nm_cargo).all
 
     respond_to do |format|
       format.html # index.html.erb

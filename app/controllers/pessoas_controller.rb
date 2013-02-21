@@ -5,7 +5,7 @@ class PessoasController < ApplicationController
   # GET /pessoas.json
   def index
     if params[:term] && params[:term] != ''
-      @pessoas = Pessoa.where("LOWER(nm_pessoa) like ?", "#{params[:term].downcase}%")
+      @pessoas = Pessoa.where("nm_pessoa like ?", "#{params[:term].downcase}%")
     else
       @search = params[:search]
       @order = get_order()
