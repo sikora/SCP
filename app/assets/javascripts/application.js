@@ -125,14 +125,11 @@ $(function () {
 });
 
 /**
- * animação widget
+ * efeitos widget
  */
 $(function () {
     $('.widget .widget-header i').bind("click", function () {
-        var icon_btn = $(this);
-        $(this).closest('.widget').find('.widget-content').slideToggle('slow', function () {
-            icon_btn.toggleClass("icon-arrow-down icon-arrow-up", function () {
-            });
-        });
-    });
+        $(this).toggleClass("icon-arrow-down icon-arrow-up");
+        $(this).closest('.widget').find('.widget-content').slideToggle('fast');
+    }).css('cursor', 'pointer');
 });
