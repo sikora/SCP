@@ -12,7 +12,7 @@
       %th #
       %th Lotação
       %th Cargo / Categoria
-      %th Vagas
+      %th Vagas Abertas/Total
       %th Lei
       %th Ação
   
@@ -21,7 +21,7 @@
         %td= vaga.id
         %td= vaga.lotacao.breadcrumb
         %td= "#{vaga.cargo_categoria.cargo.nm_cargo} - #{vaga.cargo_categoria.categoria.nm_categoria}"
-        %td= vaga.qt_vagas
+        %td= "#{vaga.vagas_faltantes}/#{vaga.qt_vagas}"
         %td= vaga.lei.descricao if vaga.lei
         %td
           = link_to raw("<i class='icon-zoom-in icon-white'></i>"), vaga, :class => "btn btn-mini btn-info"

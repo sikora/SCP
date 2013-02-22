@@ -1,8 +1,23 @@
 .page-header
-  %h1 Pessoas
+  %h1 
+    =@title
 
 = link_to raw("<i class='icon-home icon-white'></i>"), pessoas_path, :class => "btn btn-primary aguarde"
 = link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_pessoa_path, :class => "btn btn-success aguarde"
+
+%div.btn-group
+  %a.btn.btn-info.dropdown-toggle{"data-toggle" => "dropdown", :href => '#'}
+    %i.icon-filter.icon-white
+    Filtro
+    %span.caret
+  %ul.dropdown-menu
+    %li 
+      = link_to "Todos", '/pessoas'
+    %li
+      = link_to "Contratados", '/pessoas?contratado=2'
+    %li
+      = link_to "Não contratados", '/pessoas?contratado=1'
+
 
 - if @pessoas.present?
   %div.pull-right
