@@ -4,19 +4,23 @@
     Vagas em Aberto
     %div.pull-right
       = link_to "ver todos", '/vagas'
+      |
+      %i.icon-arrow-down
   %div.widget-content
-    %table.table.table-condensed.table-striped
-      %thead
-        %tr
-          %th Vagas
-          %th Cargo / Categoria
-          %th Ação
-      %tbody
-        - @vagas.each do |i|
+    - if @vagas.present?
+      %table.table.table-condensed.table-striped
+        %thead
           %tr
-            %td #{i.vagas_faltantes}
-            %td= "#{i.cargo_categoria.cargo.nm_cargo} - #{i.cargo_categoria.categoria.nm_categoria}"
-            %td
-              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), '/pessoas', :class => "btn btn-mini btn-info aguarde"
-
-    = "Total: #{@vagas_count}"
+            %th Vagas
+            %th Cargo / Categoria
+            %th Ação
+        %tbody
+          - @vagas.each do |i|
+            %tr
+              %td #{i.vagas_faltantes}
+              %td= "#{i.cargo_categoria.cargo.nm_cargo} - #{i.cargo_categoria.categoria.nm_categoria}"
+              %td
+                = link_to raw("<i class='icon-zoom-in icon-white'></i>"), '/pessoas', :class => "btn btn-mini btn-info aguarde"
+      %span.label.label-info #{"Total: #{@pessoas_count}"}
+    - else
+      %p.text-info Sem dados cadastrados

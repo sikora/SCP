@@ -4,13 +4,16 @@
     Últimas Contratações
     %div.pull-right
       %a ver todos
+      |
+      %i.icon-arrow-down
   %div.widget-content
-    - @contratacoes.each do |contratacao|
-      %blockquote
-        %p
-          %a  
-            = link_to  contratacao.pessoa.nm_pessoa , contratacao
-        %small Data Contratação: #{contratacao.created_at.strftime('%d/%m/%Y')}
-        %small Local: #{contratacao.vaga.lotacao.breadcrumb}
-        
-   
+    - if @contratacoes.present?
+      - @contratacoes.each do |contratacao|
+        %blockquote
+          %p
+            %a
+              = link_to  contratacao.pessoa.nm_pessoa , contratacao
+          %small Data Contratação: #{contratacao.created_at.strftime('%d/%m/%Y')}
+          %small Local: #{contratacao.vaga.lotacao.breadcrumb}
+    - else
+      %p.text-info Sem dados cadastrados

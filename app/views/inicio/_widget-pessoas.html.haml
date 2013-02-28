@@ -4,18 +4,23 @@
     Pessoas sem Vaga
     %div.pull-right
       %a ver todos
+      |
+      %i.icon-arrow-down
   %div.widget-content
-    %table.table.table-condensed.table-striped
-      %thead
-        %tr
-          %th #
-          %th Nome
-          %th Ação
-      %tbody
-        - @pessoas.each do |i|
+    - if @pessoas.present?
+      %table.table.table-condensed.table-striped
+        %thead
           %tr
-            %td #{i.id}
-            %td #{i.nm_pessoa}
-            %td
-              = link_to raw("<i class='icon-zoom-in icon-white'></i>"), i, :class => "btn btn-mini btn-info aguarde"
-    = "Total: #{@pessoas_count}"
+            %th #
+            %th Nome
+            %th Ação
+        %tbody
+          - @pessoas.each do |i|
+            %tr
+              %td #{i.id}
+              %td #{i.nm_pessoa}
+              %td
+                = link_to raw("<i class='icon-zoom-in icon-white'></i>"), i, :class => "btn btn-mini btn-info aguarde"
+      %span.label.label-info #{"Total: #{@pessoas_count}"}
+    - else
+      %p.text-info Sem dados cadastrados

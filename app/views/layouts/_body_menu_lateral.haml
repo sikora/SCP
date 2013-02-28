@@ -1,0 +1,51 @@
+%div.span3
+  %div.well.sidebar-nav#menu-lateral
+    %ul.nav.nav-pills.nav-stacked
+      %li.nav-header
+        Principal
+      = nav_link('Página Inicial', root_path, 'icon-home')
+      = nav_link('Ajuda', ajuda_principal_path, 'icon-question-sign')
+
+
+      %hr
+      %li.nav-header
+        Cargos & Categorias
+
+      = nav_link('Mapa de Cargos e Categorias', cargo_categorias_path, 'icon-globe', 'cargo-categorias-tp')
+      = nav_link('Cargos', cargos_path, 'icon-briefcase')
+      = nav_link('Categorias', categorias_path, 'icon-tags')
+
+
+      %hr
+      %li.nav-header
+        Organização Administrativa
+
+      = nav_link('Órgãos', orgaos_path, 'icon-map-marker')
+      = nav_link('Lotações', lotacoes_path, 'icon-flag')
+
+
+      %hr
+      %li.nav-header
+        Contratos
+
+      = nav_link('Tipos de contratos', tipo_contratos_path, 'icon-bookmark')
+      = nav_link('Contratos', contratos_path, 'icon-file')
+      = nav_link('Contratações', contratacoes_path, 'icon-edit', 'contratacoes-tp')
+
+
+      %hr
+      %li.nav-header
+        Pessoas & Vagas
+
+      = nav_link('Pessoas', pessoas_path, 'icon-user')
+      = nav_link('Vagas', vagas_path, 'icon-inbox', 'vagas-tp')
+      = nav_link('Partidos', partidos_path, 'icon-fire')
+      = nav_link('Indicadores', indicadores_path, 'icon-bullhorn', 'indicadores-tp')
+
+
+      %hr
+      %li.nav-header
+        Outros
+
+      = nav_link('Leis', leis_path, 'icon-book')
+      = nav_link('Admin', usuarios_path, 'icon-eye-open')
