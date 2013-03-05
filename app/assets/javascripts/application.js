@@ -133,3 +133,6 @@ $(function () {
         $(this).closest('.widget').find('.widget-content').slideToggle('fast');
     }).css('cursor', 'pointer');
 });
+
+
+

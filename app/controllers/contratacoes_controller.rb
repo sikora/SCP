@@ -35,6 +35,10 @@ class ContratacoesController < ApplicationController
     end
     puts @vagas
 
+    @valor_cargo_categoria =  CargoCategoria.select('cargo_categorias.id as id, valor').where(:contrato_id => params[:contrato_id]).all.to_json
+
+
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contratacao }
