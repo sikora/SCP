@@ -3,8 +3,7 @@
     %i.icon-user
     Pessoas sem Vaga
     %div.pull-right
-      %a ver todos
-      |
+      = link_to "ver todos", '/pessoas?contratado=1'
       %i.icon-arrow-down
   %div.widget-content
     - if @pessoas.present?

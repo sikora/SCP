@@ -1,7 +1,7 @@
 = form_for @partido, :remote => (params[:modal_ajax] ? true : false) do |f|
   -if @partido.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@partido.errors.count, "error")} prohibited this partido from being saved:"
+      %h2= "Não foi possível salvar o partido devido a #{pluralize(@partido.errors.count, "erro")}:"
       %ul
         - @partido.errors.full_messages.each do |msg|
           %li= msg
