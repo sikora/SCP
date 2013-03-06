@@ -9,7 +9,25 @@
         %i{:class => "icon-plus-sign icon-white"}
         Criar Pessoa
 
-      = f.input :cargo_categoria_id, label: 'Cargo Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+      = f.input :cargo_categoria_id, label: 'Mapa de Cargo e Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+
+      %label{:for => "valor_cargo_categoria"}
+        Valor em Mapa de Cargo Categoria
+
+      %input{:type => "text", :disabled => "disabled", :name => "valor_cargo_categoria", :id => "valor_cargo_categoria" ,:value => "" }
+
+      :javascript
+           $('#contratacao_cargo_categoria_id').change(function(){
+              var cargo_categoria = #{@valor_cargo_categoria};
+              var id_cargo_categoria_selected = $(this).val();
+              for (var i = 0; i < cargo_categoria.length; i++) {
+                  if (cargo_categoria[i].id = id_cargo_categoria_selected) {
+                    $('#valor_cargo_categoria').val(cargo_categoria[i].valor);
+                  }
+
+              }
+           });
+
 
       = f.input :valor
 
