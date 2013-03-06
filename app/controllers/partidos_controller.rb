@@ -87,9 +87,14 @@ class PartidosController < ApplicationController
     @partido = Partido.find(params[:id])
     @partido.destroy
 
-    respond_to do |format|
-      format.html { redirect_to partidos_url }
-      format.json { head :no_content }
+    unless @partido.errors
+      respond_to do |format|
+        format.html { redirect_to partidos_url }
+        format.json { head :no_content }
+      end
+    else
+      puts @partido.erros
+      render 'error_page'
     end
   end
 end
