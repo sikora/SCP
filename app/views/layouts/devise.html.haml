@@ -11,7 +11,7 @@
     = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
     :css
-      body 
+      body
       {
           padding-bottom: 40px;
           background-color: #f5f5f5;
@@ -50,16 +50,12 @@
       }
 
   %body
-    
+
     .container
       %div.menssage
-        - if notice 
-          %div.notice
-            = notice
-        - if alert
-          %div.alert
-            = alert
+        = message
+
       = yield
-        
+
     = javascript_include_tag "application"
 
