@@ -1,7 +1,14 @@
 .page-header
   %h1 Mapa de Cargos e Categorias
-  
-= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_cargo_categoria_path, :class => "btn btn-success"
+
+= link_to raw("<i class='icon-home icon-white'></i>"), cargo_categorias_path, :class => "btn btn-primary aguarde"
+= link_to raw("<i class='icon-plus icon-white'></i> Novo"), new_cargo_categoria_path, :class => "btn btn-success aguarde"
+
+- if @cargo_categorias.present?
+  %div.pull-right
+    = simple_form_for :search, :url => {:controller => 'cargo_categorias', :action => 'search' }, :html => { :class => 'form-search' } do |f|
+      = f.input_field :nome, :placeholder => "Nome do Contrato", :class => "input-medium search-query",:value => @search
+      = f.submit "Buscar", :class => "btn aguarde"
 
 %br
 %br
@@ -10,20 +17,28 @@
   %table{:class => "table table-striped"}
 
     %tr
-      %th Contrato
-      %th Cargo
-      %th Categoria
-      %th Valor
+      %th
+        = link_to_pagination_order("#", "/cargo_categorias", "id", @order)
+      %th
+        = link_to_pagination_order("Contrato", "/cargo_categorias", "descricao", @order)
+      %th
+        = link_to_pagination_order("Cargo", "/cargo_categorias", "nm_cargo", @order)
+      %th
+        = link_to_pagination_order("Categoria", "/cargo_categorias", "mn_categoria", @order)
+      %th
+        = link_to_pagination_order("Valor", "/cargo_categorias", "valor", @order)
       %th Ação
 
     - @cargo_categorias.each do |cargo_categoria|
       %tr
-        %td= cargo_categoria.contrato.descricao
-        %td= cargo_categoria.cargo.nm_cargo
-        %td= cargo_categoria.categoria.nm_categoria
+        %td= cargo_categoria.id
+        %td= cargo_categoria.descricao
+        %td= cargo_categoria.nm_cargo
+        %td= cargo_categoria.nm_categoria
         %td= cargo_categoria.valor
         %td
-          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), cargo_categoria, :class => "btn btn-mini btn-info"
-          = link_to raw("<i class='icon-pencil icon-white'></i>"), edit_cargo_categoria_path(cargo_categoria), :class => "btn btn-mini btn-warning"
-          = link_to raw("<i class='icon-trash icon-white'></i>"), cargo_categoria, :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
+          = link_to raw("<i class='icon-zoom-in icon-white'></i>"), "/cargo_categorias/#{cargo_categoria.id}", :class => "btn btn-mini btn-info aguarde"
+          = link_to raw("<i class='icon-pencil icon-white'></i>"), "/cargo_categorias/#{cargo_categoria.id}/edit", :class => "btn btn-mini btn-warning aguarde"
+          = link_to raw("<i class='icon-trash icon-white'></i>"), "/cargo_categorias/#{cargo_categoria.id}", :confirm => 'Realmente deseja fazer essa operação?', :method => :delete, :class => "btn btn-mini btn-danger"
 
+  = will_paginate @cargo_categorias

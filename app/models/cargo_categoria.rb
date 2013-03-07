@@ -5,18 +5,18 @@ class CargoCategoria < ActiveRecord::Base
   belongs_to :categoria
   belongs_to :contrato
 
-  before_save :imprime 
+  before_save :imprime
 
-  before_update :imprime 
+  before_update :imprime
 
 
-  def valor=(valor)  
-      write_attribute(:valor, valor.gsub(',', '.'))  
-  end  
-    
-  def imprime  
-    puts self.valor  
- 
-  end  
+  def valor=(valor)
+      write_attribute(:valor, valor.gsub(',', '.'))
+  end
+
+  def imprime
+    puts self.valor
+
+  end
 
 end

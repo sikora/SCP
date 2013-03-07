@@ -8,4 +8,6 @@
     = f.input :valor
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Salvar", :class => "btn btn-success aguarde"
+    = link_to 'Voltar', cargo_categorias_path, :class => "btn aguarde"
+    = link_to 'Visualizar', @cargo_categoria, :class => "btn btn-info aguarde" if @view_edit

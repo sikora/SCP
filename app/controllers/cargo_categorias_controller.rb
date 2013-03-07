@@ -3,12 +3,16 @@ class CargoCategoriasController < ApplicationController
   # GET /cargo_categorias
   # GET /cargo_categorias.json
   def index
-    @cargo_categorias = CargoCategoria.all
+    @cargo_categorias = CargoCategoriasView.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @cargo_categorias }
-    end
+    @search = params[:search]
+    @order = get_order()
+
+    @cargo_categorias = CargoCategoriasView.pagination_with_search(params[:page], @search, @order)
+  end
+
+  def search
+    redirect_to cargo_categorias_path(:search => params[:search][:nome])
   end
 
   # GET /cargo_categorias/1

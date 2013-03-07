@@ -47,6 +47,7 @@ Scp::Application.routes.draw do
   match 'pessoas/order/:column/:order'  => "pessoas#index"
   match 'leis/order/:column/:order'     => "leis#index"
   match 'orgaos/order/:column/:order'   => "orgaos#index"
+  match 'cargo_categorias/order/:column/:order'   => "cargo_categorias#index"
 
   match 'lotacoes/new/:parent_id'           => 'lotacoes#new'
 

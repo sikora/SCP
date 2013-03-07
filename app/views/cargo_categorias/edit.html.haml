@@ -1,7 +1,4 @@
-%h1 Editing cargo_categoria
+.page-header
+  %h1 Editar Mapa de Cargo e Categoria
 
-= render 'form'
-
-= link_to 'Show', @cargo_categoria
-\|
-= link_to 'Back', cargo_categorias_path
+= render 'form', :collection => @view_edit = true
