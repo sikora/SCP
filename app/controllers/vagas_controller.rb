@@ -3,8 +3,18 @@ class VagasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
   def index
-    @vagas = Vaga.all
+    @vagas = Array.new
+    Vaga.all.each do |v|
+      v['vagas_faltantes'] = v.qt_vagas - Contratacao.where(:vaga_id => v.id).count
+      if params[:abertas]
+        @vagas << v if v['vagas_faltantes'] > 0
+      else
+        @vagas << v
 
+      end
+      # if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vagas }
