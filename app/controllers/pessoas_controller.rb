@@ -4,14 +4,23 @@ class PessoasController < ApplicationController
   # GET /pessoas
   # GET /pessoas.json
   def index
-    if params[:term] && params[:term] != ''
-      @pessoas = Pessoa.where("nm_pessoa like ?", "#{params[:term].downcase}%")
-    else
-      @search = params[:search]
-      @order = get_order()
+    @search = (params[:term] ? params[:term] : params[:search])
+    @order = get_order()
 
-      @pessoas = Pessoa.pagination_with_search(params[:page], @search, @order)
-    end
+    if params[:contratado] == "1"
+      @defcontratacao = "contratacoes.id IS NULL"
+      @title = "Pessoas (não contratadas)"
+    elsif params[:contratado] == "2"
+      @defcontratacao = "contratacoes.id IS NOT NULL"
+      @title = "Pessoas (contratadas)"
+    else
+      @defcontratacao = ""
+      @title = "Pessoas"
+    end      
+
+    @pessoas = Pessoa.pagination_with_search(params[:page], @search, @order).find(:all, :limit => 10,
+            :joins => "LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ,
+            :conditions => @defcontratacao)
 
     respond_to do |format|
       format.html # index.html.erb

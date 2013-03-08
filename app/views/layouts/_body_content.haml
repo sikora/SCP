@@ -1,7 +1,4 @@
 %div.span9
-  - if notice
-    .alert
-      %button.close{'type'=>'button', 'data-dismiss'=>'alert'} &times;
-      %strong= notice
+  = message
 
   = yield

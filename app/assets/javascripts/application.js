@@ -18,7 +18,7 @@
  * efeito alert
  */
 $(function () {
-    var corpo_alert = $(".alert, .notice");
+    var corpo_alert = $("#alert-message");
 
     if (corpo_alert.length) {
         setTimeout(function () {
