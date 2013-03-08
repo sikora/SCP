@@ -2,11 +2,14 @@
 %html(lang="pt-BR")
   %head
     = javascript_include_tag 'application'
+    
     = render 'layouts/head'
 
   %body
     = render 'layouts/topo'
 
     = render 'layouts/body'
+
+    = yield :js
 
 

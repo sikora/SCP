@@ -20,6 +20,7 @@ class LotacoesController < ApplicationController
 
     @lotacoes_array = @orgaos_hash.to_json(:only => [:id, :descricao, :parent_id,:nm_orgao ,:orgao_id])
 
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @lotacoes_array }
