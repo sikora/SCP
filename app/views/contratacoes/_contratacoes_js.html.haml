@@ -1,0 +1,16 @@
+- content_for :js do
+  :javascript
+    var set_valor = function(){
+       var cargo_categoria = #{@valor_cargo_categoria};
+       var id_cargo_categoria_selected = $('#contratacao_cargo_categoria_id').val();
+       for (var i = 0; i < cargo_categoria.length; i++) {
+           if (cargo_categoria[i].id == id_cargo_categoria_selected) {
+             $('#valor_cargo_categoria').val(cargo_categoria[i].valor);
+             return;
+           }
+       }
+    };
+    set_valor();
+    $('#contratacao_cargo_categoria_id').bind('change','load',function(){
+      set_valor();   
+    });

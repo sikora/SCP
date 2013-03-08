@@ -34,8 +34,10 @@ class ContratacoesController < ApplicationController
       @vagas << v if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
     end
     puts @vagas
+    @cargo_categorias =  CargoCategoria.select("cargo_categorias.id as id, cargos.nm_cargo, categorias.nm_categoria, cargo_categorias.valor").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all
+    @valor_cargo_categoria =  @cargo_categorias.to_json
 
-    @valor_cargo_categoria =  CargoCategoria.select('cargo_categorias.id as id, valor').where(:contrato_id => params[:contrato_id]).all.to_json
+    #CargoCategoria.select('cargo_categorias.id as id, valor').joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.to_json
 
 
 
@@ -47,15 +49,18 @@ class ContratacoesController < ApplicationController
 
   # GET /contratacoes/1/edit
   def edit
+    @contratacao = Contratacao.find(params[:id])
 
     @vagas = Array.new
     Vaga.all.each do |v|
       puts "here"
       @vagas << v if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
     end
+    @cargo_categorias =  CargoCategoria.select("cargo_categorias.id as id, cargos.nm_cargo, categorias.nm_categoria, cargo_categorias.valor").joins([:cargo, :categoria]).where(:contrato_id => @contratacao.cargo_categoria.contrato_id).all
 
-    @contratacao = Contratacao.find(params[:id])
-
+    @valor_cargo_categoria =  @cargo_categorias.to_json
+    
+    
 
   end
 
@@ -66,7 +71,7 @@ class ContratacoesController < ApplicationController
 
     respond_to do |format|
       if @contratacao.save
-        format.html { redirect_to @contratacao, notice: 'Contratacao was successfully created.' }
+        format.html { redirect_to @contratacao, notice: 'Contratação criada com sucesso.' }
         format.json { render json: @contratacao, status: :created, location: @contratacao }
       else
         format.html { render action: "new" }
@@ -82,7 +87,7 @@ class ContratacoesController < ApplicationController
 
     respond_to do |format|
       if @contratacao.update_attributes(params[:contratacao])
-        format.html { redirect_to @contratacao, notice: 'Contratacao was successfully updated.' }
+        format.html { redirect_to @contratacao, notice: 'Contratação atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

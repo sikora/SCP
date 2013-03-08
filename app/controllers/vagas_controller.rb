@@ -29,7 +29,8 @@ class VagasController < ApplicationController
     #vagas só podem ser preenchidas com cargo/cagegorias padrões
     #para isto temos um contrato "virtual" apenas para organizar isto
     contrato = Contrato.where(:contrato_vagas => true).first
-    @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => contrato.id)
+    # @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => contrato.id)
+    @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @vaga }
