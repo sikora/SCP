@@ -1,4 +1,9 @@
 pt-BR:
+  misc:
+    indicador_pertencente:
+      zero: "sem indicadores pertencentes"
+      one: "um indicador pertencente"
+      other: "%{count} indicadores pertencentes"
   will_paginate:
     previous_label: "Anterior"
     next_label: "Próximo"

@@ -9,10 +9,10 @@
         %i{:class => "icon-plus-sign icon-white"}
         Criar Pessoa
 
-      = f.input :cargo_categoria_id, label: 'Mapa de Cargo e Categoria', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
+      = f.input :cargo_categoria_id, label: 'Mapa de Cargo e Simbologias', collection: CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => params[:contrato_id]).all.collect {|x| ["#{x.nm_cargo} - #{x.nm_categoria}", x.id]}, input_html: { class: 'default_chosen' }
 
       %label{:for => "valor_cargo_categoria"}
-        Valor em Mapa de Cargo Categoria
+        Valor em Mapa de Cargo Simbologias
 
       %input{:type => "text", :disabled => "disabled", :name => "valor_cargo_categoria", :id => "valor_cargo_categoria" ,:value => "" }
 

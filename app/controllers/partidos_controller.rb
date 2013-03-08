@@ -93,8 +93,8 @@ class PartidosController < ApplicationController
         format.json { head :no_content }
       end
     else
-      puts @partido.erros
-      render 'error_page'
+      #binding.pry
+      redirect_to partidos_path, flash: {error: @partido.errors[:base].join('<br>') }
     end
   end
 end

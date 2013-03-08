@@ -1,4 +1,5 @@
 class Partido < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
   audited
   attr_accessible :nm_completo, :nm_partido
   # validates_presence_of :nm_completo, :nm_partido
@@ -14,8 +15,9 @@ class Partido < ActiveRecord::Base
   end
 
   def check_if_indicador_belongs_to_partido
-    if Indicador.where("partido_id = ?", self.id).count > 0
-      errors.add(:base, "Existem pessoas indicadores pertencentes a este partido. Nao posso apagar.")
+    count = Indicador.where("partido_id = ?", self.id).count
+    if count > 0
+      errors.add(:base, "Existem #{I18n.t('misc.indicador_pertencente', :count => count)} a este partido. Nao posso apagar.")
       return false
     end
   end
