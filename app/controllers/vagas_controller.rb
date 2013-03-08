@@ -3,18 +3,7 @@ class VagasController < ApplicationController
   # GET /vagas
   # GET /vagas.json
   def index
-
-    @vagas = Array.new
-    Vaga.all.each do |v|
-      v['vagas_faltantes'] = v.qt_vagas - Contratacao.where(:vaga_id => v.id).count
-      if params[:abertas]
-        @vagas << v if v['vagas_faltantes'] > 0
-      else
-        @vagas << v
-      end
-      
-      # if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
-    end
+    @vagas = Vaga.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,8 +29,8 @@ class VagasController < ApplicationController
     #vagas só podem ser preenchidas com cargo/cagegorias padrões
     #para isto temos um contrato "virtual" apenas para organizar isto
     contrato = Contrato.where(:contrato_vagas => true).first
-    # @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => contrato.id)
-    @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria])
+    @cargo_categorias = CargoCategoria.select("cargo_categorias.id, cargos.nm_cargo, categorias.nm_categoria").joins([:cargo, :categoria]).where(:contrato_id => contrato.id)
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @vaga }
