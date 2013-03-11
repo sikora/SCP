@@ -13,7 +13,7 @@ class Lotacao < ActiveRecord::Base
       desc = self.descricao
     end
 
-    return Lotacao.find(self.parent_id).breadcrumb(desc) if self.parent_id > 0
+    return Lotacao.find(self.parent_id).breadcrumb(desc) if !self.parent_id.nil? && self.parent_id > 0  
     return "#{self.orgao.nm_orgao} - #{desc}"
   end
 
