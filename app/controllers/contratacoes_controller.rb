@@ -56,10 +56,11 @@ class ContratacoesController < ApplicationController
       puts "here"
       @vagas << v if Contratacao.where(:vaga_id => v.id).count < v.qt_vagas
     end
+    @vagas << Vaga.find(@contratacao.vaga_id)
+    puts @vagas
     @cargo_categorias =  CargoCategoria.select("cargo_categorias.id as id, cargos.nm_cargo, categorias.nm_categoria, cargo_categorias.valor").joins([:cargo, :categoria]).where(:contrato_id => @contratacao.cargo_categoria.contrato_id).all
 
     @valor_cargo_categoria =  @cargo_categorias.to_json
-    
     
 
   end

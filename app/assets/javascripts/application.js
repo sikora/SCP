@@ -90,6 +90,10 @@ $(function () {
  * mask input
  */
 $(function () {
+    // mas valor
+    $(".valor").maskMoney({showSymbol:true, symbol:"R$ ", decimal:",", thousands:"."});
+
+
     // mask CPF
     $(".maskinput-cpf").mask("999.999.999-99");
 
