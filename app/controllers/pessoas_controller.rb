@@ -31,7 +31,7 @@ class PessoasController < ApplicationController
   def pessoas_sem_contratacao
     @search = (params[:term] ? params[:term] : params[:search])
 
-    @pessoas = Pessoa.semContratacaoBusca(@search)
+    @pessoas = Pessoa.semContratacao(@search)
 
 
     respond_to do |format|

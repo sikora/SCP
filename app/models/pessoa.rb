@@ -17,12 +17,15 @@ class Pessoa < ActiveRecord::Base
 
   end
 
-  scope :semContratacaoBusca, lambda { |nome|
-      joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL and nm_pessoa like ?', "%#{nome}%".downcase).limit(10) unless nome.nil?
+  scope :semContratacao, lambda { |nome|
+
+    if nome != :all
+      joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL and nm_pessoa like ?', "%#{nome}%".downcase).limit(10) 
+     else
+      joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL').limit(10)
+    end
 
   }
-
-  scope :semContratacaoAll, joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL').limit(10)
 
 
 end

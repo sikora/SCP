@@ -6,7 +6,7 @@ class InicioController < ApplicationController
             :select => "pessoas.nm_pessoa as nm_pessoa, pessoas.id as id",
             :conditions => "contratacoes.id IS NULL").count
 
-  	@pessoas = Pessoa.semContratacaoAll
+  	@pessoas = Pessoa.semContratacao(:all)
   	@contratacoes =  Contratacao.order("created_at DESC").limit(3)
 
     @vagas = Array.new
