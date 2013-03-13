@@ -6,11 +6,7 @@ class InicioController < ApplicationController
             :select => "pessoas.nm_pessoa as nm_pessoa, pessoas.id as id",
             :conditions => "contratacoes.id IS NULL").count
 
-  	@pessoas = Pessoa.find(:all, :limit => 10,
-            :joins => "LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ,
-            :select => "pessoas.nm_pessoa as nm_pessoa, pessoas.id as id",
-            :conditions => "contratacoes.id IS NULL")
-
+  	@pessoas = Pessoa.semContratacaoAll
   	@contratacoes =  Contratacao.order("created_at DESC").limit(3)
 
     @vagas = Array.new

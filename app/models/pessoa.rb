@@ -16,4 +16,13 @@ class Pessoa < ActiveRecord::Base
               :order => (order ? "#{order[:column]} #{order[:order]}" : "id")
 
   end
+
+  scope :semContratacaoBusca, lambda { |nome|
+      joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL and nm_pessoa like ?', "%#{nome}%".downcase).limit(10) unless nome.nil?
+
+  }
+
+  scope :semContratacaoAll, joins("LEFT JOIN contratacoes ON contratacoes.pessoa_id = pessoas.id" ).select("pessoas.nm_pessoa as nm_pessoa, pessoas.id as id").where(' contratacoes.id IS NULL').limit(10)
+
+
 end

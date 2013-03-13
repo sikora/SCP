@@ -28,6 +28,19 @@ class PessoasController < ApplicationController
     end
   end
 
+  def pessoas_sem_contratacao
+    @search = (params[:term] ? params[:term] : params[:search])
+
+    @pessoas = Pessoa.semContratacaoBusca(@search)
+
+
+    respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @pessoas }
+      end
+
+  end
+
   def search
     redirect_to pessoas_path(:search => params[:search][:nome])
   end

@@ -2,6 +2,11 @@ Scp::Application.routes.draw do
 
   get "ajuda/index", :as => 'ajuda_principal'
 
+  # Rotas de Serviços
+  # 
+  match 'service/pessoas/sem_contratacao' => "pessoas#pessoas_sem_contratacao"
+  #
+
   resources :cargo_categorias
 
   resources :tipo_contratos
@@ -17,6 +22,8 @@ Scp::Application.routes.draw do
   resources :orgaos
   resources :contratacoes
   resources :pessoas
+
+
   resources :cargos
   resources :indicadores
   resources :partidos
@@ -42,7 +49,7 @@ Scp::Application.routes.draw do
 
   resources :inicio
   resources :usuarios
-
+  
   match 'usuarios/order/:column/:order' => "usuarios#index"
   match 'pessoas/order/:column/:order'  => "pessoas#index"
   match 'leis/order/:column/:order'     => "leis#index"
